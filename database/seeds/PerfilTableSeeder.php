@@ -14,11 +14,11 @@ class PerfilTableSeeder extends Seeder
         $perfiles = array(
   			array(
   				'id' => '1',
-  				'nombre' => 'admin',
+  				'name' => 'admin',
   				'observacion' => 'administrador del sistema'),
   			array(
   				'id' => '2',
-  				'nombre' => 'vendedor',
+  				'name' => 'vendedor',
   				'observacion' => 'empleado / vendedor de articulos')
   		);
 
