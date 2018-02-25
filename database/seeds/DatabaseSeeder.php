@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ModelosTableSeeder::class);
         $this->call(StatusTableSeeder::class);
         $this->call(PaisTableSeeder::class);
+        $this->call(UnidadTableSeeder::class);
 
         App\User::create([
           'name'   => 'Admin',

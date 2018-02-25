@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('perfil_id')->unsigned();
             $table->foreign('perfil_id')->references('id')->on('perfiles');
-            $table->string('status');
+            $table->integer('status')->unsigned();;
             $table->rememberToken();
             $table->timestamps();
         });

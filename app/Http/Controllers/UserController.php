@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Perfil;
 
 class UserController extends Controller
 {
@@ -27,7 +28,10 @@ class UserController extends Controller
      */
     public function create()
     {
-      return view("users.create");
+
+      return view("users.create",[
+          "perfiles" => Perfil::all()
+      ]);
     }
 
     /**
@@ -83,7 +87,7 @@ class UserController extends Controller
     public function edit($id)
     {
       $user = user::findOrFail($id);
-      return view("users.edit", ["user" => $user]);
+      return view("users.edit", ["user" => $user, "perfiles" => Perfil::all()]);
     }
 
     /**
@@ -106,7 +110,7 @@ class UserController extends Controller
 
       if($user->save()){
         return redirect("users")->with([
-          'flash_message' => 'Usuario agregado correctamente.',
+          'flash_message' => 'Usuario actualizado correctamente.',
           'flash_class' => 'alert-success'
           ]);
       }else{

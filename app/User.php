@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email'
+        'name','apellido','password','perfil_id', 'email', 'status'
     ];
 
     /**
@@ -26,4 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // relaciones
+    
+    public function perfil(){
+        return $this->belongsTo("App\Perfil", "perfil_id");
+    }
+
+    public function nameStatus(){
+        $status = "";
+        
+        if ($this->status == 1) {
+            $status = "Activo";
+        }elseif($this->status == 2){
+            $status = "Inactivo";
+        }elseif($this->status == 3){
+            $status = "Suspendido";
+        }
+
+        return $status;
+    }
 }

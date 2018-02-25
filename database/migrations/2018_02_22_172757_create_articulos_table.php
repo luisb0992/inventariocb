@@ -18,13 +18,15 @@ class CreateArticulosTable extends Migration
             $table->string('name');
             $table->integer('cantidad')->unsigned();
             $table->integer('modelo_id')->unsigned();
-            $table->foreign('modelo_id')->references('id')
-                  ->on('modelos')
-                  ->onDelete('cascade');
+            $table->foreign('modelo_id')
+                    ->references('id')
+                    ->on('modelos')
+                    ->onDelete('cascade');
             $table->integer('color_id')->unsigned();
-            $table->foreign('color_id')->references('id')
-                  ->on('colores')
-                  ->onDelete('cascade');
+            $table->foreign('color_id')
+                    ->references('id')
+                    ->on('colores')
+                    ->onDelete('cascade');
             $table->text('observacion')->nullable();      
             $table->timestamps();
         });

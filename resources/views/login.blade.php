@@ -16,41 +16,48 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
-    <link rel="shortcut icon" href="{{asset('img/logo.png')}}">
+    <!-- <link rel="shortcut icon" href="{{asset('img/logo.png')}}"> -->
   </head>
-	<body class="hold-transition login-page">
-	  <div class="login-box">
-	    <div class="login-logo">
-	    <center><img class="img-responsive" src="{{ asset('img/logo.png') }}" alt="Logo" style="height:75px"></center>
-	      <a href="#"><b>{{ config('app.name') }}</b></a>
-	    </div><!-- /.login-logo -->
-	    <div class="login-box-body">
-	      <p class="login-box-msg">-Authorized personal only-</p>
-	      @if (count($errors) > 0)
-	        <div class="alert alert-danger">
-	        	<ul>
-	          @foreach($errors->all() as $error)
-	             <li>{{$error}}</li>
-	          @endforeach
-	         	</ul>  
-	        </div>
-	      @endif
-	      <form action="{{route('auth')}}" method="POST">
-	          {{ csrf_field() }}
-	        <div class="form-group has-feedback">
-	          <input  class="form-control" type="email" name="email" placeholder="Email">
-	          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-	        </div>
-	        <div class="form-group has-feedback">
-	          <input id="password" class="form-control" type="password" name="password" placeholder="Password">
-	          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-	        </div>
+	<body class="hold-transition">
+	  <div class="row">
+	  		<div class="col-sm-12" style="display: flex; background-color: #F6F6F6; padding: 4em;">
+			  <div class="login-box">
+			    <div class="login-logo">
+			    <center><img class="img-responsive" src="{{ asset('img/logo_login.png') }}" alt="Logo" style="height:75px"></center>
+			      <small>{{ config('app.name') }}</small>
+			    </div><!-- /.login-logo -->
+			    <div class="login-box-body">
+			      <p class="login-box-msg">-Login-</p>
+			      @if (count($errors) > 0)
+			        <div class="alert alert-danger">
+			        	<ul>
+			          @foreach($errors->all() as $error)
+			             <li>{{$error}}</li>
+			          @endforeach
+			         	</ul>  
+			        </div>
+			      @endif
+			      <form action="{{route('auth')}}" method="POST">
+			          {{ csrf_field() }}
+			        <div class="form-group has-feedback">
+			          <input  class="form-control" type="email" name="email" placeholder="Email">
+			          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			        </div>
+			        <div class="form-group has-feedback">
+			          <input id="password" class="form-control" type="password" name="password" placeholder="Password">
+			          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			        </div>
 
-	        <div class="form-group">
-	            <button id="b-login" type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
-	        </div>
-	      </form> 
-	    </div><!-- /.login-box-body -->
-	  </div><!-- /.login-box -->
+			        <div class="form-group">
+			            <button id="b-login" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+			        </div>
+			      </form> 
+			    </div><!-- /.login-box-body -->
+			  </div><!-- /.login-box -->
+		  </div>
+		  <div class="col-sm-12" style="display: flex; height: 100%">
+						  	
+		  </div>
+	  </div>
 	</body>
 </html>

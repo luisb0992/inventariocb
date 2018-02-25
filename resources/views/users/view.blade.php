@@ -27,8 +27,11 @@
     	</div>
 			<div class="col-md-4">
 				<h4>Detalles del Usuario</h4>
-				<p><b>Nombre: </b> {{$user->name}} </p>
+        <p><b>Nombre: </b> {{$user->name}} </p>
+				<p><b>Nombre: </b> {{$user->apellido}} </p>
         <p><b>Email: </b> {{$user->email}} </p>
+        <p><b>Perfil: </b> {{$user->perfil->name}} </p>
+        <p><b>Estatus Actual: </b> {{$user->nameStatus()}} </p>
 			</div>
 		
 		</div>

@@ -19,6 +19,9 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
+
+    <!-- estilos propios de css -->
+    <link rel="stylesheet" href="{{asset('css/ep.css')}}">
   	<style type="text/css">
 	    .perfil{
 			  position: relative;
@@ -36,10 +39,11 @@
         <a href="{{route('dashboard')}}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini">
-          	<img class="img-responsive" src="{{ asset('img/logo_blanco.png') }}" alt="Logo" style="height:30px;margin:10px 0 0 10px">
+          	<!-- <img class="img-responsive" src="{{ asset('img/logo_blanco.png') }}" alt="Logo" style="height:30px;margin:10px 0 0 10px"> -->
+            ICB
           </span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>PROJECT 4 DESIGN</b></span>
+          <span class="logo-lg"><b>Coches Bebes</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -55,14 +59,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="hidden-xs">{{ Auth::user()->email }}</span>
+                  <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <p>
                       DESCRIPCCION
-                      <small>LEYENDA DEL USUARIO ONLINE</small>
                     </p>
                   </li>
                   
@@ -92,7 +95,6 @@
           <!-- Sidebar user panel -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li class="header">MENÚ</li>
 
             <li class="treeview">
               <a href="#">
@@ -116,20 +118,7 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i> Item</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Item</a></li>
               </ul>
-            </li>
-
-            <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>       
+            </li>     
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -152,7 +141,7 @@
       </div><!-- /.content-wrapper -->
       <!--Fin-Contenido-->
       <footer class="main-footer">
-        <strong>Copyright &copy; 2016-2017 <a href="http://www.project4design.com">Project 4 Design C.A</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2016-{{date('Y')}} <a href="http://www.project4design.com">Project 4 Design C.A</a>.</strong> All rights reserved.
       </footer>
     </div><!-- .wrapper -->
     <!-- jQuery 2.1.4 -->

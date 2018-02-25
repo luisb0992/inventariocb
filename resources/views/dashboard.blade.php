@@ -9,8 +9,7 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-md-12">
-			<h2>BASE PARA PROYECTO LARAVEL - PROJECT4DESIGN</h2>			
+		<div class="col-md-12">		
 		</div>   
-  </div>
+  	</div>
 @endsection

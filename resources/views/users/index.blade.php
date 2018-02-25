@@ -39,8 +39,10 @@
 						<thead>
 							<tr>
 								<th class="text-center">#</th>
-								<th class="text-center">Nombre</th>
+								<th class="text-center">Nombre y Apellido</th>
 								<th class="text-center">Email</th>
+								<th class="text-center">Perfil</th>
+								<th class="text-center">Estatus</th>
 								<th class="text-center">Accion</th>
 							</tr>
 						</thead>
@@ -48,8 +50,19 @@
 							@foreach($users as $d)
 								<tr>
 									<td>{{$loop->index+1}}</td>
-									<td>{{$d->name}}</td>
+									<td>{{$d->name}} {{$d->apellido}}</td>
 									<td>{{$d->email}}</td>
+									<td>{{$d->perfil->name}}</td>
+									<td class="	@if($d->status == 1) 
+													label-success 
+												@elseif($d->status == 2) 
+													label-warning 
+												@elseif($d->status == 3) 
+													label-danger 
+												@endif">
+
+											{{$d->nameStatus()}}
+									</td>
 									<td>
 										<a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$d->id])}}"><i class="fa fa-search"></i></a>
 										<a href="{{route('users.edit',[$d->id])}}" class="btn btn-flat btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a>
