@@ -111,12 +111,12 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-laptop"></i>
-                <span>MENU DESPLEGABLE</span>
+                <span>Entrevistas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Item</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Item</a></li>
+                <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver entrevistas</a></li>
+                <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li>
               </ul>
             </li>     
           </ul>

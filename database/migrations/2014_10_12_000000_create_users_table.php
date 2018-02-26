@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('perfil_id')->unsigned();
             $table->foreign('perfil_id')->references('id')->on('perfiles');
             $table->integer('status')->unsigned();;
+            $table->dateTime('ultima_conexion')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
