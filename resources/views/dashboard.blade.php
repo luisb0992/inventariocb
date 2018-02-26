@@ -9,7 +9,20 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-md-12">		
-		</div>   
+		<div class="col-sm-12">
+			<div class="padding_1em bg-primary">
+				<h1>Bienvenido {{ \Auth::user()->name }}</h1>
+			</div>
+		<hr>
+		</div>
+		<div class="col-sm-4 border_right_1">   
+			<img src="{{ asset('img/dashboard_1.png') }}" alt="dashboard" class="img-responsive text-center col-sm-10">
+		</div>
+		<div class="col-sm-4 border_right_1">   
+			<img src="{{ asset('img/dashboard_2.png') }}" alt="dashboard" class="img-responsive text-center col-sm-10">
+		</div>
+		<div class="col-sm-4">   
+			<img src="{{ asset('img/dashboard_3.png') }}" alt="dashboard" class="img-responsive text-center col-sm-10">
+		</div>		
   	</div>
 @endsection

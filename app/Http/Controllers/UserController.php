@@ -90,6 +90,13 @@ class UserController extends Controller
       return view("users.edit", ["user" => $user, "perfiles" => Perfil::all()]);
     }
 
+    public function userStatus($id)
+    {
+      $user = user::findOrFail($id);
+      // return view("users.edit", ["user" => $user, "perfiles" => Perfil::all()]);
+      return response()->json($user);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -120,6 +127,17 @@ class UserController extends Controller
           'flash_important' => true
           ]);
       }
+    }
+
+    public function updateStatusUser(Request $request, $id){
+
+        $user = User::findOrFail($id);
+        $this->validate($request, [
+          'status' => 'required'
+        ]);
+        $user->status = $request->status;
+        $user->save();
+        return response()->json($user);
     }
 
     /**

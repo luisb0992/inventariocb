@@ -1,7 +1,15 @@
 .fondo_blanco{
 	background-color: #fff;
 }
-
+.texto_blanco{
+	color:  #fff;
+}
+.texto_negro{
+	color:  #000;
+}
 .padding_1em{
 	padding: 1em;
+}
+.border_right_1{
+	border-right: solid 1px #E6E6E6;
 }

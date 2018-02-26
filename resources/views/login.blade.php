@@ -16,15 +16,23 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ep.css')}}">
     <!-- <link rel="shortcut icon" href="{{asset('img/logo.png')}}"> -->
+    <style>
+    	.fondo_login{
+    		background-image: url('{{ asset('img/inventario_3.jpg') }}');
+    		background-position: center center;
+	        background-size: 100%;
+    	}
+    </style>
   </head>
-	<body class="hold-transition">
+	<body class="hold-transition fondo_login img-responsive">
 	  <div class="row">
-	  		<div class="col-sm-12" style="display: flex; background-color: #F6F6F6; padding: 4em;">
+	  		<div class="col-sm-12">
 			  <div class="login-box">
 			    <div class="login-logo">
-			    <center><img class="img-responsive" src="{{ asset('img/logo_login.png') }}" alt="Logo" style="height:75px"></center>
-			      <small>{{ config('app.name') }}</small>
+			    <center><img class="img-responsive" src="{{ asset('img/logo_login_2.png') }}" alt="Logo" style="height:75px"></center>
+			      <small class="text-center texto_blanco" style="font-size: 22px;">{{ config('app.name') }}</small>
 			    </div><!-- /.login-logo -->
 			    <div class="login-box-body">
 			      <p class="login-box-msg">-Login-</p>
@@ -54,9 +62,6 @@
 			      </form> 
 			    </div><!-- /.login-box-body -->
 			  </div><!-- /.login-box -->
-		  </div>
-		  <div class="col-sm-12" style="display: flex; height: 100%">
-						  	
 		  </div>
 	  </div>
 	</body>
