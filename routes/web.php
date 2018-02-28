@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	// entrevistas
 	Route::resource('entrevistas','EntrevistasController');
 
+	// articulos
+	Route::resource('articulos','ArticulosController');
+
 	//* --- Perfil --- */
 	Route::get('/perfil', 'UserController@perfil')->name('perfil');
 	Route::patch('/perfil', 'UserController@update_perfil')->name('update_perfil');

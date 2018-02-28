@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusTableSeeder::class);
         $this->call(PaisTableSeeder::class);
         $this->call(UnidadTableSeeder::class);
+        $this->call(ArticuloTableSeeder::class);
 
         App\User::create([
           'name'   => 'Admin',
@@ -27,5 +28,6 @@ class DatabaseSeeder extends Seeder
           'perfil_id'  => '1',
           'status'  => '1'
         ]);
+
     }
 }

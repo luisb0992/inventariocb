@@ -7,6 +7,12 @@
 .texto_negro{
 	color:  #000;
 }
+.span_rojo{
+	color: #BD3F3F;
+}
+.span_texto_mediano{
+	padding: 18px;
+}
 .padding_1em{
 	padding: 1em;
 }
