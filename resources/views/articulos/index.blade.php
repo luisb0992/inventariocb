@@ -57,10 +57,10 @@
 									<td>{{$art->modelo->name}}</td>
 									<td>{{$art->color->name}}</td>
 									<td>{{$art->cantidad}}</td>
-									<td>@if($art->observacion == "") ... @else $art->observacion @endif</td>
+									<td>@if($art->observacion == "") ... @else {{$art->observacion}} @endif</td>
 									<td>
-										<!-- <a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$art->id])}}"><i class="fa fa-search"></i></a>
-										<a href="{{route('users.edit',[$art->id])}}" class="btn btn-flat btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a> -->
+										<!-- <a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$art->id])}}"><i class="fa fa-search"></i></a> -->
+										<a href="{{route('articulos.edit',[$art->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a>
 									</td>
 								</tr>
 							@endforeach

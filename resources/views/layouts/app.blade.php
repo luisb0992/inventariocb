@@ -95,7 +95,8 @@
           <!-- Sidebar user panel -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-
+            
+            @if(\Auth::user()->perfil_id == 1)
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-users"></i>
@@ -134,6 +135,33 @@
                 <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li>
               </ul>
             </li>  
+
+            <!-- Ventas -->
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-check-circle-o"></i>
+                <span>Ventas</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{ url('ventas') }}"><i class="fa fa-circle-o"></i> Ver ventas</a></li>
+                <!-- <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li> -->
+              </ul>
+            </li>
+            @else
+              <!-- entrevistas -->
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-list-alt"></i>
+                  <span>Entrevistas</span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver entrevistas</a></li>
+                  <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li>
+                </ul>
+              </li>  
+            @endif  
           </ul>
         </section>
         <!-- /.sidebar -->

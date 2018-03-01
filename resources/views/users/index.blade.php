@@ -57,7 +57,7 @@
 									<td>{{$loop->index+1}}</td>
 									<td>{{$d->name}} {{$d->apellido}}</td>
 									<td>{{$d->email}}</td>
-									<td>{{$d->perfil->name}}</td>
+									<td class="@if($d->perfil_id == 1) label-primary @else label-info @endif">{{ $d->perfil->name }}</td>
 									<td class="	@if($d->status == 1) 
 													label-success 
 												@elseif($d->status == 2) 

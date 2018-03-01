@@ -24,13 +24,16 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::get('dashboard', 'LoginController@index')->name('dashboard');
 	
 	/* --- Usuarios ---*/
-	Route::resource('/users','UserController');
+	Route::resource('/users','UserController',["middleware" => 'rol_admin']);
 
 	// entrevistas
 	Route::resource('entrevistas','EntrevistasController');
 
 	// articulos
 	Route::resource('articulos','ArticulosController');
+
+	// ventas
+	Route::resource('ventas','VentasController');
 
 	//* --- Perfil --- */
 	Route::get('/perfil', 'UserController@perfil')->name('perfil');

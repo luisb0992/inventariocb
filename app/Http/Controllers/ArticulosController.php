@@ -83,7 +83,11 @@ class ArticulosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("articulos.edit",[
+            "articulo" => Articulo::findOrFail($id),
+            "modelos" => Modelo::all(),
+            "colores" => Color::all()
+        ]);
     }
 
     /**
@@ -95,7 +99,29 @@ class ArticulosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'cantidad' =>'required',
+            'modelo_id' =>'required',
+            'color_id' =>'required'
+          ]);
+
+          $articulos = Articulo::findOrFail($id);
+          $articulos->fill($request->all());
+
+          if($articulos->save()){
+            return redirect("articulos")->with([
+              'flash_message' => 'Articulo actualizado correctamente.',
+              'flash_class' => 'alert-success'
+              ]);
+          }else{
+            return redirect("articulos")->with([
+              'flash_message' => 'Ha ocurrido un error.',
+              'flash_class' => 'alert-danger',
+              'flash_important' => true
+              ]);
+          }
     }
 
     /**
