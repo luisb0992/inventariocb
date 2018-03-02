@@ -34,11 +34,12 @@
 						<div class="col-sm-4">
 							<label for="modelo">
 								Modelo <span class="span_rojo">*</span>&nbsp;
-								[<a href="#" class="btn-link text-right">
+								[<a href="#create_modelo" class="btn-link text-right" data-toggle="modal" data-target="#create_modelo">
 									<span class="text-success"><i class="fa fa-plus"></i> agregar</span>
-								</a>]
+								</a>] <span id="modelo_listo" style="display: none"> <small id="msj_ajax"></small></span>
+								@include('articulos.modal_create_modelos')
 							</label>
-							<select name="modelo_id" id="modelo" class="form-control" required="">
+							<select name="modelo_id" id="select_modelo" class="form-control" required="">
 								@foreach($modelos as $model)
 								<option value="{{ $model->id }}">{{ $model->name }}</option>
 								@endforeach
@@ -93,4 +94,61 @@
 				</form>
 			</div>
 		</div>	
+@endsection
+@section('script')
+	<script>
+
+		// cargar modelos
+		function cargarModelos(){
+			$("#select_modelo").empty();
+		  	$.get("../cargarModelos", function(res){
+		  		$.each(res, function(index, val) {
+		    		$("#select_modelo").append("<option value='"+val.id+"'>"+val.name+"</option>");
+		    	});
+		  	});
+		}
+
+		$(".btn_create_model").click(function(e) {
+			e.preventDefault();
+			var btn = $(".btn_create_model");
+			var token = $("#token").val();
+			btn.text("Espere un momento...");
+			$("#reload_model").fadeIn('slow/400/fast');
+			$.ajax({
+				url: '../guardarModelos',
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'JSON',
+				data: {name: $("#name_model").val()},
+			})
+			.done(function(data) {
+				if (data.msj){
+					$("#create_modelo").modal('toggle');
+					$("#modelo_listo").fadeIn('slow/400/fast');
+						$("#msj_ajax").append("<i class='fa fa-remove text-danger'>"+data.msj+"</i>");
+					$("#modelo_listo").fadeOut(10000);
+					btn.text("Guardar");
+				    $("#reload_model").fadeOut('slow/400/fast');
+				}else{	
+					$("#create_modelo").modal('toggle');
+				    $("#modelo_listo").fadeIn('slow/400/fast');
+						$("#msj_ajax").append("<i class='fa fa-check text-success'>"+'Creado con exito!'+"</i>");
+					$("#modelo_listo").fadeOut(10000);
+				    btn.text("Guardar");
+				    $("#reload_model").fadeOut('slow/400/fast');
+				    cargarModelos();
+			    }
+			})
+			.fail(function(data) {
+				alert("error! intente de nuevo");
+				btn.text("Guardar");
+				$("#reload_model").fadeOut('slow/400/fast');
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
+		
+	</script>
 @endsection

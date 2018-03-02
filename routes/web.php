@@ -15,6 +15,7 @@
 Route::get('/', function () {
   return view('login');
 })->name('login');
+
 Route::post('auth', 'LoginController@login')->name('auth');
 Route::post('/logout', 'LoginController@logout')->name('logout');
 
@@ -31,6 +32,14 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 
 	// articulos
 	Route::resource('articulos','ArticulosController');
+
+	// modelos
+	// Route::resource('modelos','ModelosController');
+	Route::post('guardarModelos', 'ModelosController@store');
+	Route::get('cargarModelos', 'ModelosController@create');
+
+	// colores
+	Route::resource('colores','ColoresController');
 
 	// ventas
 	Route::resource('ventas','VentasController');
