@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 
 	// colores
 	Route::resource('colores','ColoresController');
+	Route::post('guardarColores', 'ColoresController@store');
+	Route::get('cargarColores', 'ColoresController@create');
 
 	// ventas
 	Route::resource('ventas','VentasController');

@@ -9,6 +9,8 @@
 	</ol>
 @endsection
 @section('content')
+		
+		@include("articulos.rutasDinamicas")
 		<!-- Formulario -->
 		<div class="row padding_1em">
 			<div class="col-md-6 col-md-offset-3 fondo_blanco">
@@ -22,34 +24,42 @@
 							<label for="nombre">Titulo <span class="span_rojo">*</span></label>	
 							<input type="text" class="form-control" name="name" value="{{ $articulo->name }}" required="">
 						</div>
+
+						<!-- modelos  -->
 						<div class="col-sm-4">
 							<label for="modelo">
 								Modelo <span class="span_rojo">*</span>&nbsp;
-								[<a href="#" class="btn-link text-right">
+								[<a href="#create_modelo" class="btn-link" data-toggle="modal" data-target="#create_modelo">
 									<span class="text-success"><i class="fa fa-plus"></i> agregar</span>
-								</a>]
+								</a>] 
+								<span id="modelo_listo" style="display: none"> <small id="msj_ajax"></small></span>
+								@include('articulos.modal_create_modelos')
 							</label>
-							<select name="modelo_id" id="modelo" class="form-control" required="">
+							<select name="modelo_id" id="select_modelo" class="form-control" required="">
 								@foreach($modelos as $model)
 								<option value="{{ $model->id }}" @if($model->id == $articulo->modelo_id) selected @endif>{{ $model->name }}</option>
 								@endforeach
 							</select>
-							<!-- <input type="text" class="form-control" name="model_id" placeholder="modelo" required=""> -->
 						</div>
+
+						<!-- colores  -->
 						<div class="col-sm-4">
-							<label for="color">Color <span class="span_rojo">*</span>&nbsp;
-								[<a href="#" class="btn-link text-right">
+							<label for="color">
+								Color <span class="span_rojo">*</span>&nbsp;
+								[<a href="#create_color" class="btn-link" data-toggle="modal" data-target="#create_color">
 									<span class="text-success"><i class="fa fa-plus"></i> agregar</span>
-								</a>]
+								</a>] 
+								<span id="color_listo" style="display: none"> <small id="msj_ajax_color"></small></span>
+								@include('articulos.modal_create_colores')
 							</label>
-							<select name="color_id" id="modelo" class="form-control" required="">
+							<select name="color_id" id="select_color" class="form-control" required="">
 								@foreach($colores as $color)
 								<option value="{{ $color->id }}" @if($color->id == $articulo->color_id) selected @endif>{{ $color->name }}</option>
 								@endforeach
 							</select>
-							<!-- <input type="email" class="form-control" name="email" placeholder="email" required=""> -->
 							<hr>
 						</div>
+
 						<div class="col-sm-4">
 							<label for="telefono">Cantidad <span class="span_rojo">*</span></label>
 							<input type="text" class="form-control" name="cantidad" value="{{ $articulo->cantidad }}" required="">
@@ -84,4 +94,7 @@
 				</form>
 			</div>
 		</div>
+@endsection
+@section('script')
+	<script src="{{ asset('js/articulo.js') }}"></script>
 @endsection

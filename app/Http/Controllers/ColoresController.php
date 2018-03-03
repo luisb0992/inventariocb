@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Color;
 
 class ColoresController extends Controller
 {
@@ -23,7 +24,8 @@ class ColoresController extends Controller
      */
     public function create()
     {
-        //
+        $colores = Color::orderBy("id", "DESC")->get();
+        return response()->json($colores);
     }
 
     /**
@@ -34,7 +36,15 @@ class ColoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $buscar = Color::where('name','=', $request->name)->count();
+        if ($buscar <= 0) {
+            $colores = new Color;
+            $colores->name = $request->name;
+            $colores->save();
+            return response()->json($colores);
+         }else{
+            return response()->json(["count" => $buscar]);
+        }
     }
 
     /**

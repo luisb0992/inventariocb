@@ -9,13 +9,15 @@
 	</ol>
 @endsection
 @section('content')
+		
+		@include("articulos.rutasDinamicas")
 		<!-- Formulario -->
 		<div class="fondo_blanco">
 			<div class="row">
 				<form class="" action="{{ route('articulos.store') }}" method="POST">
 					{{ csrf_field() }}
 					
-					<!-- datos personales -->
+					<!-- datos -->
 					<div class="col-sm-12">
 						<section class="padding_1em label-primary">
 							<span class="h3">Datos del articulo</span>
@@ -31,12 +33,15 @@
 							<label for="nombre">Titulo <span class="span_rojo">*</span></label>	
 							<input type="text" class="form-control" name="name" placeholder="titulo o nombre" required="">
 						</div>
+
+						<!-- modelos  -->
 						<div class="col-sm-4">
 							<label for="modelo">
 								Modelo <span class="span_rojo">*</span>&nbsp;
-								[<a href="#create_modelo" class="btn-link text-right" data-toggle="modal" data-target="#create_modelo">
+								[<a href="#create_modelo" class="btn-link" data-toggle="modal" data-target="#create_modelo">
 									<span class="text-success"><i class="fa fa-plus"></i> agregar</span>
-								</a>] <span id="modelo_listo" style="display: none"> <small id="msj_ajax"></small></span>
+								</a>] 
+								<span id="modelo_listo" style="display: none"> <small id="msj_ajax"></small></span>
 								@include('articulos.modal_create_modelos')
 							</label>
 							<select name="modelo_id" id="select_modelo" class="form-control" required="">
@@ -44,22 +49,26 @@
 								<option value="{{ $model->id }}">{{ $model->name }}</option>
 								@endforeach
 							</select>
-							<!-- <input type="text" class="form-control" name="model_id" placeholder="modelo" required=""> -->
 						</div>
+
+						<!-- colores  -->
 						<div class="col-sm-4">
-							<label for="color">Color <span class="span_rojo">*</span>&nbsp;
-								[<a href="#" class="btn-link text-right">
+							<label for="color">
+								Color <span class="span_rojo">*</span>&nbsp;
+								[<a href="#create_color" class="btn-link" data-toggle="modal" data-target="#create_color">
 									<span class="text-success"><i class="fa fa-plus"></i> agregar</span>
-								</a>]
+								</a>] 
+								<span id="color_listo" style="display: none"> <small id="msj_ajax_color"></small></span>
+								@include('articulos.modal_create_colores')
 							</label>
-							<select name="color_id" id="modelo" class="form-control" required="">
+							<select name="color_id" id="select_color" class="form-control" required="">
 								@foreach($colores as $color)
 								<option value="{{ $color->id }}">{{ $color->name }}</option>
 								@endforeach
 							</select>
-							<!-- <input type="email" class="form-control" name="email" placeholder="email" required=""> -->
 							<hr>
 						</div>
+
 						<div class="col-sm-4">
 							<label for="telefono">Cantidad <span class="span_rojo">*</span></label>
 							<input type="text" class="form-control" name="cantidad" placeholder="cantidad" required="">
@@ -96,59 +105,5 @@
 		</div>	
 @endsection
 @section('script')
-	<script>
-
-		// cargar modelos
-		function cargarModelos(){
-			$("#select_modelo").empty();
-		  	$.get("../cargarModelos", function(res){
-		  		$.each(res, function(index, val) {
-		    		$("#select_modelo").append("<option value='"+val.id+"'>"+val.name+"</option>");
-		    	});
-		  	});
-		}
-
-		$(".btn_create_model").click(function(e) {
-			e.preventDefault();
-			var btn = $(".btn_create_model");
-			var token = $("#token").val();
-			btn.text("Espere un momento...");
-			$("#reload_model").fadeIn('slow/400/fast');
-			$.ajax({
-				url: '../guardarModelos',
-				headers: {'X-CSRF-TOKEN': token},
-				type: 'POST',
-				dataType: 'JSON',
-				data: {name: $("#name_model").val()},
-			})
-			.done(function(data) {
-				if (data.msj){
-					$("#create_modelo").modal('toggle');
-					$("#modelo_listo").fadeIn('slow/400/fast');
-						$("#msj_ajax").append("<i class='fa fa-remove text-danger'>"+data.msj+"</i>");
-					$("#modelo_listo").fadeOut(10000);
-					btn.text("Guardar");
-				    $("#reload_model").fadeOut('slow/400/fast');
-				}else{	
-					$("#create_modelo").modal('toggle');
-				    $("#modelo_listo").fadeIn('slow/400/fast');
-						$("#msj_ajax").append("<i class='fa fa-check text-success'>"+'Creado con exito!'+"</i>");
-					$("#modelo_listo").fadeOut(10000);
-				    btn.text("Guardar");
-				    $("#reload_model").fadeOut('slow/400/fast');
-				    cargarModelos();
-			    }
-			})
-			.fail(function(data) {
-				alert("error! intente de nuevo");
-				btn.text("Guardar");
-				$("#reload_model").fadeOut('slow/400/fast');
-			})
-			.always(function() {
-				console.log("complete");
-			});
-			
-		});
-		
-	</script>
+	<script src="{{ asset('js/articulo.js') }}"></script>
 @endsection

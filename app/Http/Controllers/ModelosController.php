@@ -43,7 +43,7 @@ class ModelosController extends Controller
             $modelos->save();
             return response()->json($modelos);
          }else{
-            return response()->json(['msj' => 'Ya existe este modelo! Pruebe de nuevo']);
+            return response()->json(["count" => $buscar]);
         }
     }
 
