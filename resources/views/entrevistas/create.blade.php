@@ -93,7 +93,12 @@
 					<section class="col-sm-12" id="si_nacio" style="display: none;">
 						<div class="col-sm-3">
 							<label for="t_nacido">Tiempo de nacido</label>
-							<input type="number" class="form-control" id="tiempo_nacido" name="tiempo_nacido" placeholder="tiempo de nacido">
+							<select class="form-control" name="tiempo_nacido" id="tiempo_nacido">
+								<option value="">Seleccione</option>
+								@for($i = 0; $i < 50; $i++)
+								<option value="{{ $i }}">{{ $i }}</option>
+								@endfor
+							</select>
 						</div>
 						<div class="col-sm-3">
 							<label for="t_nacido">&nbsp;</label>	
@@ -106,6 +111,7 @@
 						<div class="col-sm-6">
 							<label for="sexo_bebe">Sexo del bebe</label>
 							<select class="form-control" name="sexo_bebe">
+								<option value="">Seleccione</option>
 								<option value="Varon">Varon</option>
 								<option value="Hembra">Hembra</option>
 							</select>	
@@ -116,7 +122,12 @@
 					<section class="col-sm-12" id="no_nacio" style="display: none;">
 						<div class="col-sm-3">
 							<label for="t_embarazo">Tiempo de embarazo</label>
-							<input type="number" class="form-control" name="tiempo_embarazo" placeholder="tiempo de embarazo" id="tiempo_embarazo">
+							<select class="form-control" name="tiempo_embarazo" id="tiempo_embarazo">
+								<option value="">Seleccione</option>
+								@for($i = 0; $i < 50; $i++)
+								<option value="{{ $i }}">{{ $i }}</option>
+								@endfor
+							</select>
 						</div>
 						<div class="col-sm-3">
 							<label for="t_embarazo">&nbsp;</label>
@@ -129,6 +140,7 @@
 						<div class="col-sm-6">
 							<label for="sexo_bebe">Sexo del bebe</label>
 							<select class="form-control" name="sexo_bebe">
+								<option value="">Seleccione</option>
 								<option value="Varon">Varon</option>
 								<option value="Hembra">Hembra</option>
 							</select>	

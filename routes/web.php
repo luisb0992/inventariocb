@@ -29,12 +29,13 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 
 	// entrevistas
 	Route::resource('entrevistas','EntrevistasController');
+	Route::get('cargarEntrevistas/{id}', 'EntrevistasController@show');
 
 	// articulos
 	Route::resource('articulos','ArticulosController');
 
 	// modelos
-	// Route::resource('modelos','ModelosController');
+	Route::resource('modelos','ModelosController');
 	Route::post('guardarModelos', 'ModelosController@store');
 	Route::get('cargarModelos', 'ModelosController@create');
 

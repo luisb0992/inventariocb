@@ -74,17 +74,21 @@ class EntrevistasController extends Controller
     	$entrevista->fecha = $request->fecha;
     	$entrevista->hora = $request->hora;
 
-    	if ($request->tiempo_embarazo != ' ') {
+    	if ($request->tiempo_embarazo != null) {
     		$entrevista->tiempo_embarazo = $request->tiempo_embarazo.' '.$request->t_embarazo;
+    	}else{
+    		$entrevista->tiempo_embarazo = $request->tiempo_embarazo;
     	}
 
-    	if ($request->tiempo_nacido != ' ') {
+    	if ($request->tiempo_nacido != null) {
     		$entrevista->tiempo_nacido = $request->tiempo_nacido.' '.$request->t_nacido;
+    	}else{
+    		$entrevista->tiempo_nacido = $request->tiempo_nacido;
     	}
 
 
 	    if($entrevista->save()){
-	      	if ($request->comentario != ' ') {
+	      	if ($request->comentario != null) {
 	      		$comentario = new Comentario();
 	      		$comentario->comentario = $request->comentario;
 	      		$comentario->entrevista_id = $entrevista->id;
@@ -115,7 +119,9 @@ class EntrevistasController extends Controller
      */
     public function show($id)
     {
-        //
+        $entrevista = Entrevista::findOrFail($id);
+
+        return response()->json($entrevista);
     }
 
     /**

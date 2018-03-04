@@ -9,6 +9,8 @@
 @endsection
 @section('content')
 	@include('partials.flash')
+
+	<a href="{{ url('cargarEntrevistas') }}" class="hidden" id="ruta_ver_entrevistas"></a>
 	<!-- Info boxes -->
   <div class="row">
   	<div class="col-md-3 col-sm-6 col-xs-12">
@@ -54,8 +56,12 @@
 									<td>{{$t->fecha}}</td>
 									<td>{{$t->hora}}</td>
 									<td>
-										<!-- <a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$t->id])}}"><i class="fa fa-search"></i></a>-->
-										<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a> 
+										<button type="button" class="btn btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#ver_entrevistas" id="btn_ver_entrevistas" value="{{ $t->id }}" onclick="cargarEntrevistas(this);">
+			                    		<i class="fa fa-eye"></i>
+			                    		</button>
+			                    		@include('entrevistas.modal_ver_entrevistas')
+
+										<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a> 
 									</td>
 								</tr>
 							@endforeach
@@ -67,4 +73,5 @@
 	</div>
 @endsection
 @section('script')
+	<script src="{{ asset('js/entrevistas.js') }}"></script>
 @endsection
