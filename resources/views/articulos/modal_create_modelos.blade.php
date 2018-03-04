@@ -7,11 +7,11 @@
 						<h3>Nuevo Modelo</h3>
 					</div>
 					<div class="modal-body text-left">
-							<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-							<div class="form-group">
-								<label for="">Nombre</label>
-								<input type="text" class="form-control" id="name_model" required="" placeholder="Nombre del modelo">
-							</div>
+						<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+						<div class="form-group">
+							<label for="">Nombre</label>
+							<input type="text" class="form-control" id="name_model" placeholder="Nombre del modelo">
+						</div>
 					</div>
 				</div>
 				<div class="padding_1em">

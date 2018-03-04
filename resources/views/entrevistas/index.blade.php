@@ -40,7 +40,8 @@
 								<th class="text-center">#</th>
 								<th class="text-center">Nombre y Apellido</th>
 								<th class="text-center">Articulo</th>
-								<th class="text-center">Fecha y hora de Cita</th>
+								<th class="text-center">Fecha</th>
+								<th class="text-center">Hora</th>
 								<th class="text-center">Accion</th>
 							</tr>
 						</thead>
@@ -48,11 +49,12 @@
 							@foreach($entrevistas as $t)
 								<tr>
 									<td>{{$loop->index+1}}</td>
-									<td>{{$t->name}} {{$t->apellido}}</td>
+									<td>{{$t->nombre}} {{$t->apellido}}</td>
 									<td>{{$t->articulo->name}}</td>
-									<td>{{$t->fecha_hora_cita}}</td>
+									<td>{{$t->fecha}}</td>
+									<td>{{$t->hora}}</td>
 									<td>
-										<!-- <a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$d->id])}}"><i class="fa fa-search"></i></a>-->
+										<!-- <a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$t->id])}}"><i class="fa fa-search"></i></a>-->
 										<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a> 
 									</td>
 								</tr>

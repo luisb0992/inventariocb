@@ -17,33 +17,38 @@
 					
 					<!-- datos personales -->
 					<div class="col-sm-12">
-						<h4 class="padding_1em label-primary">Datos Personales</h4>
+						<section class="padding_1em label-primary">
+							<span class="h4">Datos personales</span>
+							<br>
+							<span>(<span class="span_rojo">*</span>)<sub> campos obligatorios</sub></span>
+						</section>
+						<br>
 					</div>
 					
 					<div class="col-sm-4">
-						<label for="nombre">Nombre</label>	
+						<label for="nombre">Nombre <span class="span_rojo">*</span></label>	
 						<input type="text" class="form-control" name="nombre" placeholder="nombre" required="">
 					</div>
 					<div class="col-sm-4">
-						<label for="apellido">Apellido</label>
+						<label for="apellido">Apellido <span class="span_rojo">*</span></label>
 						<input type="text" class="form-control" name="apellido" placeholder="apellido" required="">
 					</div>
 					<div class="col-sm-4">
 						<label for="email">Email</label>
-						<input type="email" class="form-control" name="email" placeholder="email" required="">
+						<input type="email" class="form-control" name="email" placeholder="email">
 						<hr>
 					</div>
 					<div class="col-sm-4">
-						<label for="telefono">Telefono</label>
+						<label for="telefono">Telefono <span class="span_rojo">*</span></label>
 						<input type="text" class="form-control" name="telefono" placeholder="telefono" required="">
 					</div>
 					<div class="col-sm-8">
-						<label for="contacto">Fue contactado por</label>
+						<label for="contacto">Fue contactado por <span class="span_rojo">*</span></label>
 						<input type="text" class="form-control" name="contacto" placeholder="via de contacto" required="">
 						<hr>
 					</div>
 					<div class="col-sm-4">
-						<label for="pais">Pais</label>
+						<label for="pais">Pais <span class="span_rojo">*</span></label>
 							<select name="pais_id" class="form-control" required="">
 								<option value="">Seleccione...</option>
 								@foreach($paises as $pais)
@@ -52,17 +57,17 @@
 							</select>
 					</div>
 					<div class="col-sm-4">
-						<label for="distrito">Distrito</label>
-						<input type="text" class="form-control" name="distrito" placeholder="distrito" required="">
+						<label for="distrito">Distrito <span class="span_rojo">*</span></label>
+						<input type="text" class="form-control" name="distrito" placeholder="distrito">
 					</div>
 					<div class="col-sm-4">
-						<label for="provincia">Provincia</label>
-						<input type="text" class="form-control" name="provincia" placeholder="provincia" required="">
+						<label for="provincia">Provincia <span class="span_rojo">*</span></label>
+						<input type="text" class="form-control" name="provincia" placeholder="provincia">
 						<hr>
 					</div>
 					<div class="col-sm-12">
 						<label for="direccion">direccion</label>
-						<textarea name="direccion" id="direccion" placeholder="direccion o localidad" class="form-control" required=""></textarea>
+						<textarea name="direccion" id="direccion" placeholder="direccion o localidad" class="form-control"></textarea>
 					</div>
 
 					<!-- datos bebe -->
@@ -71,50 +76,59 @@
 					</div>
 
 					<div class="col-sm-12" id="pregunta">
-						<p class="h4">¿Su bebe ya nacio?</p>
-						<span>
+						<div class="col-sm-12 h4">¿Su bebe ya nacio? <i class="fa fa-male"></i><i class="fa fa-female"></i></div>
+						<div class="col-sm-1">
 							<button type="button" class="btn btn-primary" id="btn_si">SI</button>
 							<span style="display:none;" id="fa_si"><i class="fa fa-check text-success"></i></span>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</div>
+						<div class="col-sm-2 text-left">	
 							<button type="button" class="btn btn-danger" id="btn_no">NO</button>
 							<span style="display:none;" id="fa_no"><i class="fa fa-check text-success"></i></span>
-						</span>	
-						<hr>
-					</div>	
-
-					<div class="col-sm-4" id="si_nacio" style="display: none;">
-						<div class="col-sm-6">
-							<label for="t_nacido">Tiempo de nacido</label>
-							<input type="text" class="form-control" id="tiempo_nacido" name="tiempo_nacido" placeholder="tiempo de nacido" required="">
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-9"></div>
+						<div class="col-sm-12"><br></div>
+					</div>
+
+					<!-- si nacio -->
+					<section class="col-sm-12" id="si_nacio" style="display: none;">
+						<div class="col-sm-3">
+							<label for="t_nacido">Tiempo de nacido</label>
+							<input type="number" class="form-control" id="tiempo_nacido" name="tiempo_nacido" placeholder="tiempo de nacido">
+						</div>
+						<div class="col-sm-3">
 							<label for="t_nacido">&nbsp;</label>	
-							<select class="form-control" name="t_nacido" required="">
+							<select class="form-control" name="t_nacido">
 								<option value="Semanas">Semanas</option>
 								<option value="Meses">Meses</option>
 								<option value="Años">Años</option>
 							</select>
-						</div>		
-					</div>
-
-					<section id="no_nacio" style="display: none;">
+						</div>
 						<div class="col-sm-6">
-							<div class="col-sm-6">
-								<label for="t_embarazo">Tiempo de embarazo</label>
-								<input type="text" class="form-control" name="tiempo_embarazo" placeholder="tiempo de embarazo" required="" id="tiempo_embarazo">
-							</div>
-							<div class="col-sm-6">
-								<label for="t_embarazo">&nbsp;</label>
-								<select class="form-control" name="t_embarazo" required="">
-									<option value="Semanas">Semanas</option>
-									<option value="Meses">Meses</option>
-								</select>
-							</div>	
+							<label for="sexo_bebe">Sexo del bebe</label>
+							<select class="form-control" name="sexo_bebe">
+								<option value="Varon">Varon</option>
+								<option value="Hembra">Hembra</option>
+							</select>	
+						</div>		
+					</section>
+
+					<!-- no nacio -->
+					<section class="col-sm-12" id="no_nacio" style="display: none;">
+						<div class="col-sm-3">
+							<label for="t_embarazo">Tiempo de embarazo</label>
+							<input type="number" class="form-control" name="tiempo_embarazo" placeholder="tiempo de embarazo" id="tiempo_embarazo">
+						</div>
+						<div class="col-sm-3">
+							<label for="t_embarazo">&nbsp;</label>
+							<select class="form-control" name="t_embarazo">
+								<option value="Semanas">Semanas</option>
+								<option value="Meses">Meses</option>
+							</select>
 						</div>
 
 						<div class="col-sm-6">
 							<label for="sexo_bebe">Sexo del bebe</label>
-							<select class="form-control" name="sexo_bebe" required="">
+							<select class="form-control" name="sexo_bebe">
 								<option value="Varon">Varon</option>
 								<option value="Hembra">Hembra</option>
 							</select>	
@@ -123,11 +137,11 @@
 
 					<!-- articulos -->
 					<div class="col-sm-12">
-						<h4 class="padding_1em label-primary">Articulo de interes</h4>
+						<h4 class="padding_1em label-primary">Articulo de interes y cita</h4>
 					</div>
 
 					<div class="col-sm-6">
-						<label for="">Seleccione un articulo <sub class="text-info"><i> <i class="fa fa-exclamation-circle"></i> Solo apareceran los articulos disponibles </i></sub></label>
+						<label for="">Seleccione un articulo <span class="span_rojo">*</span><small class="text-info"><i> <i class="fa fa-exclamation-circle"></i> Solo apareceran los articulos disponibles </i></small></label>
 						<select name="articulo_id" class="form-control" required>
 							<option value="">seleccione</option>
 							@foreach($articulos as $articulo)
@@ -136,22 +150,18 @@
 						</select>
 					</div>
 
-					<!-- fecha y comentario -->
+					<div class="col-sm-3">
+						<label for="fecha_hora_cita">Fecha de cita <span class="span_rojo">*</span></label>
+						<input type="text" class="form-control" name="fecha" placeholder="d/m/a" required="" id="fecha">
+					</div>
+					<div class="col-sm-3">
+						<label for="fecha_hora_cita">Hora de cita <span class="span_rojo">*</span></label>
+						<input type="text" class="form-control timepicker" name="hora" placeholder="h/m :s" required="">
+						<br>
+					</div>
 					<div class="col-sm-12">
-						<h4 class="padding_1em label-primary">Fecha de cita</h4>
-					</div>
-
-					<div class="col-sm-3">
-						<label for="fecha_hora_cita">Fecha de cita</label>
-						<input type="text" class="form-control" name="fecha" placeholder="d/m/a" required="">
-					</div>
-					<div class="col-sm-3">
-						<label for="fecha_hora_cita">Hora de cita</label>
-						<input type="text" class="form-control" name="hora" placeholder="h/m :s" required="">
-					</div>
-					<div class="col-sm-6">
 						<label for="comentarios">Comentario</label>
-						<textarea name="comentario_id" id="comentario_id" placeholder="añadir comentario" class="form-control"></textarea>
+						<textarea name="comentario" id="comentario" placeholder="añadir comentario" class="form-control"></textarea>
 						<hr>
 					</div>
 

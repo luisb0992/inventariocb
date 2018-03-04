@@ -19,7 +19,7 @@
 					{{ csrf_field() }}
 					<h4 class="padding_1em label-warning">Editar Articulo</h4>
 					<!-- contenido -->
-					<section class="padding_1em ">
+					<section class="padding_1em">
 						<div class="col-sm-4">
 							<label for="nombre">Titulo <span class="span_rojo">*</span></label>	
 							<input type="text" class="form-control" name="name" value="{{ $articulo->name }}" required="">
@@ -67,7 +67,7 @@
 						<div class="col-sm-8">
 							<label for="observacion">Observacion</label>
 							<textarea name="observacion" id="observacion" placeholder="descripcion u observacion" class="form-control">{{ $articulo->observacion }}</textarea>
-							<hr>
+							<br>
 						</div>
 						
 
@@ -81,8 +81,7 @@
 				          </div>
 				        @endif
 						
-						<div class="col-sm-12 text-right">
-						<hr>
+						<div class="col-sm-12 text-right padding_1em">
 							<a class="btn btn-flat btn-default" href="{{route('articulos.index')}}">
 								<i class="fa fa-reply"></i> Atras
 							</a>

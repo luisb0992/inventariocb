@@ -20,6 +20,12 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
 
+    <!-- Datepicker Files -->
+    <link rel="stylesheet" href="{{asset('plugins/jquery_datepicker/jquery-ui.css')}}">
+
+    <!-- TimePicker -->
+    <link rel="stylesheet" href="{{ asset('plugins/timePicker/jquery.timepicker.min.css') }}">
+
     <!-- estilos propios de css -->
     <link rel="stylesheet" href="{{asset('css/ep.css')}}">
   	<style type="text/css">
@@ -196,6 +202,8 @@
     <!-- Data table -->
     <script type="text/javascript" src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
+    <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
+    <script src="{{ asset('plugins/timePicker/jquery.timepicker.min.js') }}"></script>
     <script type="text/javascript">
       $(document).ready(function(){
       	//Eliminar alertas que no contengan la clase alert-important luego de 7seg
@@ -209,6 +217,42 @@
           }
         });
       })
+
+      // datapicker español
+       	$.datepicker.regional['es'] = {
+			 closeText: 'Cerrar',
+			 prevText: '< Ant',
+			 nextText: 'Sig >',
+			 currentText: 'Hoy',
+			 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+			 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+			 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+			 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+			 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+			 weekHeader: 'Sm',
+			 dateFormat: 'dd/mm/yy',
+			 firstDay: 1,
+			 isRTL: false,
+			 showMonthAfterYear: false,
+			 yearSuffix: ''
+			 };
+			 $.datepicker.setDefaults($.datepicker.regional['es']);
+		
+		$(function () {
+			$("#fecha").datepicker();
+		});
+
+		$('.timepicker').timepicker({
+		    timeFormat: 'h:mm p',
+		    interval: 30,
+		    minTime: '0',
+		    maxTime: '23:30pm',
+		    defaultTime: '0',
+		    startTime: '10:00',
+		    dynamic: true,
+		    dropdown: true,
+		    scrollbar: true
+		});
     </script>
 
     @yield('script')

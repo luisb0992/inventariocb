@@ -11,8 +11,8 @@ class Entrevista extends Model
     protected $fillable = [
     	"user_id", "nombre", "apellido", "direccion", "email",
     	"telefono", "contacto", "pais_id", "distrito", "provincia",
-    	"tiempo_embarazo", "sexo_bebe", "tiempo_nacido", "comentario_id",
-    	"articulo_id", "fecha_hora_cita"
+    	"tiempo_embarazo", "sexo_bebe", "tiempo_nacido",
+    	"articulo_id", "fecha", "hora"
     ];
 
 	// relaciones
@@ -25,11 +25,11 @@ class Entrevista extends Model
 		return $this->belongsTo("App\Pais", "pais_id");
 	}
 
-	public function comentarios(){
-		return $this->belongsTo("App\Comentario", "comentario_id");
-	}
-
 	public function articulo(){
 		return $this->belongsTo("App\Articulo", "articulo_id");
+	}
+
+	public function comentarios(){
+		return $this->hasMany("App\Comentario");
 	}
 }
