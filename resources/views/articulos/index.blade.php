@@ -13,7 +13,7 @@
   <div class="row">
   	<div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
-        <span class="info-box-icon bg-red"><i class="fa fa-user"></i></span>
+        <span class="info-box-icon bg-red"><i class="fa fa-th"></i></span>
         
         <div class="info-box-content">
           <span class="info-box-text">Articulos Registrados</span>
@@ -29,9 +29,8 @@
   	<div class="col-md-12">
     	<div class="box box-danger">
 	      <div class="box-header with-border">
-	        <h3 class="box-title"><i class="fa fa-th"></i> Articulos Disponibles</h3>
-	        <span class="pull-right">
-				<a href="{{ route('articulos.create') }}" class="btn btn-flat btn-success">
+	        <span class="pull-left">
+				<a href="{{ route('articulos.create') }}" class="btn btn-flat btn-lg btn-success">
 					<i class="fa fa-plus" aria-hidden="true"></i> Nuevo
 				</a>
 			</span>
