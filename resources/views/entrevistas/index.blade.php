@@ -57,7 +57,7 @@
 									<td>{{$t->hora}}</td>
 									<td>
 										<button type="button" class="btn btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#ver_entrevistas" id="btn_ver_entrevistas" value="{{ $t->id }}" onclick="cargarEntrevistas(this);">
-			                    		<i class="fa fa-eye"></i>
+			                    			<i class="fa fa-eye"></i>
 			                    		</button>
 			                    		@include('entrevistas.modal_ver_entrevistas')
 

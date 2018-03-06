@@ -119,7 +119,12 @@ class EntrevistasController extends Controller
      */
     public function show($id)
     {
-        $entrevista = Entrevista::findOrFail($id);
+        $entrevista = Entrevista::with(['articulo', 'pais', 'comentarios'])->where('id',$id)->first();
+        
+        if($entrevista->tiempo_embarazo == null){$entrevista->tiempo_embarazo = '...';};
+        if($entrevista->tiempo_nacido == null){$entrevista->tiempo_nacido = '...';};
+        if($entrevista->sexo_bebe == null){$entrevista->sexo_bebe = '...';};
+        if($entrevista->direccion == null){$entrevista->direccion = '...';};  
 
         return response()->json($entrevista);
     }
