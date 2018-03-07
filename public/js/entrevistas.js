@@ -59,13 +59,7 @@ function cargarEntrevistas(btn_ver_entrevistas){
 		"</ul>"
 		);
 
-		if (!res.comentarios) {
-			$("#ver_data_4").append(
-			"<ol class='list-group'>"+
-				"<li class='list-group-item text-capitalize'>"+"Sin Comentarios..."+"</li>"+
-			"</ol>"
-			);
-		}else{
+		if (res.comentarios) {
 			$.each(res.comentarios, function(index, val) {
 				$("#ver_data_4").append(
 				"<ol class='list-group'>"+
@@ -73,8 +67,65 @@ function cargarEntrevistas(btn_ver_entrevistas){
 				"</ol>"
 				);
 			});
+		}else{
+			$("#ver_data_4").append(
+			"<ol class='list-group'>"+
+				"<li class='list-group-item text-capitalize'>"+"Sin Comentarios..."+"</li>"+
+			"</ol>"
+			);
 		}
 
 	$(".reload_data").fadeOut(100 ,'linear');	
   	});
+
+  	/*$("#btn_nuevo_comentario").click(function(){
+  		var btn = $this;
+  		$("#entrevista_id").attr("value", btn.val());
+  	});*/
+
+  	// guardar nuevo comentario
+  	function guardarComentario(){
+  		$("#btn_save_comentario").click(function(e){
+
+  			e.preventDefault();
+			var btn = $("#btn_save_comentario");
+			var token = $("#token").val();
+			var ruta = $('#ruta_crear_comentario').attr('href');
+
+			btn.text("Espere un momento...");
+			btn.addClass("disabled");
+
+			$("#reload_coment").fadeIn('slow/400/fast');
+
+			$.ajax({
+				url: ruta,
+				headers: {'X-CSRF-TOKEN': token},
+				type: 'POST',
+				dataType: 'JSON',
+				data: {comentario:, entrevista_id:},
+			})
+			.done(function(data) {
+				$("#msj_ajax").empty();
+					$("#create_modelo").modal('toggle');
+				    $("#modelo_listo").fadeIn('slow/400/fast');
+						$("#msj_ajax").append("<i class='fa fa-check text-success'>"+'Creado con exito!'+"</i>");
+					$("#modelo_listo").fadeOut(6000);
+				    
+				    btn.text("Guardar");
+				    btn.removeClass("disabled");
+				    $("#reload_coment").fadeOut('slow/400/fast');
+			})
+			.fail(function(data) {
+
+				btn.text("Guardar");
+				btn.removeClass("disabled");
+				$("#reload_coment").fadeOut('slow/400/fast');
+				alert("campo vacio! intente de nuevo");
+			
+			})
+			.always(function() {
+				console.log("complete");
+			});
+  		});
+  	}
 }

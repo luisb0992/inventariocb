@@ -47,6 +47,10 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	// ventas
 	Route::resource('ventas','VentasController');
 
+	// comentarios 
+	Route::resource('ventas','ComentariosController');
+	Route::post('guardarComentario', 'ComentariosController@store');	
+
 	//* --- Perfil --- */
 	Route::get('/perfil', 'UserController@perfil')->name('perfil');
 	Route::patch('/perfil', 'UserController@update_perfil')->name('update_perfil');

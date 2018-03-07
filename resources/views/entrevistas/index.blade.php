@@ -61,6 +61,11 @@
 			                    		</button>
 			                    		@include('entrevistas.modal_ver_entrevistas')
 
+			                    		<button type="button" class="btn btn-success btn-flat btn-sm" data-toggle="modal" data-target="#nuevo_comentario" id="btn_nuevo_comentario" value="{{ $t->id }}">
+			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i>
+			                    		</button>
+			                    		@include('entrevistas.modal_nuevo_comentario')
+
 										<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a> 
 									</td>
 								</tr>
