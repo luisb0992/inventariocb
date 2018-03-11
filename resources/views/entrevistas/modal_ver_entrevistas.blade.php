@@ -49,10 +49,12 @@
 								<i class="fa fa-spinner fa-pulse fa-fw"></i> ...
 							</span>
 						</div>
-						<div class="well">
+						<div class="">
+							<div class='col-sm-8'><b>Comentario</b></div>
+							<div class='col-sm-4'><b>Fecha</b></div>
 							<p id="ver_data_4"></p>
+							<br><br><br>
 						</div>	
-
 					</div>
 				</div>
 				<div class="padding_1em">

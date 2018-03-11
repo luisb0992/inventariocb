@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	// entrevistas
 	Route::resource('entrevistas','EntrevistasController');
 	Route::get('cargarEntrevistas/{id}', 'EntrevistasController@show');
+	Route::get('cargarEntrevistaOne/{id}', 'EntrevistasController@show_id');
 
 	// articulos
 	Route::resource('articulos','ArticulosController');

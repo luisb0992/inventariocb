@@ -124,7 +124,14 @@ class EntrevistasController extends Controller
         if($entrevista->tiempo_embarazo == null){$entrevista->tiempo_embarazo = '...';};
         if($entrevista->tiempo_nacido == null){$entrevista->tiempo_nacido = '...';};
         if($entrevista->sexo_bebe == null){$entrevista->sexo_bebe = '...';};
-        if($entrevista->direccion == null){$entrevista->direccion = '...';};  
+        if($entrevista->direccion == null){$entrevista->direccion = '...';};
+
+        return response()->json($entrevista);
+    }
+
+    public function show_id($id)
+    {
+        $entrevista = Entrevista::where('id', $id)->value("id");
 
         return response()->json($entrevista);
     }

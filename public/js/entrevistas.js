@@ -62,9 +62,10 @@ function cargarEntrevistas(btn_ver_entrevistas){
 		if (res.comentarios) {
 			$.each(res.comentarios, function(index, val) {
 				$("#ver_data_4").append(
-				"<ol class='list-group'>"+
-					"<li class='list-group-item text-capitalize'>"+val.comentario+"</li>"+
-				"</ol>"
+				"<div class='list-group'>"+
+					"<div class='col-sm-8 list-group-item text-capitalize'>"+val.comentario+"</div>"+
+					"<div class='col-sm-4 list-group-item text-capitalize'>"+val.created_at+"</div>"+
+				"</div>"
 				);
 			});
 		}else{
@@ -78,17 +79,24 @@ function cargarEntrevistas(btn_ver_entrevistas){
 	$(".reload_data").fadeOut(100 ,'linear');	
   	});
 
-  	/*$("#btn_nuevo_comentario").click(function(){
-  		var btn = $this;
-  		$("#entrevista_id").attr("value", btn.val());
-  	});*/
+}
 
-  	// guardar nuevo comentario
-  	function guardarComentario(){
-  		$("#btn_save_comentario").click(function(e){
+	// cargar comentarios
+	function cargarComentarios(btn_nuevo_comentario){
+		var ruta = $('#ruta_ver_entrevista_one').attr('href')+"/"+btn_nuevo_comentario.value;
+
+		$("#reload_coment_data").fadeIn(400,"linear");
+	  	$.get(ruta, function(res){
+	    	$("#id_entre").attr("value",  res);
+	  	});
+	  	$("#reload_coment_data").fadeOut(400,"linear");
+	  	$("#data_coment").show(1000,"linear");
+	}
+
+  	$(".btn_save_comentario").click(function(e){
 
   			e.preventDefault();
-			var btn = $("#btn_save_comentario");
+			var btn = $(".btn_save_comentario");
 			var token = $("#token").val();
 			var ruta = $('#ruta_crear_comentario').attr('href');
 
@@ -102,18 +110,20 @@ function cargarEntrevistas(btn_ver_entrevistas){
 				headers: {'X-CSRF-TOKEN': token},
 				type: 'POST',
 				dataType: 'JSON',
-				data: {comentario:, entrevista_id:},
+				data: {comentario: $("#comentario").val(), id_entrevista: $("#id_entre").val()},
 			})
 			.done(function(data) {
-				$("#msj_ajax").empty();
-					$("#create_modelo").modal('toggle');
-				    $("#modelo_listo").fadeIn('slow/400/fast');
-						$("#msj_ajax").append("<i class='fa fa-check text-success'>"+'Creado con exito!'+"</i>");
-					$("#modelo_listo").fadeOut(6000);
+				$("#comentario").empty();
+					$("#nuevo_comentario").modal('toggle');
+				    $("#coment_listo").fadeIn('slow/400/fast');
+						$("#msj_ajax").append("<i class='fa fa-check text-success'>"+'Comentario Añadido!'+"</i>");
+					$("#coment_listo").fadeOut(6000);
 				    
 				    btn.text("Guardar");
 				    btn.removeClass("disabled");
 				    $("#reload_coment").fadeOut('slow/400/fast');
+				    $("#reload_active").fadeIn('slow/400/fast');
+				    location.reload(5000);
 			})
 			.fail(function(data) {
 
@@ -127,5 +137,3 @@ function cargarEntrevistas(btn_ver_entrevistas){
 				console.log("complete");
 			});
   		});
-  	}
-}

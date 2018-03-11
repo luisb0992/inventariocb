@@ -12,12 +12,7 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/glyphicons.css')}}">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/ep.css')}}">
-    <!-- <link rel="shortcut icon" href="{{asset('img/logo.png')}}"> -->
     <style>
     	.fondo_login{
     		background-image: url('{{ asset('img/inventario_3.jpg') }}');
@@ -26,26 +21,30 @@
     	}
     </style>
   </head>
-	<body class="hold-transition fondo_login img-responsive">
+	<body class="fondo_login img-responsive">
 	  <div class="row">
 	  		<div class="col-sm-12">
 			  <div class="login-box">
 			    <div class="login-logo">
-			    <center><img class="img-responsive" src="{{ asset('img/logo_login_2.png') }}" alt="Logo" style="height:75px"></center>
+			      <center>
+			      	<img class="img-responsive" src="{{ asset('img/logo_login_2.png') }}" style="height:75px">
+			      </center>
 			      <small class="text-center texto_blanco" style="font-size: 22px;">{{ config('app.name') }}</small>
-			    </div><!-- /.login-logo -->
+			    </div>
 			    <div class="login-box-body">
 			      <p class="login-box-msg">-Login-</p>
+
 			      @if (count($errors) > 0)
 			        <div class="alert alert-danger">
 			        	<ul>
-			          @foreach($errors->all() as $error)
-			             <li>{{$error}}</li>
-			          @endforeach
+				          @foreach($errors->all() as $error)
+				             <li>{{$error}}</li>
+				          @endforeach	
 			         	</ul>  
 			        </div>
 			      @endif
-			      <form action="{{route('auth')}}" method="POST">
+
+			      <form action="{{route('auth')}}" method="POST" id="form_login">
 			          {{ csrf_field() }}
 			        <div class="form-group has-feedback">
 			          <input  class="form-control" type="email" name="email" placeholder="Email">
@@ -57,12 +56,27 @@
 			        </div>
 
 			        <div class="form-group">
-			            <button id="b-login" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+			            <button id="btn_login" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
 			        </div>
+			         <div class="progress" style="display:none">
+					  <div class="progress-bar progress-bar-striped active" role="progressbar"
+					  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+					  </div>
+					</div> 
 			      </form> 
 			    </div><!-- /.login-box-body -->
 			  </div><!-- /.login-box -->
 		  </div>
 	  </div>
+
+	  <script type="text/javascript" src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
+	  
+	  <script>
+	  	$("#form_login").on("submit", function(){
+	  		$("#btn_login").text("Espere...").addClass("disabled");
+	  		$(".progress").fadeIn(400, "linear");
+	  	});
+	  </script>	
+	
 	</body>
 </html>

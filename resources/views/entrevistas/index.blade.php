@@ -11,6 +11,8 @@
 	@include('partials.flash')
 
 	<a href="{{ url('cargarEntrevistas') }}" class="hidden" id="ruta_ver_entrevistas"></a>
+	<a href="{{ url('cargarEntrevistaOne') }}" class="hidden" id="ruta_ver_entrevista_one"></a>
+	<a href="{{ url('guardarComentario') }}" id="ruta_crear_comentario" class="hide"></a>
 	<!-- Info boxes -->
   <div class="row">
   	<div class="col-md-3 col-sm-6 col-xs-12">
@@ -29,6 +31,9 @@
 
 	<div class="row">
   	<div class="col-md-12">
+  		<div id="coment_listo" style="display:none">
+  			<p id="msj-ajax"></p>
+  		</div>
     	<div class="box box-danger">
 	      <div class="box-header with-border">
 	        <span class="pull-left">
@@ -36,6 +41,9 @@
 			</span>
 	      </div>
       	<div class="box-body">
+      				<div id="reload_active" style="display: none" class="text-center">
+						<i class="fa fa-refresh fa-spin fa-3x fa-fw text-success"></i>
+					</div>
 					<table class="table data-table table-bordered table-hover">
 						<thead>
 							<tr>
@@ -61,7 +69,7 @@
 			                    		</button>
 			                    		@include('entrevistas.modal_ver_entrevistas')
 
-			                    		<button type="button" class="btn btn-success btn-flat btn-sm" data-toggle="modal" data-target="#nuevo_comentario" id="btn_nuevo_comentario" value="{{ $t->id }}">
+			                    		<button type="button" class="btn btn-success btn-flat btn-sm" data-toggle="modal" data-target="#nuevo_comentario" id="btn_nuevo_comentario" value="{{ $t->id }}" onclick="cargarComentarios(this);">
 			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i>
 			                    		</button>
 			                    		@include('entrevistas.modal_nuevo_comentario')
