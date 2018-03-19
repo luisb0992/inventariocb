@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Entrevista;
 use App\Articulo;
 use App\Pais;
@@ -168,5 +169,14 @@ class EntrevistasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function pdf($id){
+
+    	$entrevista = Entrevista::findOrFail($id);
+
+    	$pdf = PDF::loadView('entrevistas.pdf', compact('entrevista'));
+
+        return $pdf->setPaper('a4', 'landscape')->download(date("d-m-Y").'.pdf');
     }
 }

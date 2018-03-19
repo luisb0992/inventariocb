@@ -60,7 +60,6 @@
 				<div class="padding_1em">
 					<div class="text-right">
 						<input type="button" class="btn" data-dismiss="modal" value="Cerrar">
-						<button type="button" id="imprimir" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> imprimir</button>
 					</div>
 				</div>
 		</div>	

@@ -21,7 +21,7 @@ Route::post('/logout', 'LoginController@logout')->name('logout');
 
 
 Route::group(['middleware' => 'auth'], function() { //middleware auth
-  /* ---- Ruta para llamar al dashboard, modificarla si es necesario ----- */
+  	/* ---- Ruta para llamar al dashboard, modificarla si es necesario ----- */
 	Route::get('dashboard', 'LoginController@index')->name('dashboard');
 	
 	/* --- Usuarios ---*/
@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::resource('entrevistas','EntrevistasController');
 	Route::get('cargarEntrevistas/{id}', 'EntrevistasController@show');
 	Route::get('cargarEntrevistaOne/{id}', 'EntrevistasController@show_id');
+
+	// PDF entrevistas
+	Route::get('pdf_entrevistas/{id}', 'EntrevistasController@pdf');
 
 	// articulos
 	Route::resource('articulos','ArticulosController');

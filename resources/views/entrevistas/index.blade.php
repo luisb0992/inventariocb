@@ -52,6 +52,7 @@
 								<th class="text-center">Articulo</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
+								<th class="text-center">Imprimir</th>
 								<th class="text-center">Accion</th>
 							</tr>
 						</thead>
@@ -63,6 +64,14 @@
 									<td>{{$t->articulo->name}}</td>
 									<td>{{$t->fecha}}</td>
 									<td>{{$t->hora}}</td>
+									<td>
+										<form action="{{ url('pdf_entrevistas/'.$t->id) }}" method="GET">
+										{{ csrf_field() }}
+										<button type="submit" class="btn btn-danger" id="imprimir" name="id">
+											<i class="fa fa-file-pdf-o"></i>
+										</button>
+										</form>
+									</td>
 									<td>
 										<button type="button" class="btn btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#ver_entrevistas" id="btn_ver_entrevistas" value="{{ $t->id }}" onclick="cargarEntrevistas(this);">
 			                    			<i class="fa fa-eye"></i>
