@@ -6,8 +6,6 @@
     <title>@yield('title',config('app.name'))</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Icon 16x16 -->
-    <link rel="icon" type="image/png" sizes="240x240" href="{{asset('img/logo.png')}}">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
@@ -190,7 +188,7 @@
       </div><!-- /.content-wrapper -->
       <!--Fin-Contenido-->
       <footer class="main-footer">
-        <strong>Copyright &copy; 2016-{{date('Y')}} <a href="http://www.project4design.com">Project 4 Design C.A</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2016-{{date('Y')}} Littlebru.com C.A.</strong> All rights reserved.
       </footer>
     </div><!-- .wrapper -->
     <!-- jQuery 2.1.4 -->

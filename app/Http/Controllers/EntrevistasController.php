@@ -145,7 +145,13 @@ class EntrevistasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $entrevista = Entrevista::findOrFail($id);
+
+        return view('entrevistas.edit', [
+        	'entrevista' => $entrevista,
+        	'articulos' => Articulo::all(),
+        	'paises' => Pais::all(),
+        ]);
     }
 
     /**
@@ -157,7 +163,27 @@ class EntrevistasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $entrevista = Entrevista::findOrFail($id);
+
+	      /*$this->validate($request, [
+	        'name' => 'required',
+	        'email' =>'required|email|unique:users,email,'.$user->id.',id'
+	      ]);*/
+
+	      $entrevista->fill($request->all());
+
+	      if($entrevista->save()){
+	        return redirect("entrevistas")->with([
+	          'flash_message' => 'Entrevista actualizada correctamente.',
+	          'flash_class' => 'alert-success'
+	          ]);
+	      }else{
+	        return redirect("entrevistas")->with([
+	          'flash_message' => 'Ha ocurrido un error.',
+	          'flash_class' => 'alert-danger',
+	          'flash_important' => true
+	          ]);
+	      }
     }
 
     /**
@@ -177,6 +203,6 @@ class EntrevistasController extends Controller
 
     	$pdf = PDF::loadView('entrevistas.pdf', compact('entrevista'));
 
-        return $pdf->setPaper('a4', 'landscape')->download(date("d-m-Y").'.pdf');
+        return $pdf->setPaper('a4', 'landscape')->download(date("d-m-Y h:m:s").'.pdf');
     }
 }
