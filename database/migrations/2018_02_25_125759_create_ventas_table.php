@@ -48,7 +48,12 @@ class CreateVentasTable extends Migration
                     ->on('status')
                     ->onDelete('cascade');
 
-            
+            $table->integer('entrevista_id')->unsigned(); //entrevista
+            $table->foreign('entrevista_id')
+                    ->references('id')
+                    ->on('entrevistas')
+                    ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

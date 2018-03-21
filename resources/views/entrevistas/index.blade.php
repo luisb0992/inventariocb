@@ -54,6 +54,7 @@
 								<th class="text-center">Hora</th>
 								<th class="text-center">Imprimir</th>
 								<th class="text-center">Accion</th>
+								<th class="text-center">Venta</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
@@ -84,6 +85,11 @@
 			                    		@include('entrevistas.modal_nuevo_comentario')
 
 										<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a> 
+									</td>
+									<td>
+										<a href="{{ url('vender/'.$t->id) }}" class="btn btn-success btn-lg">
+											<i class="fa fa-shopping-cart"></i>
+										</a>
 									</td>
 								</tr>
 							@endforeach

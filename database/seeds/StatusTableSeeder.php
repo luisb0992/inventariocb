@@ -19,9 +19,7 @@ class StatusTableSeeder extends Seeder
   			array(
   				'name' => 'Seguimiento'),
   			array(
-  				'name' => 'En espera'),
-  			array(
-  				'name' => 'Vendido')
+  				'name' => 'En espera')
   		);
 
   		\DB::table('status')->insert($status);
