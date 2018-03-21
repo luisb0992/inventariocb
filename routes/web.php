@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::resource('ventas','VentasController');
 
 	// comentarios 
-	Route::resource('ventas','ComentariosController');
+	Route::resource('comentario','ComentariosController');
 	Route::post('guardarComentario', 'ComentariosController@store');	
 
 	//* --- Perfil --- */
