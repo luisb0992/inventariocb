@@ -28,6 +28,7 @@ class CreateArticulosTable extends Migration
                     ->on('colores')
                     ->onDelete('cascade');
             $table->text('observacion')->nullable();      
+            $table->string('img')->nullable();      
             $table->timestamps();
         });
     }

@@ -45,6 +45,7 @@
 								<th class="text-center">Color</th>
 								<th class="text-center">Cantidad</th>
 								<th class="text-center">Descripcion</th>
+								<th class="text-center">Imagen</th>
 								<th class="text-center">Accion</th>
 							</tr>
 						</thead>
@@ -57,6 +58,19 @@
 									<td>{{$art->color->name}}</td>
 									<td>{{$art->cantidad}}</td>
 									<td>@if($art->observacion == "") ... @else {{$art->observacion}} @endif</td>
+									<td>
+										@if($art->img)
+										<a href="{{ url("articulos/img/$art->id.$art->img") }}" data-toggle="lightbox" data-max-width="600" id="img">
+											<img style="max-width: 40%; max-height: 50%;" src="{{ url("articulos/img/$art->id.$art->img") }}" 
+										class="img-rounded center-block img-responsive">
+										</a>
+										@else
+										<a href="{{ asset('img/sin_imagen.jpg') }}" data-toggle="lightbox" data-max-width="600" id="img">
+											<img style="max-width: 40%; max-height: 50%;" src="{{ asset('img/sin_imagen.jpg') }}" 
+										class="img-rounded center-block img-responsive">
+										</a>
+										@endif
+									</td>
 									<td>
 										<!-- <a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$art->id])}}"><i class="fa fa-search"></i></a> -->
 										<a href="{{route('articulos.edit',[$art->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a>
@@ -71,4 +85,10 @@
 	</div>
 @endsection
 @section('script')
+<script>
+	$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
 @endsection

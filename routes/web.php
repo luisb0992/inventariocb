@@ -61,4 +61,22 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	
 	Route::get('users_status/{id}', 'UserController@userStatus');
 	Route::put('update_status/{id}', 'UserController@updateStatusUser');
+
+	Route::get('articulos/img/{filename}',function($filename){
+		
+		// ubicacion de la ruta en storage
+		$path = storage_path("app/images/$filename");
+		
+		if (!\File::exists($path)){
+			abort(404);
+		}
+		
+		$file = \File::get($path);
+		$type = \File::mimeType($path);
+		$response = Response::make($file,200);
+		$response->header("Content-Type", $type);
+
+		return $response;
+	});
+
 });

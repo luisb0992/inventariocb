@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/AdminLTE.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/glyphicons.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables/extensions/Responsive/css/dataTables.responsive.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
@@ -24,8 +25,15 @@
     <!-- TimePicker -->
     <link rel="stylesheet" href="{{ asset('plugins/timePicker/jquery.timepicker.min.css') }}">
 
+    <!-- Fileinput -->
+    <link rel="stylesheet" href="{{ asset('plugins/fileinput/css/fileinput.min.css') }}">
+
+    <!-- lightbox -->
+    <link rel="stylesheet" href="{{ asset('plugins/lightbox/ekko-lightbox.css') }}">
+
     <!-- estilos propios de css -->
     <link rel="stylesheet" href="{{asset('css/ep.css')}}">
+
   	<style type="text/css">
 	    .perfil{
 			  position: relative;
@@ -190,7 +198,7 @@
       <footer class="main-footer">
         <strong>Copyright &copy; 2016-{{date('Y')}} Littlebru.com C.A.</strong> All rights reserved.
       </footer>
-    </div><!-- .wrapper -->
+    </div><!-- .wrapper <-->
     <!-- jQuery 2.1.4 -->
     <script type="text/javascript" src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -199,9 +207,22 @@
     <script type="text/javascript" src="{{asset('js/app.min.js')}}"></script>
     <!-- Data table -->
     <script type="text/javascript" src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+
     <script type="text/javascript" src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
+
+    <script type="text/javascript" src="{{ asset('plugins/datatables/extensions/Responsive/js/dataTables.responsive.js')}}"></script>
+
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
+
     <script src="{{ asset('plugins/timePicker/jquery.timepicker.min.js') }}"></script>
+
+    <!-- fileinput -->
+    <script src="{{ asset('plugins/fileinput/js/fileinput.min.js') }}"></script>
+    <script src="{{ asset('plugins/fileinput/themes/fa/theme.js') }}"></script>
+
+    <!-- lighbox -->
+    <script src="{{ asset('plugins/lightbox/ekko-lightbox.js') }}"></script>
+
     <script type="text/javascript">
       $(document).ready(function(){
       	//Eliminar alertas que no contengan la clase alert-important luego de 7seg
@@ -236,21 +257,27 @@
 			 };
 			 $.datepicker.setDefaults($.datepicker.regional['es']);
 		
-		$(function () {
-			$("#fecha").datepicker();
-		});
+  		$(function () {
+  			$("#fecha").datepicker();
+  		});
 
-		$('.timepicker').timepicker({
-		    timeFormat: 'h:mm p',
-		    interval: 30,
-		    minTime: '0',
-		    maxTime: '23:30pm',
-		    defaultTime: '0',
-		    startTime: '10:00',
-		    dynamic: true,
-		    dropdown: true,
-		    scrollbar: true
-		});
+  		$('.timepicker').timepicker({
+  		    timeFormat: 'h:mm p',
+  		    interval: 30,
+  		    minTime: '0',
+  		    maxTime: '23:30pm',
+  		    defaultTime: '0',
+  		    startTime: '10:00',
+  		    dynamic: true,
+  		    dropdown: true,
+  		    scrollbar: true
+  		});
+
+      $("#file_input").fileinput({
+        'showUpload':false, 
+        'previewFileType':'any'
+      });
+    
     </script>
 
     @yield('script')

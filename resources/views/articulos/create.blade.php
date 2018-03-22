@@ -14,7 +14,7 @@
 		<!-- Formulario -->
 		<div class="fondo_blanco">
 			<div class="row">
-				<form class="" action="{{ route('articulos.store') }}" method="POST">
+				<form class="" action="{{ route('articulos.store') }}" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					
 					<!-- datos -->
@@ -73,12 +73,18 @@
 							<label for="telefono">Cantidad <span class="span_rojo">*</span></label>
 							<input type="text" class="form-control" name="cantidad" placeholder="cantidad" required="">
 						</div>
+
 						<div class="col-sm-8">
 							<label for="observacion">Observacion</label>
 							<textarea name="observacion" id="observacion" placeholder="descripcion u observacion" class="form-control"></textarea>
 							<br>
 						</div>
-						
+
+						<div class="col-sm-12">
+							<label for="observacion">Observacion</label>
+							<input id="file_input" type="file" class="file" data-preview-file-type="text" name="imagen">
+						</div>
+
 
 						@if (count($errors) > 0)
 				          <div class="alert alert-danger alert-important">

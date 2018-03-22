@@ -44,24 +44,51 @@ class ArticulosController extends Controller
             'name' => 'required',
             'cantidad' =>'required',
             'modelo_id' =>'required',
-            'color_id' =>'required'
+            'color_id' =>'required',
+            'imagen' => 'required'
           ]);
 
           $articulos = new Articulo;
           $articulos->fill($request->all());
+          $hasfile = $request->hasFile('imagen') && $request->imagen->isValid();
+          if ($hasfile){
+          
+              $extension = $request->imagen->extension();
+              
+              if ($extension == 'jpeg' || $extension == 'png' || $extension == 'bmp' || $extension == 'jpg') {
+                  
+                  $articulos->img = $extension;
 
-          if($articulos->save()){
-            return redirect("articulos")->with([
-              'flash_message' => 'Articulo agregado correctamente.',
-              'flash_class' => 'alert-success'
-              ]);
+                  if($articulos->save()){
+                    $request->imagen->storeAs('images',"$articulos->id.$extension");
+                    return redirect("articulos")->with([
+                      'flash_message' => 'Articulo agregado correctamente.',
+                      'flash_class' => 'alert-success'
+                      ]);
+                  }else{
+                    return redirect("articulos")->with([
+                      'flash_message' => 'Ha ocurrido un error.',
+                      'flash_class' => 'alert-danger',
+                      'flash_important' => true
+                      ]);
+                  }
+
+              }else{
+
+                  return redirect("articulos")->with([
+                      'flash_message' => 'La imagen es invalida!',
+                      'flash_class' => 'alert-danger',
+                      'flash_important' => true
+                  ]);
+
+              }
+              
           }else{
-            return redirect("articulos")->with([
-              'flash_message' => 'Ha ocurrido un error.',
-              'flash_class' => 'alert-danger',
-              'flash_important' => true
-              ]);
+            dd("no existe la imagen");
           }
+
+
+          
     }
 
     /**
