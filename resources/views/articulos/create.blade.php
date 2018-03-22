@@ -81,19 +81,22 @@
 						</div>
 
 						<div class="col-sm-12">
-							<label for="observacion">Observacion</label>
+							<label for="Imagen">Imagen</label>
 							<input id="file_input" type="file" class="file" data-preview-file-type="text" name="imagen">
 						</div>
 
 
 						@if (count($errors) > 0)
-				          <div class="alert alert-danger alert-important">
-					          <ul>
-					            @foreach($errors->all() as $error)
-					              <li>{{$error}}</li>
-					            @endforeach
-					          </ul>  
-				          </div>
+						<div class="col-sm-12">
+							<br>
+				          	<div class="alert alert-danger alert-important">
+					          	<ul>
+					            	@foreach($errors->all() as $error)
+					              		<li>{{$error}}</li>
+					            	@endforeach
+					          	</ul>  
+				          	</div>
+				        </div>  
 				        @endif
 						
 						<div class="col-sm-12 text-right padding_1em">
