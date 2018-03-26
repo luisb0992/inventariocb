@@ -127,7 +127,7 @@ class ArticulosController extends Controller
     public function update(Request $request, $id)
     {
 
-        $this->validate($request, [
+          $this->validate($request, [
             'name' => 'required',
             'cantidad' =>'required',
             'modelo_id' =>'required',
@@ -160,5 +160,35 @@ class ArticulosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function editImagen($id){
+      
+      $articulo = Articulo::findOrFail($id);
+      return response()->json($articulo);
+    }
+
+    public function updateImagen(Request $request, $id)
+    {
+
+          $this->validate($request, [
+            'img' => 'required'
+          ]);
+
+          $articulos = Articulo::findOrFail($id);
+          $articulos->fill($request->all());
+
+          if($articulos->save()){
+            return redirect("articulos")->with([
+              'flash_message' => 'Articulo actualizado correctamente.',
+              'flash_class' => 'alert-success'
+              ]);
+          }else{
+            return redirect("articulos")->with([
+              'flash_message' => 'Ha ocurrido un error.',
+              'flash_class' => 'alert-danger',
+              'flash_important' => true
+              ]);
+          }
     }
 }

@@ -9,7 +9,9 @@
 @endsection
 @section('content')
 	@include('partials.flash')
-	<!-- Info boxes -->
+	
+	<a href="{{ url('editarImagen') }}" class="hide" id="ruta_editar_imagen"></a>
+<!-- Info boxes -->
   <div class="row">
   	<div class="col-md-3 col-sm-6 col-xs-12">
       <div class="info-box">
@@ -59,6 +61,10 @@
 									<td>{{$art->cantidad}}</td>
 									<td>@if($art->observacion == "") ... @else {{$art->observacion}} @endif</td>
 									<td>
+										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar_imagen" id="btn_edit_imagen" value="{{ $art->id }}" onclick="editarImagen(this);">
+											<i class="fa fa-edit"></i> editar imagen
+										</button>
+										@include('articulos.modal_editar_imagen')
 										@if($art->img)
 										<a href="{{ url("articulos/img/$art->id.$art->img") }}" data-toggle="lightbox" data-max-width="600" id="img">
 											<img style="max-width: 40%; max-height: 50%;" src="{{ url("articulos/img/$art->id.$art->img") }}" 
@@ -72,7 +78,6 @@
 										@endif
 									</td>
 									<td>
-										<!-- <a class="btn btn-primary btn-flat btn-sm" href="{{ route('users.show',[$art->id])}}"><i class="fa fa-search"></i></a> -->
 										<a href="{{route('articulos.edit',[$art->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a>
 									</td>
 								</tr>
@@ -90,5 +95,15 @@
         event.preventDefault();
         $(this).ekkoLightbox();
     });
+
+    function editarImagen(btn_edit_imagen){
+    	var ruta = $('#ruta_editar_imagen').attr('href')+"/"+btn_edit_imagen.value;
+    	
+    	$.get(ruta, function(res){
+    		var ruta2 = "articulos/img/"+res.id+res.img+"";
+    		$("#img_modal").value(res.id);
+    	});
+
+    }
 </script>
 @endsection
