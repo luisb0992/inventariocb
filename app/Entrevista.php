@@ -32,4 +32,8 @@ class Entrevista extends Model
 	public function comentarios(){
 		return $this->hasMany("App\Comentario");
 	}
+
+	public function venta($id){
+		return Venta::where('entrevista_id', $id)->count();
+	}
 }

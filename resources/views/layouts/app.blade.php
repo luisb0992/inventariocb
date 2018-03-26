@@ -223,6 +223,9 @@
     <!-- lighbox -->
     <script src="{{ asset('plugins/lightbox/ekko-lightbox.js') }}"></script>
 
+    <!-- numeric -->
+    <script src="{{ asset('plugins/numeric.js') }}"></script>
+
     <script type="text/javascript">
       $(document).ready(function(){
       	//Eliminar alertas que no contengan la clase alert-important luego de 7seg

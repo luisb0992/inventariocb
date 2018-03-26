@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 
 	// ventas
 	Route::resource('ventas','VentasController');
+	Route::get('vender/{id}', 'VentasController@venta');
 
 	// comentarios 
 	Route::resource('comentario','ComentariosController');

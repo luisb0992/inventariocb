@@ -9,6 +9,7 @@ use App\Articulo;
 use App\Pais;
 use App\Comentario;
 use App\User;
+use App\Venta;
 
 class EntrevistasController extends Controller
 {
@@ -21,7 +22,7 @@ class EntrevistasController extends Controller
     {
         return view("entrevistas.index",[
             "entrevistas" => Entrevista::all(
-                ["id", "nombre", "apellido", "articulo_id", "fecha", "hora"])
+                ["id", "nombre", "apellido", "articulo_id", "fecha", "hora"]),
         ]);
     }
 

@@ -52,9 +52,9 @@
 								<th class="text-center">Articulo</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
-								<th class="text-center">Imprimir</th>
-								<th class="text-center">Accion</th>
+								<th class="text-center">Descargar</th>
 								<th class="text-center">Venta</th>
+								<th class="text-center">Accion</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
@@ -68,10 +68,19 @@
 									<td>
 										<form action="{{ url('pdf_entrevistas/'.$t->id) }}" method="GET">
 										{{ csrf_field() }}
-										<button type="submit" class="btn btn-danger" id="imprimir" name="id">
+										<button type="submit" class="btn btn-danger btn-sm" id="imprimir" name="id">
 											<i class="fa fa-file-pdf-o"></i>
 										</button>
 										</form>
+									</td>
+									<td>
+										@if($t->venta($t->id) > 0)
+											<i class="fa fa-check-circle text-success"></i> Vendida
+										@else
+											<a href="{{ url('vender/'.$t->id) }}" class="btn btn-info btn-sm">
+												<i class="fa fa-shopping-cart"></i>
+											</a>
+										@endif
 									</td>
 									<td>
 										<button type="button" class="btn btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#ver_entrevistas" id="btn_ver_entrevistas" value="{{ $t->id }}" onclick="cargarEntrevistas(this);">
@@ -85,11 +94,6 @@
 			                    		@include('entrevistas.modal_nuevo_comentario')
 
 										<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a> 
-									</td>
-									<td>
-										<a href="{{ url('vender/'.$t->id) }}" class="btn btn-success btn-lg">
-											<i class="fa fa-shopping-cart"></i>
-										</a>
 									</td>
 								</tr>
 							@endforeach

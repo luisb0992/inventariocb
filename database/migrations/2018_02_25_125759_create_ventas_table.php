@@ -38,9 +38,9 @@ class CreateVentasTable extends Migration
                     ->on('unidades')
                     ->onDelete('cascade');
 
-            $table->decimal('entrada',15,2); //centavos
-            $table->decimal('salida',15,2); //centavos
-            $table->decimal('deuda',15,2); //centavos
+            $table->decimal('entrada',15,2)->nullable(); //centavos
+            $table->decimal('salida',15,2)->nullable(); //centavos
+            $table->decimal('deuda',15,2)->nullable(); //centavos
 
             $table->integer('status_id')->unsigned(); //status de entrega
             $table->foreign('status_id')

@@ -17,7 +17,7 @@
         
         <div class="info-box-content">
           <span class="info-box-text">Ventas Totales</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-number">{{ $ventas->count() }}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -30,14 +30,34 @@
 	    	<div class="box box-danger">
 		      	<div class="box-header with-border">
 		        	<h3 class="box-title"><i class="fa fa-th"></i> Ventas Realizadas</h3>
-			        <!-- <span class="pull-right">
-						<a href="{{ route('ventas.create') }}" class="btn btn-flat btn-success">
-							<i class="fa fa-plus" aria-hidden="true"></i> Nuevo
-						</a>
-					</span> -->
 		      	</div>
 	      		<div class="box-body">
-						<h2><i class="fa fa-exclamation-circle text-info"></i> En construccion</h2>
+						<table class="table data-table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="text-center">#</th>
+								<th class="text-center">Vendedor</th>
+								<th class="text-center">Comprador</th>
+								<th class="text-center">Articulo</th>
+								<th class="text-center">Precio</th>
+								<th class="text-center">Fecha de Venta</th>
+								<th class="text-center">Status</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							@foreach($ventas as $t)
+								<tr @if($t->status->id == 1) class="label-success" @endif>
+									<td>{{$loop->index+1}}</td>
+									<td>{{$t->user->name}}</td>
+									<td>{{$t->entrevista->nombre}} {{$t->entrevista->apellido}}</td>
+									<td>{{$t->articulo->name}}</td>
+									<td>{{$t->precio}} {{$t->unidad->name}}</td>
+									<td>{{$t->formatoCreated()}}</td>
+									<td>{{$t->status->name}}</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
