@@ -89,12 +89,25 @@
 
 					<div class="col-sm-3">
 						<label for="fecha_hora_cita">Fecha de cita <span class="span_rojo">*</span></label>
-						<input type="text" class="form-control" name="fecha" placeholder="d/m/a" required="" id="fecha" value="{{ $entrevista->fecha }}">
+						<br>
+						<input type="text" class="form-control fecha" name="fecha" placeholder="d/m/a" id="fecha" value="{{ $entrevista->fecha }}">
+						<br>
+						<div id="div_fecha">
+							<button type="button" class="btn btn-primary" id="btn_fecha">
+								No definir
+							</button>
+						</div>
 					</div>
 					<div class="col-sm-3">
 						<label for="fecha_hora_cita">Hora de cita <span class="span_rojo">*</span></label>
-						<input type="text" class="form-control timepicker" name="hora" placeholder="h/m :s" required="" value="{{ $entrevista->hora }}">
 						<br>
+						<input type='text' class='form-control timepicker hora' name='hora' placeholder='h/m :s' value="{{ $entrevista->fecha }}">
+						<br>
+						<div id="div_hora">
+							<button type="button" class="btn btn-primary" id="btn_hora">
+								No Definir
+							</button>
+						</div>
 					</div>
 
 					@if (count($errors) > 0)

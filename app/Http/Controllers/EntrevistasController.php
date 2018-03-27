@@ -55,9 +55,7 @@ class EntrevistasController extends Controller
 	        'telefono' => 'required',
 	        'contacto' => 'required',
 	        'pais_id' => 'required',
-	        'articulo_id' => 'required',
-	        'fecha' => 'required',
-	        'hora' => 'required'
+	        'articulo_id' => 'required'
 	    ]);
 
     	$entrevista = new Entrevista();

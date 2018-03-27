@@ -16,6 +16,20 @@ $("#btn_no").click(function(e){
 	$("#si_nacio").hide();
 });
 
+// boton de fecha
+$("#btn_fecha").click(function(e){
+	$("#fecha").val('');
+	$("#fecha").hide();
+	// $("#div_fecha").remove();
+});
+
+// boton de hora
+$("#btn_hora").click(function(e){
+	$(".hora").val('');
+	$(".hora").hide();
+	// $("#div_hora").remove();
+});
+
 
 // cargar entrevistas
 function cargarEntrevistas(btn_ver_entrevistas){

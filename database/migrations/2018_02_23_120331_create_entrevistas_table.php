@@ -46,8 +46,8 @@ class CreateEntrevistasTable extends Migration
 								->on('articulos')
 								->onDelete('cascade');
 						
-						$table->string('fecha');
-						$table->string('hora');      
+						$table->string('fecha')->nullable();
+						$table->string('hora')->nullable();      
 						$table->timestamps();
 				});
 		}
