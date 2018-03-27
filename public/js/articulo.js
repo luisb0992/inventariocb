@@ -10,10 +10,10 @@
 
 		// cargar colores
 		function cargarColores(){
-			$("#select_color").empty();
+			$(".select_color").empty();
 		  	$.get($('#ruta_cargar_c').attr('href'), function(res){
 		  		$.each(res, function(index, val) {
-		    		$("#select_color").append("<option value='"+val.id+"'>"+val.name+"</option>");
+		    		$(".select_color").append("<option value='"+val.id+"'>"+val.name+"</option>");
 		    	});
 		  	});
 		}

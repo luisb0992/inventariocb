@@ -49,7 +49,8 @@
 								<th class="text-center">#</th>
 								<th class="text-center">Titulo</th>
 								<th class="text-center">Modelo</th>
-								<th class="text-center">Color</th>
+								<th class="text-center">C. tela</th>
+								<th class="text-center">C. tubo</th>
 								<th class="text-center">Cantidad</th>
 								<th class="text-center">Descripcion</th>
 								<th class="text-center">Imagen</th>
@@ -63,6 +64,7 @@
 									<td>{{$art->name}}</td>
 									<td>{{$art->modelo->name}}</td>
 									<td>{{$art->color->name}}</td>
+									<td>{{$art->color_tubo}}</td>
 									<td>{{$art->cantidad}}</td>
 									<td>@if($art->observacion == "") ... @else {{$art->observacion}} @endif</td>
 									<td>

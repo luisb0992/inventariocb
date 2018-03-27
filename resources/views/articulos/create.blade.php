@@ -54,14 +54,14 @@
 						<!-- colores  -->
 						<div class="col-sm-4">
 							<label for="color">
-								Color <span class="span_rojo">*</span>&nbsp;
+								Color de tela <span class="span_rojo">*</span>&nbsp;
 								[<a href="#create_color" class="btn-link" data-toggle="modal" data-target="#create_color">
 									<span class="text-success"><i class="fa fa-plus"></i> agregar</span>
 								</a>] 
 								<span id="color_listo" style="display: none"> <small id="msj_ajax_color"></small></span>
 								@include('articulos.modal_create_colores')
 							</label>
-							<select name="color_id" id="select_color" class="form-control" required="">
+							<select name="color_id" class="select_color form-control" required="">
 								@foreach($colores as $color)
 								<option value="{{ $color->id }}">{{ $color->name }}</option>
 								@endforeach
@@ -69,12 +69,20 @@
 							<hr>
 						</div>
 
-						<div class="col-sm-4">
+						<div class="col-sm-6">
+							<label for="color">
+								Color de tubo <span class="span_rojo">*</span>&nbsp;
+							</label>	
+							<input type="text" class="form-control" name="color_tubo" placeholder="color para el tubo" required="">
+							<hr>
+						</div>
+
+						<div class="col-sm-6">
 							<label for="telefono">Cantidad <span class="span_rojo">*</span></label>
 							<input type="text" class="form-control" name="cantidad" placeholder="cantidad" required="">
 						</div>
 
-						<div class="col-sm-8">
+						<div class="col-sm-12">
 							<label for="observacion">Observacion</label>
 							<textarea name="observacion" id="observacion" placeholder="descripcion u observacion" class="form-control"></textarea>
 							<br>

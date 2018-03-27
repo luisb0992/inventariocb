@@ -27,6 +27,7 @@ class CreateArticulosTable extends Migration
                     ->references('id')
                     ->on('colores')
                     ->onDelete('cascade');
+            $table->string('color_tubo')->nullable();        
             $table->text('observacion')->nullable();      
             $table->string('img')->nullable();      
             $table->timestamps();

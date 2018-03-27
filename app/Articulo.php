@@ -9,7 +9,7 @@ class Articulo extends Model
     protected $table = "articulos";
 
     protected $fillable = [
-    	"name", "cantidad", "modelo_id", "color_id", "observacion"
+    	"name", "cantidad", "modelo_id", "color_id", "color_tubo", "observacion"
     ];
 
     // relaciones
