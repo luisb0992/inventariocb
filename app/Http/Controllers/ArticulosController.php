@@ -171,24 +171,50 @@ class ArticulosController extends Controller
     public function updateImagen(Request $request, $id)
     {
 
-          $this->validate($request, [
-            'img' => 'required'
-          ]);
-
           $articulos = Articulo::findOrFail($id);
-          $articulos->fill($request->all());
+          //$articulos->img = $request->img;
 
-          if($articulos->save()){
-            return redirect("articulos")->with([
-              'flash_message' => 'Articulo actualizado correctamente.',
-              'flash_class' => 'alert-success'
-              ]);
+          $hasfile = $request->hasFile('img') && $request->img->isValid();
+
+          if ($hasfile){
+          
+              $extension = $request->img->extension();
+              
+              if ($extension == 'jpeg' || $extension == 'png' || $extension == 'bmp' || $extension == 'jpg') {
+                  
+                  $articulos->img = $extension;
+
+                  if($articulos->save()){
+                    
+                    $request->img->storeAs('images',"$articulos->id.$extension");
+
+                    return redirect("articulos")->with([
+                      'flash_message' => 'Imagen actualizada correctamente.',
+                      'flash_class' => 'alert-success'
+                      ]);
+
+                  }else{
+                    
+                    return redirect("articulos")->with([
+                      'flash_message' => 'Ha ocurrido un error.',
+                      'flash_class' => 'alert-danger',
+                      'flash_important' => true
+                      ]);
+
+                  }
+
+              }else{
+
+                  return redirect("articulos")->with([
+                      'flash_message' => 'La imagen es invalida!',
+                      'flash_class' => 'alert-danger',
+                      'flash_important' => true
+                  ]);
+
+              }
+              
           }else{
-            return redirect("articulos")->with([
-              'flash_message' => 'Ha ocurrido un error.',
-              'flash_class' => 'alert-danger',
-              'flash_important' => true
-              ]);
+            dd("no existe la imagen");
           }
     }
 }
