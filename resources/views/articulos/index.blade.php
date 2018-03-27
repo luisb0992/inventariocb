@@ -11,6 +11,8 @@
 	@include('partials.flash')
 	
 	<a href="{{ url('editarImagen') }}" class="hide" id="ruta_editar_imagen"></a>
+	<a href="{{ url('updateImagen') }}" class="hide" id="ruta_guardar_imagen"></a>
+
 <!-- Info boxes -->
   <div class="row">
   	<div class="col-md-3 col-sm-6 col-xs-12">
@@ -36,6 +38,9 @@
 					<i class="fa fa-plus" aria-hidden="true"></i> Nuevo
 				</a>
 			</span>
+			<div id="img_done" class="alert alert-success" style="display:none">
+				<p id="msj_img"></p>
+			</div>
 	      </div>
       	<div class="box-body">
 					<table class="table data-table table-bordered table-hover">
@@ -61,21 +66,22 @@
 									<td>{{$art->cantidad}}</td>
 									<td>@if($art->observacion == "") ... @else {{$art->observacion}} @endif</td>
 									<td>
-										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar_imagen" id="btn_edit_imagen" value="{{ $art->id }}" onclick="editarImagen(this);">
-											<i class="fa fa-edit"></i> editar imagen
-										</button>
 										@include('articulos.modal_editar_imagen')
 										@if($art->img)
 										<a href="{{ url("articulos/img/$art->id.$art->img") }}" data-toggle="lightbox" data-max-width="600" id="img">
-											<img style="max-width: 40%; max-height: 50%;" src="{{ url("articulos/img/$art->id.$art->img") }}" 
+											<img style="max-width: 30%; max-height: 30%;" src="{{ url("articulos/img/$art->id.$art->img") }}" 
 										class="img-rounded center-block img-responsive">
 										</a>
 										@else
 										<a href="{{ asset('img/sin_imagen.jpg') }}" data-toggle="lightbox" data-max-width="600" id="img">
-											<img style="max-width: 40%; max-height: 50%;" src="{{ asset('img/sin_imagen.jpg') }}" 
+											<img style="max-width: 30%; max-height: 30%;" src="{{ asset('img/sin_imagen.jpg') }}" 
 										class="img-rounded center-block img-responsive">
 										</a>
 										@endif
+										<br>
+										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar_imagen" id="btn_edit_imagen" value="{{ $art->id }}" onclick="editarImagen(this);">
+											<i class="fa fa-edit"></i> editar imagen
+										</button>
 									</td>
 									<td>
 										<a href="{{route('articulos.edit',[$art->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a>
@@ -98,12 +104,25 @@
 
     function editarImagen(btn_edit_imagen){
     	var ruta = $('#ruta_editar_imagen').attr('href')+"/"+btn_edit_imagen.value;
+    	var ruta2 = $('#ruta_guardar_imagen').attr('href')+"/"+btn_edit_imagen.value;
+    	
+    	$("#reload_div_img").fadeIn(400, 'linear');
     	
     	$.get(ruta, function(res){
-    		var ruta2 = "articulos/img/"+res.id+res.img+"";
-    		$("#img_modal").value(res.id);
+    		$("#articulo_id").val(res.id);
+    		$("#form_img").attr('action', ruta2);
+    		$("#imagen_div").fadeIn(400, 'linear');
+    		$("#reload_div_img").fadeOut(400, 'linear');
     	});
 
     }
+    
+    $(".btn_guardar_img").click(function(e){
+    	$("#reload_img").fadeIn( 400, 'linear');
+		var btn = $(".btn_guardar_img");
+		btn.text("Espere un momento...");
+		btn.addClass("disabled");
+    });
+
 </script>
 @endsection

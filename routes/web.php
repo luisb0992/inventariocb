@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	// articulos
 	Route::resource('articulos','ArticulosController');
 	Route::get('editarImagen/{id}','ArticulosController@editImagen');
-	Route::get('updateImagen/{id}','ArticulosController@updateImagen');
+	Route::put('updateImagen/{id}','ArticulosController@updateImagen');
 
 	// modelos
 	Route::resource('modelos','ModelosController');
