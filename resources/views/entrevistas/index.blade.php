@@ -45,7 +45,7 @@
 						<i class="fa fa-refresh fa-spin fa-3x fa-fw text-success"></i>
 					</div>
 					<table class="table data-table table-bordered table-hover">
-						<thead>
+						<thead class="label-danger">
 							<tr>
 								<th class="text-center">#</th>
 								<th class="text-center">Nombre y Apellido</th>
@@ -73,7 +73,7 @@
 										</button>
 										</form>
 									</td>
-									<td>
+									<td class="well">
 										@if($t->venta($t->id) > 0)
 											<i class="fa fa-check-circle text-success"></i> Vendida
 										@else

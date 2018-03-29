@@ -46,4 +46,8 @@ class User extends Authenticatable
 
         return $status;
     }
+
+    public function countVentas($id){
+    	return Venta::whereMonth("created_at", date("m"))->where('user_id', $id)->groupBy("user_id");
+    }
 }

@@ -33,7 +33,7 @@ class EntrevistasController extends Controller
      */
     public function create()
     {
-        $articulos = Articulo::all();
+        $articulos = Articulo::where("cantidad", ">", 0)->get();
         $paises = Pais::all();
         return view("entrevistas.create",[
             "articulos" => $articulos,

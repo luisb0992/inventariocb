@@ -15,6 +15,7 @@
 			</div>
 			<br>
 		</div>
+		@if(\Auth::user()->perfil_id == 1)
 		<div class="col-sm-4 border_right_1">
 			<a href="{{ url('articulos') }}">   
 				<img src="{{ asset('img/dashboard_3.png') }}" alt="articulos" class="img_hover img-responsive text-center col-sm-10">
@@ -32,6 +33,14 @@
 				<img src="{{ asset('img/dashboard_1.png') }}" alt="ventas" class="img_hover img-responsive text-center col-sm-10">
 			</a>
 			<span class="h3"><i>Ventas</i></span>
-		</div>		
+		</div>
+		@else
+		<div class="col-sm-4 border_right_1">
+			<a href="{{ url('entrevistas') }}">   
+				<img src="{{ asset('img/dashboard_2.png') }}" alt="entrevistas" class="img_hover img-responsive text-center col-sm-10">
+			</a>
+			<span class="h3"><i>Entrevistas</i></span>
+		</div>
+		@endif		
   	</div>
 @endsection

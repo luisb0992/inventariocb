@@ -53,10 +53,14 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	// ventas
 	Route::resource('ventas','VentasController');
 	Route::get('vender/{id}', 'VentasController@venta');
+	Route::post('pdf_venta/{id}', 'VentasController@pdf');
 
 	// comentarios 
 	Route::resource('comentario','ComentariosController');
-	Route::post('guardarComentario', 'ComentariosController@store');	
+	Route::post('guardarComentario', 'ComentariosController@store');
+
+	// inventario 
+	Route::resource('inventario','InventarioController');	
 
 	//* --- Perfil --- */
 	Route::get('/perfil', 'UserController@perfil')->name('perfil');

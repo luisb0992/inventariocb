@@ -44,7 +44,7 @@
 	      </div>
       	<div class="box-body">
 					<table class="table data-table table-bordered table-hover">
-						<thead>
+						<thead class="label-danger">
 							<tr>
 								<th class="text-center">#</th>
 								<th class="text-center">Titulo</th>
@@ -67,22 +67,19 @@
 									<td>{{$art->color_tubo}}</td>
 									<td>{{$art->cantidad}}</td>
 									<td>@if($art->observacion == "") ... @else {{$art->observacion}} @endif</td>
-									<td>
+									<td class="well">
 										@include('articulos.modal_editar_imagen')
 										@if($art->img)
-										<a href="{{ url("articulos/img/$art->id.$art->img") }}" data-toggle="lightbox" data-max-width="600" id="img">
-											<img style="max-width: 30%; max-height: 30%;" src="{{ url("articulos/img/$art->id.$art->img") }}" 
-										class="img-rounded center-block img-responsive">
-										</a>
+											<a href="{{ url("articulos/img/$art->id.$art->img") }}" data-toggle="lightbox" data-max-width="600" id="img" class="btn-link btn-sm">
+												<i class="fa fa-image"></i> ver
+											</a>
 										@else
-										<a href="{{ asset('img/sin_imagen.jpg') }}" data-toggle="lightbox" data-max-width="600" id="img">
-											<img style="max-width: 30%; max-height: 30%;" src="{{ asset('img/sin_imagen.jpg') }}" 
-										class="img-rounded center-block img-responsive">
-										</a>
+											<a href="{{ asset('img/sin_imagen.jpg') }}" data-toggle="lightbox" data-max-width="600" id="img" class="btn-link btn-sm">
+												<i class="fa fa-image"></i> ver
+											</a>
 										@endif
-										<br>
-										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editar_imagen" id="btn_edit_imagen" value="{{ $art->id }}" onclick="editarImagen(this);">
-											<i class="fa fa-edit"></i> editar imagen
+										<button type="button" class="btn-link btn-sm" data-toggle="modal" data-target="#editar_imagen" id="btn_edit_imagen" value="{{ $art->id }}" onclick="editarImagen(this);">
+											<i class="fa fa-edit"></i> editar
 										</button>
 									</td>
 									<td>

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>PDF entrevista</title>
+        <title>PDF Venta</title>
        	<style>
 
 html {
@@ -8329,37 +8329,27 @@ button.close {
                 		<span class="text-capitalize">Littlebru.com</span> 
                 	</h1>
                 	<small>
-                		<em>Entrevista realizada por <b>{{ $entrevista->vendedor->name }} {{ $entrevista->vendedor->apellido }}</b></em>
+                		<em>Venta realizada por <b>{{ $venta->user->name }} {{ $venta->user->apellido }}</b></em>
                 	</small>
 				    <table class="table table-bordered">
 				        <thead class="well">
 				            <tr>
-				                <th>Nombre</th>
-				                <th>Apellido</th>
-				                <th>Email</th>
-				                <th>Telefono</th>
-				                <th>Contacto</th>
-				                <th>Pais</th>
-				                <th>Distrito</th>
-				                <th>Provincia</th>
+				                <th>Nº Contrato</th>
+				                <th>Comprador</th>
 				                <th>Articulo</th>
-				                <th>Fecha</th>
-				                <th>Hora</th>
+				                <th>Precio</th>
+				                <th>Status</th>
+				                <th>Fecha de Venta</th>
 				            </tr>                            
 				        </thead>
 				        <tbody>
 				            <tr>
-				            	<td>{{ $entrevista->nombre }}</td>
-				            	<td>{{ $entrevista->apellido }}</td>
-				            	<td>{{ $entrevista->email }}</td>
-				            	<td>{{ $entrevista->telefono }}</td>
-				            	<td>{{ $entrevista->contacto }}</td>
-				            	<td>{{ $entrevista->pais->name }}</td>
-				            	<td>{{ $entrevista->distrito }}</td>
-				            	<td>{{ $entrevista->provincia }}</td>
-				            	<td>{{ $entrevista->articulo->name }}</td>
-				            	<td>{{ $entrevista->fecha }}</td>
-				            	<td>{{ $entrevista->hora }}</td>
+				            	<td>{{ $venta->numero_contrato }}</td>
+				            	<td>{{ $venta->entrevista->nombre }} {{ $venta->entrevista->apellido }}</td>
+				            	<td>{{ $venta->articulo->name }}</td>
+				            	<td>{{ $venta->precio }} {{ $venta->unidad->name }}</td>
+				            	<td>{{ $venta->status->name }}</td>
+				            	<td>{{ $venta->formatoCreated() }}</td>
 				            </tr>
 				        </tbody>
 				    </table>

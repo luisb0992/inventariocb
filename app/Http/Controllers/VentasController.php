@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Venta;
+use App\Articulo;
 use App\Entrevista;
 use App\Unidad;
 use App\Status;
@@ -58,6 +60,9 @@ class VentasController extends Controller
         $venta->user_id = \Auth::user()->id;
 
         if($venta->save()){
+        	$articulo = Articulo::findOrFail($venta->articulo_id);
+        	$articulo->cantidad = $articulo->cantidad - 1;
+        	$articulo->save();
 
 	        return redirect("ventas")->with([
 	          'flash_message' => 'venta concretada corectamente',
@@ -130,5 +135,14 @@ class VentasController extends Controller
         	"unidades" => $unidades,
         	"status" => $status
         ]);
+    }
+
+    public function pdf($id){
+
+    	$venta = Venta::findOrFail($id);
+
+    	$pdf = PDF::loadView('ventas.pdf', compact('venta'));
+
+        return $pdf->setPaper('a4', 'landscape')->download(date("d-m-Y h:m:s").'.pdf');
     }
 }

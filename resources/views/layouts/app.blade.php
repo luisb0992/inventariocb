@@ -160,6 +160,14 @@
                 <!-- <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li> -->
               </ul>
             </li>
+
+            <!-- Ventas -->
+            <li class="treeview">
+              <a href="{{ url('inventario') }}">
+                <i class="fa fa-list-ul"></i>
+                <span>Inventario</span>
+              </a>
+            </li>
             @else
               <!-- entrevistas -->
               <li class="treeview">
