@@ -7,16 +7,6 @@
         <title>PDF entrevista</title>
        	<style>
 
-
-
-/*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -8329,11 +8319,17 @@ button.close {
    		</style>
     </head>
     <body>
-        <div class="container">
+        <div class="">
             <div class="row">
                 <div class="col-sm-12">
-                	<h1 class="page-header">Entrevista realizada por <b>{{ $entrevista->vendedor->name }}</b> <span class="pull-right">Littlebru.com</span></h1>
-				    <table class="table table-hover table-striped">
+                	<h1 class="page-header">
+                		<span class="text-capitalize">Littlebru.com</span> 
+                	</h1>
+                	<p>
+                		<em>Entrevista realizada por <b>{{ $entrevista->vendedor->name }}</b></em>
+                	</p>
+                	<hr>
+				    <table class="table table-striped">
 				        <thead>
 				            <tr>
 				                <th>Nombre</th>
@@ -8345,8 +8341,8 @@ button.close {
 				                <th>Distrito</th>
 				                <th>Provincia</th>
 				                <th>Articulo</th>
-				                <th>Fecha de cita</th>
-				                <th>Hora de cita</th>
+				                <th>Fecha</th>
+				                <th>Hora</th>
 				            </tr>                            
 				        </thead>
 				        <tbody>
