@@ -100,10 +100,72 @@
 	                	<span class="list-group-item">
 	                		{{ $art->name }} <strong class="pull-right badge">{{ $art->cantidad }}</strong> 
 	                	</span>
-	                	
 	                @endforeach
 	            </div>			
 			</div>
 		</div>
+		<div class="col-sm-12" id="container"></div>
 	</div>
+@endsection
+@section("script")
+<script>
+	Highcharts.chart('container', {
+	    chart: {
+	        type: 'column'
+	    },
+	    exporting:{ enabled:true},
+        credits:{ enabled:false},
+	    title: {
+	        text: 'Articulos mas vendidos (<?php
+	        	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); echo $meses[date('n')-1]; ?>)'
+	    },
+
+	    xAxis: {
+	        categories: [
+	        		<?php foreach ($artMes as $a_m) { ?> <?php echo '"'.$a_m->articulo->name.'"'.',';?> <?php } ?>
+	        ]
+	    },
+
+	    yAxis: {
+	        allowDecimals: false,
+	        min: 0,
+	        title: {
+	            text: 'Cantidad'
+	        }
+	    },
+
+	    tooltip: {
+	        /*formatter: function () {
+	            return '<b>' + this.x + '</b><br/>' +
+	                this.series.name + ': ' + this.y + '<br/>' +
+	                'Total: ' + this.point.stackTotal;
+	        }*/
+	        shared: false,
+            useHTML: true
+	    },
+
+	    plotOptions: {
+	        /*column: {
+	            stacking: 'normal'
+	        }*/
+	        column: {
+                pointPadding: 0.4,
+                borderWidth: 0,
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true
+                },
+                showInLegend: true
+            }
+	    },
+
+	    series: 
+	    [ 
+	    <?php foreach ($artMes->groupBy("articulo_id") as $a_m) { ?>
+	        { name: <?php echo "'".$a_m->pluck('articulo_id')."'" ?>, data: [ <?php echo $a_m->count();?> ] },
+	    <?php } ?>
+		]
+	});
+</script>	
 @endsection

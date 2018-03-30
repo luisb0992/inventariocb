@@ -31,6 +31,8 @@
     <!-- lightbox -->
     <link rel="stylesheet" href="{{ asset('plugins/lightbox/ekko-lightbox.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('plugins/highchart/code/highcharts.css') }}">
+
     <!-- estilos propios de css -->
     <link rel="stylesheet" href="{{asset('css/ep.css')}}">
 
@@ -233,6 +235,10 @@
 
     <!-- numeric -->
     <script src="{{ asset('plugins/numeric.js') }}"></script>
+
+    <!-- highchart -->
+    <script src="{{ asset('plugins/highchart/code/highcharts.js') }}"></script>
+    <script src="{{ asset('plugins/highchart/code/exporting.js') }}"></script>
 
     <script type="text/javascript">
       $(document).ready(function(){
