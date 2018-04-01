@@ -63,7 +63,7 @@
 	            	</h3>	
 	            </div>
 	            <div class="box-body">
-	                <span class="list-group-item">Entregadas <strong class="pull-right badge">{{ $artMesUno->count() }}</strong> </span>
+	                <span class="list-group-item">Entregadas <strong class="pull-right badge" @if($artMesUno->count() > 0) style="background-color:#34B54F" @endif>{{ $artMesUno->count() }}</strong> </span>
 	                <span class="list-group-item">Separadas <strong class="pull-right badge">{{ $artMesDos->count() }}</strong> </span>
 	                <span class="list-group-item">Segumiento <strong class="pull-right badge">{{ $artMesTres->count() }}</strong> </span>
 	                <span class="list-group-item">En espera <strong class="pull-right badge">{{ $artMesCuatro->count() }}</strong> </span>
@@ -83,28 +83,44 @@
 	                	<span class="list-group-item">
 	                		{{ $user->name }} {{ $user->apellido }} <strong class="pull-right badge">{{ $user->countVentas($user->id)->count() }}</strong> 
 	                	</span>
-	                	
 	                @endforeach
 	            </div>			
 			</div>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-3">
       		<div class="box box-solid box-primary">
 	            <div class="box-header">
 	            	<h3 class="box-title">
-	            		Cantidad de articulos restantes
+	            		Status de Usuarios  
+	            	</h3>	
+	            </div>
+	            <div class="box-body">
+	                <span class="list-group-item">Activos <strong class="pull-right badge" style="background-color: #308B29">{{ $usersUno }}</strong> </span>
+	                <span class="list-group-item">Inactivos <strong class="pull-right badge" style="background-color: #F5B00C">{{ $usersDos }}</strong> </span>
+	                <span class="list-group-item">Suspendidos <strong class="pull-right badge" style="background-color: #B42929">{{ $usersTres }}</strong> </span>
+	            </div>			
+			</div>
+		</div>
+		<div class="col-sm-3">
+      		<div class="box box-solid box-primary">
+	            <div class="box-header">
+	            	<h3 class="box-title">
+	            		Articulos restantes
 	            	</h3>	
 	            </div>
 	            <div class="box-body">
 	                @foreach($articulos as $art)
 	                	<span class="list-group-item">
-	                		{{ $art->name }} <strong class="pull-right badge">{{ $art->cantidad }}</strong> 
+	                		{{ $art->name }} <strong class="pull-right badge" @if($art->cantidad == 0) style="background-color:#AD1D1D" @endif>{{ $art->cantidad }}</strong> 
 	                	</span>
 	                @endforeach
 	            </div>			
 			</div>
 		</div>
-		<div class="col-sm-12" id="container"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6" id="container"></div>
+		<div class="col-sm-6" id="container2"></div>
 	</div>
 @endsection
 @section("script")
@@ -116,21 +132,19 @@
 	    exporting:{ enabled:true},
         credits:{ enabled:false},
 	    title: {
-	        text: 'Articulos mas vendidos (<?php
+	        text: 'Articulos vendidos en (<?php
 	        	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); echo $meses[date('n')-1]; ?>)'
 	    },
 
 	    xAxis: {
-	        categories: [
-	        		<?php foreach ($artMes as $a_m) { ?> <?php echo '"'.$a_m->articulo->name.'"'.',';?> <?php } ?>
-	        ]
+	        categories: ['Articulos']
 	    },
 
 	    yAxis: {
 	        allowDecimals: false,
 	        min: 0,
 	        title: {
-	            text: 'Cantidad'
+	            text: 'Cantidad de articulos'
 	        }
 	    },
 
@@ -145,10 +159,8 @@
 	    },
 
 	    plotOptions: {
-	        /*column: {
-	            stacking: 'normal'
-	        }*/
 	        column: {
+	        	// stacking: 'normal',
                 pointPadding: 0.4,
                 borderWidth: 0,
                 allowPointSelect: true,
@@ -162,10 +174,53 @@
 
 	    series: 
 	    [ 
-	    <?php foreach ($artMes->groupBy("articulo_id") as $a_m) { ?>
-	        { name: <?php echo "'".$a_m->pluck('articulo_id')."'" ?>, data: [ <?php echo $a_m->count();?> ] },
-	    <?php } ?>
+	    <?php $data = ''; ?>
+        <?php foreach ($artMes as $a_m) { ?>
+            <?php foreach ($a_m as $a_m_data) { $data = $a_m_data->articulo->name; }?>
+            { name: <?php echo "'".$data."'" ?>, data: [ <?php echo $a_m->count();?> ] },
+        <?php }?>
 		]
 	});
+
+	// grafico tipo torta
+    Highcharts.chart('container2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        exporting:{ enabled:true},
+        credits:{ enabled:false},
+        title: {
+            text: 'Articulos restantes (%)'
+        },
+        subtitle: {
+            text: 'Cantidad de articulos restantes en el inventario'
+        },
+        tooltip: {
+            pointFormat: '{series.name}:<b>{point.y}</b>  <b>({point.percentage:.1f}%)</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Total ',
+            colorByPoint: true,
+            data:
+            [
+             	<?php foreach ($articulos as $art) { ?>
+                    	['<?php echo $art->name;?>' , <?php echo $art->cantidad; ?>],
+            	<?php } ?>
+            ]
+        }]
+    });
 </script>	
 @endsection

@@ -21,10 +21,7 @@ class InventarioController extends Controller
     	$artMensualDos = Venta::whereMonth("created_at", date("m"))->where("status_id", 2)->get();
     	$artMensualTres = Venta::whereMonth("created_at", date("m"))->where("status_id", 3)->get();
     	$artMensualCuatro = Venta::whereMonth("created_at", date("m"))->where("status_id", 4)->get();
-
-    	$artMes = Venta::whereMonth("created_at", date("m"))->get();
-    	//$artMes->articulo_id = $artMes->articulo->name; 
-    	//dd($artMes);
+    	$artMes = Venta::whereMonth("created_at", date("m"))->get()->groupBy('articulo_id');
 
         return view('inventario.index',[
         	'articulos' => Articulo::all(),
@@ -35,7 +32,10 @@ class InventarioController extends Controller
         	'artMesDos' => $artMensualDos,
         	'artMesTres' => $artMensualTres,
         	'artMesCuatro' => $artMensualCuatro,
-        	'artMes' => $artMes
+            'artMes' => $artMes,
+            'usersUno' => User::where('status', 1)->count(),
+            'usersDos' => User::where('status', 2)->count(),
+        	'usersTres' => User::where('status', 3)->count()
         ]);
     }
 
