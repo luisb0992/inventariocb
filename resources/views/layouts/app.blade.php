@@ -120,6 +120,7 @@
               <ul class="treeview-menu">
                 <li><a href="{{ route('users.index') }}"><i class="fa fa-circle-o"></i>Ver usuarios</a></li>
                 <li><a href="{{ route('users.create') }}"><i class="fa fa-circle-o"></i>Agregar usuario</a></li>
+                <li><a href="{{ route('grupos.index') }}"><i class="fa fa-circle-o"></i>Grupos</a></li>
               </ul>
             </li>
             

@@ -54,7 +54,7 @@
 	<hr>
 
 	<div class="row">
-  		<div class="col-sm-3">
+  		<div class="col-sm-6">
       		<div class="box box-solid box-primary">
 	            <div class="box-header">
 	            	<h3 class="box-title">
@@ -70,24 +70,7 @@
 	            </div>			
 			</div>
 		</div>
-		<div class="col-sm-3">
-      		<div class="box box-solid box-primary">
-	            <div class="box-header">
-	            	<h3 class="box-title">
-	            		Usuarios con ventas este Mes  
-	            		<b>(@php $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); echo $meses[date('n')-1]; @endphp)</b>
-	            	</h3>	
-	            </div>
-	            <div class="box-body">
-	                @foreach($users as $user)
-	                	<span class="list-group-item">
-	                		{{ $user->name }} {{ $user->apellido }} <strong class="pull-right badge">{{ $user->countVentas($user->id)->count() }}</strong> 
-	                	</span>
-	                @endforeach
-	            </div>			
-			</div>
-		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-6">
       		<div class="box box-solid box-primary">
 	            <div class="box-header">
 	            	<h3 class="box-title">
@@ -101,7 +84,39 @@
 	            </div>			
 			</div>
 		</div>
-		<div class="col-sm-3">
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+      		<div class="box box-solid box-primary">
+	            <div class="box-header">
+	            	<h3 class="box-title">
+	            		Usuarios con ventas este Mes  
+	            		<b>(@php $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"); echo $meses[date('n')-1]; @endphp)</b>
+	            	</h3>	
+	            </div>
+	            <div class="box-body">
+	            	<table class="table data-table table-bordered table-hover">
+						<thead class="label-danger">
+							<tr>
+								<th class="text-center">Nombre</th>
+							</tr>
+						</thead>
+	                	<tbody class="text-center">
+							@foreach($users as $user)
+								<tr>
+									<td class="list-group-item">
+					                	<span>
+					                		{{ $user->name }} {{ $user->apellido }} <strong class="pull-right badge">{{ $user->countVentas($user->id)->count() }}</strong> 
+					                	</span>
+				                	</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
+	            </div>			
+			</div>
+		</div>
+		<div class="col-sm-6">
       		<div class="box box-solid box-primary">
 	            <div class="box-header">
 	            	<h3 class="box-title">
@@ -109,11 +124,25 @@
 	            	</h3>	
 	            </div>
 	            <div class="box-body">
-	                @foreach($articulos as $art)
-	                	<span class="list-group-item">
-	                		{{ $art->name }} <strong class="pull-right badge" @if($art->cantidad == 0) style="background-color:#AD1D1D" @endif>{{ $art->cantidad }}</strong> 
-	                	</span>
-	                @endforeach
+	            	<table class="table data-table table-bordered table-hover">
+						<thead class="label-danger">
+							<tr>
+								<th class="text-center">Nombre</th>
+							</tr>
+						</thead>
+						<tbody class="text-center">
+							@foreach($articulos as $art)
+								<tr>
+									<td class="list-group-item">
+					                	<span>
+					                		{{ $art->name }} 
+					                		<strong class="pull-right badge" @if($art->cantidad == 0) style="background-color:#AD1D1D" @endif>{{ $art->cantidad }}</strong> 
+					                	</span>
+				                	</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>	
 	            </div>			
 			</div>
 		</div>

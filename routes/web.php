@@ -27,6 +27,9 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	/* --- Usuarios ---*/
 	Route::resource('/users','UserController',["middleware" => 'rol_admin']);
 
+	/* --- Grupos ---*/
+	Route::resource('grupos','GruposController',["middleware" => 'rol_admin']);
+
 	// entrevistas
 	Route::resource('entrevistas','EntrevistasController');
 	Route::get('cargarEntrevistas/{id}', 'EntrevistasController@show');
