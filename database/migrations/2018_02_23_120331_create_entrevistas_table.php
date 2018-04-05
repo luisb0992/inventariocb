@@ -25,8 +25,8 @@ class CreateEntrevistasTable extends Migration
 						$table->string('apellido');
 						$table->text('direccion')->nullable();
 						$table->string('email')->nullable();
-						$table->string('telefono');
-						$table->string('contacto');
+						$table->string('telefono')->nullable();
+						$table->string('contacto')->nullable();
 						
 						$table->integer('pais_id')->unsigned();
 						$table->foreign('pais_id')
@@ -39,13 +39,15 @@ class CreateEntrevistasTable extends Migration
 						$table->string('tiempo_embarazo')->nullable();
 						$table->string('sexo_bebe')->nullable();
 						$table->string('tiempo_nacido')->nullable();
+						$table->string('fecha_nac')->nullable();
 
 						$table->integer('articulo_id')->unsigned();
 						$table->foreign('articulo_id')
 						        ->references('id')
 								->on('articulos')
 								->onDelete('cascade');
-						
+
+						$table->string('precio_ref')->nullable();
 						$table->string('fecha')->nullable();
 						$table->string('hora')->nullable();      
 						$table->timestamps();

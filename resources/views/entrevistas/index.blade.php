@@ -64,7 +64,7 @@
 									<td>{{$t->nombre}} {{$t->apellido}}</td>
 									<td>{{$t->articulo->name}}</td>
 									<td>{{$t->fecha}}</td>
-									<td>{{$t->hora}}</td>
+									<td>@if($t->hora == '') 00:00 @else {{$t->hora}} @endif</td>
 									<td>
 										<form action="{{ url('pdf_entrevistas/'.$t->id) }}" method="GET">
 										{{ csrf_field() }}
@@ -74,8 +74,14 @@
 										</form>
 									</td>
 									<td class="well">
-										@if($t->venta($t->id) > 0)
+										@if($t->venta($t->id) == 1)
 											<i class="fa fa-check-circle text-success"></i> Vendida
+										@elseif($t->venta($t->id) == 2)
+											<i class="fa fa-check-circle text-success"></i> Separado
+										@elseif($t->venta($t->id) == 3)	
+											<i class="fa fa-folder text-warning"></i> Seguimiento
+										@elseif($t->venta($t->id) == 4)	
+											<i class="fa fa-long-arrow-right text-warning"></i> En espera
 										@else
 											<a href="{{ url('vender/'.$t->id) }}" class="btn btn-info btn-sm">
 												<i class="fa fa-shopping-cart"></i>

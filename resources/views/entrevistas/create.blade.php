@@ -39,12 +39,12 @@
 						<hr>
 					</div>
 					<div class="col-sm-4">
-						<label for="telefono">Telefono <span class="span_rojo">*</span></label>
-						<input type="text" class="form-control" name="telefono" placeholder="telefono" required="">
+						<label for="telefono">Telefono </label>
+						<input type="text" class="form-control" name="telefono" placeholder="telefono">
 					</div>
 					<div class="col-sm-8">
-						<label for="contacto">Fue contactado por <span class="span_rojo">*</span></label>
-						<input type="text" class="form-control" name="contacto" placeholder="via de contacto" required="">
+						<label for="contacto">Fue contactado por </label>
+						<input type="text" class="form-control" name="contacto" placeholder="via de contacto">
 						<hr>
 					</div>
 					<div class="col-sm-4">
@@ -57,11 +57,11 @@
 							</select>
 					</div>
 					<div class="col-sm-4">
-						<label for="distrito">Distrito <span class="span_rojo">*</span></label>
+						<label for="distrito">Distrito </label>
 						<input type="text" class="form-control" name="distrito" placeholder="distrito">
 					</div>
 					<div class="col-sm-4">
-						<label for="provincia">Provincia <span class="span_rojo">*</span></label>
+						<label for="provincia">Provincia </label>
 						<input type="text" class="form-control" name="provincia" placeholder="provincia">
 						<hr>
 					</div>
@@ -108,13 +108,17 @@
 								<option value="Años">Años</option>
 							</select>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 							<label for="sexo_bebe">Sexo del bebe</label>
 							<select class="form-control" name="sexo_bebe">
 								<option value="">Seleccione</option>
 								<option value="Varon">Varon</option>
 								<option value="Hembra">Hembra</option>
 							</select>	
+						</div>
+						<div class="col-sm-3">
+							<label for="sexo_bebe">Fecha de nacimiento</label>
+							<input type="text" class="form-control fecha" name="fecha_nac" placeholder="d/m/a">	
 						</div>		
 					</section>
 
@@ -152,8 +156,8 @@
 						<h4 class="padding_1em label-primary">Articulo de interes y cita</h4>
 					</div>
 
-					<div class="col-sm-6">
-						<label for="">Seleccione un articulo <span class="span_rojo">*</span><small class="text-info"><i> <i class="fa fa-exclamation-circle"></i> Solo apareceran los articulos disponibles </i></small></label>
+					<div class="col-sm-3">
+						<label for="">Seleccione un articulo <span class="span_rojo">*</span></label>
 						<select name="articulo_id" class="form-control" required>
 							<option value="">seleccione</option>
 							@foreach($articulos as $articulo)
@@ -163,7 +167,13 @@
 					</div>
 
 					<div class="col-sm-3">
-						<label for="fecha_hora_cita">Fecha de cita <span class="span_rojo">*</span></label>
+						<label for="precio referencial">Precio referencial </label>
+						<br>
+						<input type="text" class="form-control" name="precio_ref" placeholder="precio referencial..">
+					</div>
+
+					<div class="col-sm-3">
+						<label for="fecha_hora_cita">Fecha de cita </label>
 						<br>
 						<input type="text" class="form-control fecha" name="fecha" placeholder="d/m/a" id="fecha">
 						<br>
@@ -173,8 +183,9 @@
 							</button>
 						</div>
 					</div>
+
 					<div class="col-sm-3">
-						<label for="fecha_hora_cita">Hora de cita <span class="span_rojo">*</span></label>
+						<label for="fecha_hora_cita">Hora de cita </label>
 						<br>
 						<input type='text' class='form-control timepicker hora' name='hora' placeholder='h/m :s'>
 						<br>

@@ -62,12 +62,14 @@ function cargarEntrevistas(btn_ver_entrevistas){
 			"<li class='list-group-item'><b>Tiempo de Embarazo: </b>"+res.tiempo_embarazo+"</li>"+
 			"<li class='list-group-item'><b>Tiempo de Nacido: </b>"+res.tiempo_nacido+"</li>"+
 			"<li class='list-group-item'><b>Sexo del Bebe: </b>"+res.sexo_bebe+"</li>"+
+			"<li class='list-group-item'><b>Fecha de Nacimiento: </b>"+res.fecha_nac+"</li>"+
 		"</ul>"
 		);
 
 		$("#ver_data_3").append(
 		"<ul class='list-group'>"+
 			"<li class='list-group-item'><b>Articulo: </b>"+res.articulo.name+"</li>"+
+			"<li class='list-group-item'><b>Precio referencial: </b>"+res.precio_ref+"</li>"+
 			"<li class='list-group-item'><b>Fecha pautada: </b>"+res.fecha+"</li>"+
 			"<li class='list-group-item'><b>Hora pautada: </b>"+res.hora+"</li>"+
 		"</ul>"

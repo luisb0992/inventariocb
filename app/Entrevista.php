@@ -34,6 +34,6 @@ class Entrevista extends Model
 	}
 
 	public function venta($id){
-		return Venta::where('entrevista_id', $id)->count();
+		return Venta::where('entrevista_id', $id)->value("status_id");
 	}
 }

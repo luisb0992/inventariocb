@@ -52,8 +52,6 @@ class EntrevistasController extends Controller
     	$this->validate($request, [
 	        'nombre' => 'required',
 	        'apellido' => 'required',
-	        'telefono' => 'required',
-	        'contacto' => 'required',
 	        'pais_id' => 'required',
 	        'articulo_id' => 'required'
 	    ]);
@@ -72,7 +70,9 @@ class EntrevistasController extends Controller
     	$entrevista->sexo_bebe = $request->sexo_bebe;
     	$entrevista->articulo_id = $request->articulo_id;
     	$entrevista->fecha = $request->fecha;
+    	$entrevista->fecha_nac = $request->fecha_nac;
     	$entrevista->hora = $request->hora;
+    	$entrevista->precio_ref = $request->precio_ref;
 
     	if ($request->tiempo_embarazo != null) {
     		$entrevista->tiempo_embarazo = $request->tiempo_embarazo.' '.$request->t_embarazo;

@@ -39,14 +39,14 @@
 	      				<div class="col-sm-4">
 	      					Precio<br>
 		      				<span class="h3">
-		      					<input type="text" class="form-control numero" name="precio" required>
+		      					<input type="text" class="form-control numero" name="precio" required value="{{ $entrevista->precio_ref }}">
 		      				</span>	
 	      				</div>
 	      				<div class="col-sm-2">
 	      					Unidad<br>
 		      				<span class="h3">
 		      					<select class="form-control" name="unidad_id" required="">
-		      						<option>seleccione...</option>
+		      						<option value="">seleccione...</option>
 		      						@foreach($unidades as $unidad)
 		      						<option value="{{ $unidad->id }}">{{ $unidad->name }}</option>
 		      						@endforeach

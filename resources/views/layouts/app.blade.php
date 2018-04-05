@@ -276,7 +276,7 @@
 			 $.datepicker.setDefaults($.datepicker.regional['es']);
 		
   		$(function () {
-  			$("#fecha").datepicker();
+  			$(".fecha").datepicker();
   		});
 
   		$('.timepicker').timepicker({
@@ -284,8 +284,8 @@
   		    interval: 30,
   		    minTime: '0',
   		    maxTime: '23:30pm',
-  		    defaultTime: '0',
-  		    startTime: '10:00',
+  		    defaultTime: '00:00',
+  		    startTime: '12:00',
   		    dynamic: true,
   		    dropdown: true,
   		    scrollbar: true
