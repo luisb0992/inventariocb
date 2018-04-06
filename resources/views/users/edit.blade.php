@@ -12,7 +12,7 @@
 		<!-- Formulario -->
 		<div class="row fondo_blanco padding_1em">
 			<div class="col-md-6 col-md-offset-3">
-				<form class="" action="{{ route('users.update',[$user->id])}}" method="POST" enctype="multipart/form-data">
+				<form class="" action="{{ route('users.update',[$user->id]) }}" method="POST" enctype="multipart/form-data">
 					{{ method_field('PATCH') }}
 					{{ csrf_field() }}
 					<h4 class="padding_1em label-warning">Editar Usuario</h4>

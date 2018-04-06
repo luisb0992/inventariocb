@@ -87,7 +87,7 @@
 	      					Status<br>
 		      				<span class="h3">
 		      					<select class="form-control" name="status_id" required="">
-		      						<option>seleccione...</option>
+		      						<option value="">seleccione...</option>
 		      						@foreach($status as $sta)
 		      						<option value="{{ $sta->id }}">{{ $sta->name }}</option>
 		      						@endforeach

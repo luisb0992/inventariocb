@@ -41,12 +41,12 @@
 						<hr>
 					</div>
 					<div class="col-sm-4">
-						<label for="telefono">Telefono <span class="span_rojo">*</span></label>
-						<input type="text" class="form-control" name="telefono" placeholder="telefono" required="" value="{{ $entrevista->telefono }}">
+						<label for="telefono">Telefono</label>
+						<input type="text" class="form-control" name="telefono" placeholder="telefono" value="{{ $entrevista->telefono }}">
 					</div>
 					<div class="col-sm-8">
-						<label for="contacto">Fue contactado por <span class="span_rojo">*</span></label>
-						<input type="text" class="form-control" name="contacto" placeholder="via de contacto" required="" value="{{ $entrevista->contacto }}">
+						<label for="contacto">Fue contactado por</label>
+						<input type="text" class="form-control" name="contacto" placeholder="via de contacto" value="{{ $entrevista->contacto }}">
 						<hr>
 					</div>
 					<div class="col-sm-4">
@@ -59,11 +59,11 @@
 							</select>
 					</div>
 					<div class="col-sm-4">
-						<label for="distrito">Distrito <span class="span_rojo">*</span></label>
+						<label for="distrito">Distrito</label>
 						<input type="text" class="form-control" name="distrito" placeholder="distrito" value="{{ $entrevista->distrito }}">
 					</div>
 					<div class="col-sm-4">
-						<label for="provincia">Provincia <span class="span_rojo">*</span></label>
+						<label for="provincia">Provincia</label>
 						<input type="text" class="form-control" name="provincia" placeholder="provincia" value="{{ $entrevista->provincia }}">
 						<hr>
 					</div>
@@ -77,8 +77,8 @@
 						<h4 class="padding_1em label-primary">Articulo de interes y cita</h4>
 					</div>
 
-					<div class="col-sm-6">
-						<label for="">Seleccione un articulo <span class="span_rojo">*</span><small class="text-info"><i> <i class="fa fa-exclamation-circle"></i> Solo apareceran los articulos disponibles </i></small></label>
+					<div class="col-sm-3">
+						<label for="">Seleccione un articulo <span class="span_rojo">*</span></label>
 						<select name="articulo_id" class="form-control" required>
 							<option value="">seleccione</option>
 							@foreach($articulos as $articulo)
@@ -88,7 +88,13 @@
 					</div>
 
 					<div class="col-sm-3">
-						<label for="fecha_hora_cita">Fecha de cita <span class="span_rojo">*</span></label>
+						<label for="precio referencial">Precio referencial </label>
+						<br>
+						<input type="text" class="form-control" name="precio_ref" placeholder="precio referencial.." value="{{ $entrevista->precio_ref }}">
+					</div>
+
+					<div class="col-sm-3">
+						<label for="fecha_hora_cita">Fecha de cita</label>
 						<br>
 						<input type="text" class="form-control fecha" name="fecha" placeholder="d/m/a" id="fecha" value="{{ $entrevista->fecha }}">
 						<br>
@@ -99,7 +105,7 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<label for="fecha_hora_cita">Hora de cita <span class="span_rojo">*</span></label>
+						<label for="fecha_hora_cita">Hora de cita</label>
 						<br>
 						<input type='text' class='form-control timepicker hora' name='hora' placeholder='h/m :s' value="{{ $entrevista->fecha }}">
 						<br>
@@ -122,7 +128,7 @@
 					
 					<div class="col-sm-12 text-right">
 					<hr>
-						<a class="btn btn-flat btn-default" href="{{route('entrevistas.index')}}">
+						<a class="btn btn-flat btn-default" href="{{ route('entrevistas.index') }}">
 							<i class="fa fa-reply"></i> Atras
 						</a>
 						<button class="btn btn-flat btn-primary" type="submit">

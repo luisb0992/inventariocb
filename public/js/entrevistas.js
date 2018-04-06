@@ -109,6 +109,20 @@ function cargarEntrevistas(btn_ver_entrevistas){
 	  	$("#data_coment").show(1000,"linear");
 	}
 
+	function cargarDatosBebe(btn_datos_bebe){
+		var ruta = $('#ruta_ver_entrevistas').attr('href')+"/"+btn_datos_bebe.value;
+
+		$("#reload_data_bebe").fadeIn(400,"linear");
+	  	$.get(ruta, function(res){
+	    	$("#form_bebe").attr('action', "entrevistas/"+res.id+"" );
+	    	$("#t_emba").val(res.tiempo_embarazo);
+	    	$("#t_nac").val(res.tiempo_nacido);
+	    	$("#sexo_bb").val(res.sexo_bebe);
+	    	$("#fecha_nac").val(res.fecha_nac);
+	  	});
+	  	$("#reload_data_bebe").fadeOut(400,"linear");
+	}
+
   	$(".btn_save_comentario").click(function(e){
 
   			e.preventDefault();

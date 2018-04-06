@@ -52,6 +52,7 @@
 								<th class="text-center">Articulo</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
+								<th class="text-center">Datos del Bebe</th>
 								<th class="text-center">Descargar</th>
 								<th class="text-center">Venta</th>
 								<th class="text-center">Accion</th>
@@ -65,6 +66,12 @@
 									<td>{{$t->articulo->name}}</td>
 									<td>{{$t->fecha}}</td>
 									<td>@if($t->hora == '') 00:00 @else {{$t->hora}} @endif</td>
+									<td>
+										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#datos_bebe" id="btn_datos_bebe" value="{{ $t->id }}" onclick="cargarDatosBebe(this);">
+			                    			<i class="fa fa-eye"></i> Ver
+			                    		</button>
+			                    		@include('entrevistas.modal_datos_bebe')
+			                    	</td>
 									<td>
 										<form action="{{ url('pdf_entrevistas/'.$t->id) }}" method="GET">
 										{{ csrf_field() }}
