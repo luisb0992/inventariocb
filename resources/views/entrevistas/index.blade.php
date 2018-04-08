@@ -44,6 +44,9 @@
       				<div id="reload_active" style="display: none" class="text-center">
 						<i class="fa fa-refresh fa-spin fa-3x fa-fw text-success"></i>
 					</div>
+					<div class="col-sm-12 bg-danger">
+						<h3>Mis entrevistas</h3>
+					</div>	
 					<table class="table data-table table-bordered table-hover">
 						<thead class="label-danger">
 							<tr>

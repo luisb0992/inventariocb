@@ -19,7 +19,6 @@ class VentasController extends Controller
      */
     public function index()
     {
-    	::all();
 
     	if (\Auth::check()) {
     		$user = \Auth::user()->id;
@@ -73,7 +72,7 @@ class VentasController extends Controller
         	$articulo->save();
 
 	        return redirect("ventas")->with([
-	          'flash_message' => 'venta concretada corectamente',
+	          'flash_message' => 'venta registrada corectamente',
 	          'flash_class' => 'alert-success'
 	        ]);
 
