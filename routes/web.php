@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::resource('entrevistas','EntrevistasController');
 	Route::get('cargarEntrevistas/{id}', 'EntrevistasController@show');
 	Route::get('cargarEntrevistaOne/{id}', 'EntrevistasController@show_id');
+	Route::get('eliminarEntrevista/{id}', 'EntrevistasController@eliminar');
 
 	// PDF entrevistas
 	Route::get('pdf_entrevistas/{id}', 'EntrevistasController@pdf');

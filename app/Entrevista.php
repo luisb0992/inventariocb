@@ -12,7 +12,7 @@ class Entrevista extends Model
     	"user_id", "nombre", "apellido", "direccion", "email",
     	"telefono", "contacto", "pais_id", "distrito", "provincia",
     	"tiempo_embarazo", "sexo_bebe", "tiempo_nacido",
-    	"articulo_id", "fecha", "hora", "fecha_nac", "precio_ref"
+    	"articulo_id", "fecha", "hora", "fecha_nac", "precio_ref","status"
     ];
 
 	// relaciones

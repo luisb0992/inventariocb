@@ -33,7 +33,7 @@
 	      				<div class="col-sm-3">
 	      					Numero de Contrato<br>
 		      				<span class="h3">
-		      					<input type="text" class="form-control" name="numero_contrato" required>
+		      					<input type="text" class="form-control" name="numero_contrato" required value="{{ $venta }}" readonly>
 		      				</span>	
 	      				</div>
 	      				<div class="col-sm-4">

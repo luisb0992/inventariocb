@@ -21,8 +21,12 @@ class VentasController extends Controller
     {
 
     	if (\Auth::check()) {
-    		$user = \Auth::user()->id;
-    		$ventas = Venta::where('user_id', $user)->get();	
+    		if (\Auth::user()->perfil_id == 1) {
+    			$ventas = Venta::all();
+    		}else{
+    			$user = \Auth::user()->id;
+    			$ventas = Venta::where('user_id', $user)->get();
+    		}	
     	}else{
     		return view('login');
     	}
@@ -61,6 +65,8 @@ class VentasController extends Controller
 	        'deuda' => 'required',
 	        'status_id' => 'required'
 	    ]);
+
+	    //dd("esta llegando");
 
 	    $venta = new Venta();
         $venta->fill($request->all());
@@ -135,12 +141,21 @@ class VentasController extends Controller
     public function venta($id)
     {
         $entrevista = Entrevista::findOrFail($id);
+        $venta = Venta::orderBy('id', 'DESC')->value('numero_contrato');
+
+        if ($venta) {
+        	$venta = $venta + 1;
+        }else{
+        	$venta = 51;
+        }
+        
         $unidades = Unidad::all();
         $status = Status::all();
         return view('ventas.venta', [
         	"entrevista" => $entrevista,
         	"unidades" => $unidades,
-        	"status" => $status
+        	"status" => $status,
+        	"venta" => $venta
         ]);
     }
 

@@ -22,7 +22,7 @@ class EntrevistasController extends Controller
     {
     	if (\Auth::check()) {
     		$user = \Auth::user()->id;
-    		$entrevistas = Entrevista::where('user_id', $user)->get();	
+    		$entrevistas = Entrevista::where('user_id', $user)->where('status', 1)->get();	
     	}else{
     		return view('login');
     	}
@@ -80,6 +80,7 @@ class EntrevistasController extends Controller
     	$entrevista->fecha_nac = $request->fecha_nac;
     	$entrevista->hora = $request->hora;
     	$entrevista->precio_ref = $request->precio_ref;
+    	$entrevista->status = 1;
 
     	if ($request->tiempo_embarazo != null) {
     		$entrevista->tiempo_embarazo = $request->tiempo_embarazo.' '.$request->t_embarazo;
@@ -210,5 +211,25 @@ class EntrevistasController extends Controller
     	$pdf = PDF::loadView('entrevistas.pdf', compact('entrevista'));
 
         return $pdf->setPaper('a4', 'landscape')->download(date("d-m-Y h:m:s").'.pdf');
+    }
+
+    public function eliminar($id){
+
+    	$entrevista = Entrevista::findOrFail($id);
+
+    	$entrevista->status = 0;
+
+        if($entrevista->save()){
+	        return redirect("entrevistas")->with([
+	          'flash_message' => 'Entrevista eliminada correctamente.',
+	          'flash_class' => 'alert-success'
+	          ]);
+	      }else{
+	        return redirect("entrevistas")->with([
+	          'flash_message' => 'Ha ocurrido un error.',
+	          'flash_class' => 'alert-danger',
+	          'flash_important' => true
+	          ]);
+	      }
     }
 }

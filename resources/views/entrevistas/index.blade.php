@@ -57,7 +57,7 @@
 								<th class="text-center">Hora</th>
 								<th class="text-center">Descargar</th>
 								<th class="text-center">Venta</th>
-								<th class="text-center">Accion</th>
+								<th class="text-center" style="width: 300px">Accion</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
@@ -98,11 +98,11 @@
 			                    		@include('entrevistas.modal_ver_entrevistas')
 
 			                    		<button type="button" class="btn btn-success btn-flat btn-sm" data-toggle="modal" data-target="#nuevo_comentario" id="btn_nuevo_comentario" value="{{ $t->id }}" onclick="cargarComentarios(this);">
-			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i> Nuevo comentario
+			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i> comentario
 			                    		</button>
 			                    		@include('entrevistas.modal_nuevo_comentario')
 
-										<!--<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a> -->
+										<a href="{{ url('eliminarEntrevista/'.$t->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar S/N');"><i class="fa fa-remove"></i> Eliminar</a> 
 									</td>
 								</tr>
 							@endforeach

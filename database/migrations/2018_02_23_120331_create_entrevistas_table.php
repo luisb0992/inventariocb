@@ -49,7 +49,8 @@ class CreateEntrevistasTable extends Migration
 
 						$table->string('precio_ref')->nullable();
 						$table->string('fecha')->nullable();
-						$table->string('hora')->nullable();      
+						$table->string('hora')->nullable();
+						$table->integer('status')->unsigned();      
 						$table->timestamps();
 				});
 		}

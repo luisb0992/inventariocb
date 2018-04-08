@@ -280,7 +280,7 @@
   		});
 
   		$('.timepicker').timepicker({
-  		    timeFormat: 'h:mm p',
+  		    timeFormat: 'HH:mm p',
   		    interval: 30,
   		    minTime: '0',
   		    maxTime: '23:30pm',
