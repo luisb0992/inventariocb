@@ -19,7 +19,15 @@ class VentasController extends Controller
      */
     public function index()
     {
-    	$ventas = Venta::all();
+    	::all();
+
+    	if (\Auth::check()) {
+    		$user = \Auth::user()->id;
+    		$ventas = Venta::where('user_id', $user)->get();	
+    	}else{
+    		return view('login');
+    	}
+    	
         return view("ventas.index",[
         	'ventas' => $ventas
         ]);

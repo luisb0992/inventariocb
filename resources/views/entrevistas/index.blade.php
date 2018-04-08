@@ -52,7 +52,6 @@
 								<th class="text-center">Articulo</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
-								<th class="text-center">Datos del Bebe</th>
 								<th class="text-center">Descargar</th>
 								<th class="text-center">Venta</th>
 								<th class="text-center">Accion</th>
@@ -67,16 +66,10 @@
 									<td>{{$t->fecha}}</td>
 									<td>@if($t->hora == '') 00:00 @else {{$t->hora}} @endif</td>
 									<td>
-										<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#datos_bebe" id="btn_datos_bebe" value="{{ $t->id }}" onclick="cargarDatosBebe(this);">
-			                    			<i class="fa fa-eye"></i> Ver
-			                    		</button>
-			                    		@include('entrevistas.modal_datos_bebe')
-			                    	</td>
-									<td>
 										<form action="{{ url('pdf_entrevistas/'.$t->id) }}" method="GET">
 										{{ csrf_field() }}
 										<button type="submit" class="btn btn-danger btn-sm" id="imprimir" name="id">
-											<i class="fa fa-file-pdf-o"></i>
+											<i class="fa fa-file-pdf-o"></i> PDF
 										</button>
 										</form>
 									</td>
@@ -91,22 +84,22 @@
 											<i class="fa fa-long-arrow-right text-warning"></i> En espera
 										@else
 											<a href="{{ url('vender/'.$t->id) }}" class="btn btn-info btn-sm">
-												<i class="fa fa-shopping-cart"></i>
+												<i class="fa fa-shopping-cart"></i> Procesar
 											</a>
 										@endif
 									</td>
 									<td>
 										<button type="button" class="btn btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#ver_entrevistas" id="btn_ver_entrevistas" value="{{ $t->id }}" onclick="cargarEntrevistas(this);">
-			                    			<i class="fa fa-eye"></i>
+			                    			<i class="fa fa-eye"></i> Ver y editar
 			                    		</button>
 			                    		@include('entrevistas.modal_ver_entrevistas')
 
 			                    		<button type="button" class="btn btn-success btn-flat btn-sm" data-toggle="modal" data-target="#nuevo_comentario" id="btn_nuevo_comentario" value="{{ $t->id }}" onclick="cargarComentarios(this);">
-			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i>
+			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i> Nuevo comentario
 			                    		</button>
 			                    		@include('entrevistas.modal_nuevo_comentario')
 
-										<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a> 
+										<!--<a href="{{route('entrevistas.edit',[$t->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a> -->
 									</td>
 								</tr>
 							@endforeach

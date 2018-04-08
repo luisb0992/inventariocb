@@ -20,9 +20,16 @@ class EntrevistasController extends Controller
      */
     public function index()
     {
+    	if (\Auth::check()) {
+    		$user = \Auth::user()->id;
+    		$entrevistas = Entrevista::where('user_id', $user)->get();	
+    	}else{
+    		return view('login');
+    	}
+    	
+    	//dd($entrevistas);
         return view("entrevistas.index",[
-            "entrevistas" => Entrevista::all(
-                ["id", "nombre", "apellido", "articulo_id", "fecha", "hora"]),
+            "entrevistas" => $entrevistas
         ]);
     }
 

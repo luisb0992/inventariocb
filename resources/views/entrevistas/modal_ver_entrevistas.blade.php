@@ -1,6 +1,9 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="ver_entrevistas">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
+			<form id="form_data_entre" method="POST">
+				{{ method_field('PATCH') }}
+				{{ csrf_field() }}
 				<div class="">
 					<buttton class="close" type="button" data-dismiss="modal">&times;</buttton>
 					<div class="label-primary text-center padding_1em">
@@ -60,8 +63,10 @@
 				<div class="padding_1em">
 					<div class="text-right">
 						<input type="button" class="btn" data-dismiss="modal" value="Cerrar">
+						<input type="submit" class="btn btn-success" value="Actualizar">
 					</div>
 				</div>
+			</form>	
 		</div>	
 	</div>
 </div>

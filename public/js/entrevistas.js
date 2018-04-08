@@ -43,35 +43,59 @@ function cargarEntrevistas(btn_ver_entrevistas){
 	var ruta = $('#ruta_ver_entrevistas').attr('href')+"/"+btn_ver_entrevistas.value;
 
   	$.get(ruta, function(res){
+  		$("#form_data_entre").attr('action', "entrevistas/"+res.id+"" );
   		$("#per_nombre").append("<i class='fa fa-user-o'></i>"+' '+res.nombre+' '+res.apellido);
 
 		$("#ver_data").append(
 		"<ul class='list-group'>"+
-			"<li class='list-group-item'><b>Telefono: </b>"+res.telefono+"</li>"+
-			"<li class='list-group-item'><b>Email: </b>"+res.email+"</li>"+
-			"<li class='list-group-item'><b>Direccion: </b>"+res.direccion+"</li>"+
-			"<li class='list-group-item'><b>Contactado Por: </b>"+res.contacto+"</li>"+
-			"<li class='list-group-item'><b>Pais: </b>"+res.pais.name+"</li>"+
-			"<li class='list-group-item'><b>Distrito: </b>"+res.distrito+"</li>"+
-			"<li class='list-group-item'><b>Provincia: </b>"+res.provincia+"</li>"+
+			"<li class='list-group-item'><b>Telefono: </b>"+
+				"<input class='form-control' name='telefono' value='"+res.telefono+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Email: </b>"+
+				"<input class='form-control' name='email' value='"+res.email+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Direccion: </b>"+
+				"<input class='form-control' name='direccion' value='"+res.direccion+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Contactado Por: </b>"+
+				"<input class='form-control' name='contacto' value='"+res.contacto+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Distrito: </b>"+
+				"<input class='form-control' name='distrito' value='"+res.distrito+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Provincia: </b>"+
+				"<input class='form-control' name='provincia' value='"+res.provincia+"'>"+
+			"</li>"+
 		"</ul>"
 		);
-		
 		$("#ver_data_2").append(
 		"<ul class='list-group'>"+
-			"<li class='list-group-item'><b>Tiempo de Embarazo: </b>"+res.tiempo_embarazo+"</li>"+
-			"<li class='list-group-item'><b>Tiempo de Nacido: </b>"+res.tiempo_nacido+"</li>"+
-			"<li class='list-group-item'><b>Sexo del Bebe: </b>"+res.sexo_bebe+"</li>"+
-			"<li class='list-group-item'><b>Fecha de Nacimiento: </b>"+res.fecha_nac+"</li>"+
+			"<li class='list-group-item'><b>Tiempo de Embarazo: </b>"+
+				"<input class='form-control' name='tiempo_embarazo' value='"+res.tiempo_embarazo+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Tiempo de Nacido: </b>"+
+				"<input class='form-control' name='tiempo_nacido' value='"+res.tiempo_nacido+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Sexo del Bebe: </b>"+
+				"<input class='form-control' name='sexo_bebe' value='"+res.sexo_bebe+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Fecha de Nacimiento: </b>"+
+				"<input class='form-control fecha' name='fecha_nac' value='"+res.fecha_nac+"'>"+
+			"</li>"+
 		"</ul>"
 		);
 
 		$("#ver_data_3").append(
 		"<ul class='list-group'>"+
-			"<li class='list-group-item'><b>Articulo: </b>"+res.articulo.name+"</li>"+
-			"<li class='list-group-item'><b>Precio referencial: </b>"+res.precio_ref+"</li>"+
-			"<li class='list-group-item'><b>Fecha pautada: </b>"+res.fecha+"</li>"+
-			"<li class='list-group-item'><b>Hora pautada: </b>"+res.hora+"</li>"+
+			"<li class='list-group-item'><b>Precio referencial: </b>"+
+				"<input class='form-control' name='precio_ref' value='"+res.precio_ref+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Fecha pautada: </b>"+
+				"<input class='form-control fecha' name='fecha' value='"+res.fecha+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Hora pautada: </b>"+
+				"<input class='form-control timepicker hora' name='hora' value='"+res.hora+"'>"+
+			"</li>"+
 		"</ul>"
 		);
 
