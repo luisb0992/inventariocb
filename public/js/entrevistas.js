@@ -33,6 +33,7 @@ $("#btn_hora").click(function(e){
 
 // cargar entrevistas
 function cargarEntrevistas(btn_ver_entrevistas){
+	$("#p_c").empty();
 	$("#ver_data").empty();
 	$("#ver_data_2").empty();
 	$("#ver_data_3").empty();
@@ -43,58 +44,67 @@ function cargarEntrevistas(btn_ver_entrevistas){
 	var ruta = $('#ruta_ver_entrevistas').attr('href')+"/"+btn_ver_entrevistas.value;
 
   	$.get(ruta, function(res){
+  		var fecha = new Date(res.created_at);
   		$("#form_data_entre").attr('action', "entrevistas/"+res.id+"" );
-  		$("#per_nombre").append("<i class='fa fa-user-o'></i>"+' '+res.nombre+' '+res.apellido);
+  		$("#p_c").append('<span>'+fecha.toLocaleDateString("es-ES",{ year: 'numeric', month: 'numeric', day: 'numeric' }
+)+'</span>');
 
 		$("#ver_data").append(
 		"<ul class='list-group'>"+
-			"<li class='list-group-item'><b>Telefono: </b>"+
-				"<input class='form-control' name='telefono' value='"+res.telefono+"'>"+
+			"<li class='list-group-item'><b>Nombre </b>"+
+				"<input class='form-control' style='width:100%' name='nombre' value='"+res.nombre+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Email: </b>"+
-				"<input class='form-control' name='email' value='"+res.email+"'>"+
+			"<li class='list-group-item'><b>Apellido </b>"+
+				"<input class='form-control' style='width:100%' name='apellido' value='"+res.apellido+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Direccion: </b>"+
-				"<input class='form-control' name='direccion' value='"+res.direccion+"'>"+
+			"<li class='list-group-item'><b>Telefono </b>"+
+				"<input class='form-control' style='width:100%' name='telefono' value='"+res.telefono+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Contactado Por: </b>"+
-				"<input class='form-control' name='contacto' value='"+res.contacto+"'>"+
+			"<li class='list-group-item'><b>Email </b>"+
+				"<input class='form-control' style='width:100%' name='email' value='"+res.email+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Distrito: </b>"+
-				"<input class='form-control' name='distrito' value='"+res.distrito+"'>"+
+			"<li class='list-group-item'><b>Direccion </b>"+
+				"<input class='form-control' style='width:100%' name='direccion' value='"+res.direccion+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Provincia: </b>"+
-				"<input class='form-control' name='provincia' value='"+res.provincia+"'>"+
+			"<li class='list-group-item'><b>ContactadoPor: </b>"+
+				"<input class='form-control' style='width:100%' name='contacto' value='"+res.contacto+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Distrito </b>"+
+				"<input class='form-control' style='width:100%' name='distrito' value='"+res.distrito+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><b>Provincia </b>"+
+				"<input class='form-control' style='width:100%' name='provincia' value='"+res.provincia+"'>"+
 			"</li>"+
 		"</ul>"
 		);
+
 		$("#ver_data_2").append(
 		"<ul class='list-group'>"+
-			"<li class='list-group-item'><b>Tiempo de Embarazo: </b>"+
-				"<input class='form-control' name='tiempo_embarazo' value='"+res.tiempo_embarazo+"'>"+
+			"<li class='list-group-item'><b>Tiempo de Embarazo </b>"+
+				"<input class='form-control' style='width:100%' name='tiempo_embarazo' value='"+res.tiempo_embarazo+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Tiempo de Nacido: </b>"+
-				"<input class='form-control' name='tiempo_nacido' value='"+res.tiempo_nacido+"'>"+
+			"<li class='list-group-item'><b>Tiempo de Nacido </b>"+
+				"<input class='form-control' style='width:100%' name='tiempo_nacido' value='"+res.tiempo_nacido+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Sexo del Bebe: </b>"+
-				"<input class='form-control' name='sexo_bebe' value='"+res.sexo_bebe+"'>"+
+			"<li class='list-group-item'><b>Sexo del Bebe </b>"+
+				"<input class='form-control' style='width:100%' name='sexo_bebe' value='"+res.sexo_bebe+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Fecha de Nacimiento: </b>"+
-				"<input class='form-control fecha' name='fecha_nac' value='"+res.fecha_nac+"'>"+
+			"<li class='list-group-item'><b>Fecha de Nacimiento </b>"+
+				"<input class='form-control fecha' name='fecha_nac' style='width:100%' value='"+res.fecha_nac+"'>"+
 			"</li>"+
 		"</ul>"
 		);
 
 		$("#ver_data_3").append(
 		"<ul class='list-group'>"+
-			"<li class='list-group-item'><b>Precio referencial: </b>"+
-				"<input class='form-control' name='precio_ref' value='"+res.precio_ref+"'>"+
+			"<li class='list-group-item'><b>Precio referencial </b>"+
+				"<input class='form-control' style='width:100%' name='precio_ref' value='"+res.precio_ref+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Fecha pautada: </b>"+
-				"<input class='form-control fecha' name='fecha' value='"+res.fecha+"'>"+
+			"<li class='list-group-item'><b>Fecha pautada </b>"+
+				"<input class='form-control fecha' style='width:100%' name='fecha' value='"+res.fecha+"'>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Hora pautada: </b>"+
-				"<input class='form-control timepicker hora' name='hora' value='"+res.hora+"'>"+
+			"<li class='list-group-item'><b>Hora pautada </b>"+
+				"<input class='form-control timepicker hora' style='width:100%' name='hora' value='"+res.hora+"'>"+
 			"</li>"+
 		"</ul>"
 		);

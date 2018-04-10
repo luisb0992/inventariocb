@@ -102,7 +102,9 @@
 			                    		</button>
 			                    		@include('entrevistas.modal_nuevo_comentario')
 
-										<a href="{{ url('eliminarEntrevista/'.$t->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar S/N');"><i class="fa fa-remove"></i> Eliminar</a> 
+			                    		@if(\Auth::user()->perfil_id == 1)
+										<a href="{{ url('eliminarEntrevista/'.$t->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar S/N?');"><i class="fa fa-remove"></i> Eliminar</a>
+										@endif 
 									</td>
 								</tr>
 							@endforeach

@@ -1,7 +1,7 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="ver_entrevistas">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form id="form_data_entre" method="POST">
+			<form id="form_data_entre" method="POST" class="form-inline">
 				{{ method_field('PATCH') }}
 				{{ csrf_field() }}
 				<div class="">
@@ -13,7 +13,7 @@
 						
 						<!-- nombre de la persona -->
 						<div class="label-primary padding_1em">
-							<span id="per_nombre" class="text-capitalize"></span> 
+							<span class="text-capitalize">Datos Personales <span class="pull-right">Primer Contacto <strong id="p_c"></strong></span></span> 
 							<span style="display: none" class="pull-right reload_data">
 								<i class="fa fa-spinner fa-pulse fa-fw"></i> ...
 							</span>

@@ -65,7 +65,17 @@ class GruposController extends Controller
      */
     public function show($id)
     {
-        //
+
+    }
+
+    public function mostrar()
+    {
+        $grupo = Grupo::where('user_id', \Auth::user()->id)->first();
+
+        return view("grupos.show",[
+        	'grupo' => $grupo
+        ]);
+
     }
 
     /**

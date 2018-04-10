@@ -183,7 +183,8 @@
                   <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver entrevistas</a></li>
                   <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li>
                 </ul>
-              </li>  
+              </li>
+              <li><a href="{{ url('mostrar') }}"><i class="fa fa-group"></i>Mis Grupos</a></li>  
             @endif  
           </ul>
         </section>
