@@ -121,6 +121,7 @@
                 <li><a href="{{ route('users.index') }}"><i class="fa fa-circle-o"></i>Ver usuarios</a></li>
                 <li><a href="{{ route('users.create') }}"><i class="fa fa-circle-o"></i>Agregar usuario</a></li>
                 <li><a href="{{ route('grupos.index') }}"><i class="fa fa-circle-o"></i>Grupos</a></li>
+                <li><a href="{{ route('redes.index') }}"><i class="fa fa-circle-o"></i>Redes Sociales</a></li>
               </ul>
             </li>
             
@@ -184,7 +185,8 @@
                   <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li>
                 </ul>
               </li>
-              <li><a href="{{ url('mostrar') }}"><i class="fa fa-group"></i>Mis Grupos</a></li>  
+              <li><a href="{{ url('mostrar') }}"><i class="fa fa-group"></i>Mis Grupos</a></li>
+              <li><a href="{{ route('redes.index') }}"><i class="fa fa-soundcloud"></i>Redes Sociales</a></li>  
             @endif  
           </ul>
         </section>

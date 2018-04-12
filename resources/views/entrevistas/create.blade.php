@@ -161,7 +161,7 @@
 						<select name="articulo_id" class="form-control" required>
 							<option value="">seleccione</option>
 							@foreach($articulos as $articulo)
-							<option value="{{ $articulo->id }}">{{ $articulo->name }}</option>
+							<option value="{{ $articulo->id }}">{{ $articulo->name }} - {{ $articulo->color->name }} - {{ $articulo->modelo->name }}</option>
 							@endforeach
 						</select>
 					</div>

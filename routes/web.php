@@ -31,6 +31,8 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::resource('grupos','GruposController',["middleware" => 'rol_admin']);
 	Route::get('mostrar', 'GruposController@mostrar');
 
+	Route::resource('redes','RedesController');
+
 	// entrevistas
 	Route::resource('entrevistas','EntrevistasController');
 	Route::get('cargarEntrevistas/{id}', 'EntrevistasController@show');
