@@ -148,8 +148,11 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-6" id="container"></div>
-		<div class="col-sm-6" id="container2"></div>
+		<div class="col-sm-12" id="container"></div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-sm-12" id="container2"></div>
 	</div>
 @endsection
 @section("script")

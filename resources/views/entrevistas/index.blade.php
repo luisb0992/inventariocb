@@ -53,6 +53,9 @@
 								<th class="text-center">#</th>
 								<th class="text-center">Nombre y Apellido</th>
 								<th class="text-center">Articulo</th>
+								<th class="text-center">Modelo</th>
+								<th class="text-center">Color</th>
+								<th class="text-center">C. Tubo</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
 								<th class="text-center">Descargar</th>
@@ -66,6 +69,9 @@
 									<td>{{$loop->index+1}}</td>
 									<td>{{$t->nombre}} {{$t->apellido}}</td>
 									<td>{{$t->articulo->name}}</td>
+									<td>{{$t->articulo->modelo->name}}</td>
+									<td>{{$t->articulo->color->name}}</td>
+									<td>{{$t->articulo->color_tubo}}</td>
 									<td>{{$t->fecha}}</td>
 									<td>@if($t->hora == '') 00:00 @else {{$t->hora}} @endif</td>
 									<td>
