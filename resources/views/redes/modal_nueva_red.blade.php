@@ -18,6 +18,10 @@
 							<input type="text" name="fecha" class="form-control fecha" required="">
 						</div>
 						<div class="form-group">
+							<label>Cantidad</label>
+							<input type="text" name="cantidad" class="form-control" required="">
+						</div>
+						<div class="form-group">
 							<label>Descripcion</label>
 							<textarea class="form-control" name="descripcion"></textarea>
 						</div>

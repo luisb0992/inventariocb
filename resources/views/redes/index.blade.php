@@ -29,6 +29,7 @@
 								<th class="text-center">Usuario</th>
 								<th class="text-center">Link de Facebook</th>
 								<th class="text-center">fecha de creacion</th>
+								<th class="text-center">Cantidad</th>
 								<th class="text-center">descripcion</th>
 							</tr>
 						</thead>
@@ -39,6 +40,7 @@
 									<td>{{ $red->user->name }} {{ $red->user->apellido }}</td>
 									<td>{{ $red->link_f }}</td>
 									<td>{{ $red->fecha }}</td>
+									<td>{{ $red->cantidad }}</td>
 									<td>{{ $red->descripcion }}</td>
 								</tr>
 							@endforeach
