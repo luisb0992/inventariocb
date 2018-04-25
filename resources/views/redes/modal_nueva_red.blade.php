@@ -6,7 +6,7 @@
 				<div class="">
 					<buttton class="close" type="button" data-dismiss="modal">&times;</buttton>
 					<div class="label-primary text-center padding_1em">
-						<h3><i class="fa fa-facebook"></i> Nueva Red social</h3>
+						<h3>Nuevo Grupo</h3>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
@@ -18,7 +18,11 @@
 							<input type="text" name="fecha" class="form-control fecha" required="">
 						</div>
 						<div class="form-group">
-							<label>Cantidad</label>
+							<label>Hora de Creacion</label>
+							<input type='text' class='form-control timepicker' name='hora' placeholder='h/m :s' required="">
+						</div>
+						<div class="form-group">
+							<label>Cantidad de personas</label>
 							<input type="text" name="cantidad" class="form-control" required="">
 						</div>
 						<div class="form-group">

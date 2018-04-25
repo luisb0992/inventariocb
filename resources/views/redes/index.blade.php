@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title','Redes Sociales - '.config('app.name'))
-@section('header','Redes')
+@section('title','Grupos - '.config('app.name'))
+@section('header','Grupos')
 @section('breadcrumb')
 	<ol class="breadcrumb">
 	  <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-	  <li class="active"> Redes Sociales </li>
+	  <li class="active"> Grupos </li>
 	</ol>
 @endsection
 @section('content')
@@ -16,7 +16,7 @@
 		      	<div class="box-header with-border">
 		        	<span class="pull-left">
 						<a href="#nuevo_red" class="btn btn-lg btn-success" data-toggle="modal" data-target="#nuevo_red">
-							<i class="fa fa-plus" aria-hidden="true"></i> Nueva
+							<i class="fa fa-plus" aria-hidden="true"></i> Nuevo
 						</a>
 					</span>
 					@include('redes.modal_nueva_red')
@@ -29,7 +29,8 @@
 								<th class="text-center">Usuario</th>
 								<th class="text-center">Link de Facebook</th>
 								<th class="text-center">fecha de creacion</th>
-								<th class="text-center">Cantidad</th>
+								<th class="text-center">hora de creacion</th>
+								<th class="text-center">Cantidad personas</th>
 								<th class="text-center">descripcion</th>
 							</tr>
 						</thead>
@@ -40,6 +41,7 @@
 									<td>{{ $red->user->name }} {{ $red->user->apellido }}</td>
 									<td>{{ $red->link_f }}</td>
 									<td>{{ $red->fecha }}</td>
+									<td>{{ $red->hora }}</td>
 									<td>{{ $red->cantidad }}</td>
 									<td>{{ $red->descripcion }}</td>
 								</tr>

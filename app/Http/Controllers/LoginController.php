@@ -23,13 +23,29 @@ class LoginController extends Controller
     	]);
 
       	if (Auth::attempt($request->only(['email','password']))){
-      		if (\Auth::check()) {
-      			$id = \Auth::user()->id;
-	    		$user = user::findOrFail($id);
-	    		$user->online = 1;
-	    		$user->save();
+
+	    	if (\Auth::check()) {
+      			if (Auth::user()->status == 2) {
+      				Auth::logout();
+      				return redirect()->route('login')->with([
+			          'flash_message' => 'Usuario Inactivo, contacte con el administrador!',
+			          'flash_class' => 'alert-warning'
+			          ]);
+      			}elseif(Auth::user()->status == 3){
+      				Auth::logout();
+      				return redirect()->route('login')->with([
+			          'flash_message' => 'Usuario Suspendido, contacte con el administrador!',
+			          'flash_class' => 'alert-danger'
+			          ]);
+      			}else{
+	      			$id = \Auth::user()->id;
+		    		$user = user::findOrFail($id);
+		    		$user->online = 1;
+		    		$user->save();
+      				return redirect()->intended('dashboard');
+      			}
 	    	}
-      		return redirect()->intended('dashboard');
+      	
       	}else{
       		return redirect()->route('login')->withErrors('¡Error!, Revise sus credenciales');
       	}

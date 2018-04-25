@@ -86,7 +86,12 @@ class GruposController extends Controller
      */
     public function edit($id)
     {
-        //
+    	$grupo = Grupo::findOrFail($id);
+
+        return view('grupos.edit',[
+        	'users' => User::all(),
+        	'grupo' => $grupo
+        ]);
     }
 
     /**
@@ -98,7 +103,21 @@ class GruposController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+          $grupo = Grupo::findOrFail($id);
+	      $grupo->fill($request->all());
+
+	      if($grupo->save()){
+	        return redirect("grupos")->with([
+	          'flash_message' => 'Grupo actualizado correctamente.',
+	          'flash_class' => 'alert-success'
+	          ]);
+	      }else{
+	        return redirect("grupos")->with([
+	          'flash_message' => 'Ha ocurrido un error.',
+	          'flash_class' => 'alert-danger',
+	          'flash_important' => true
+	          ]);
+	      }
     }
 
     /**

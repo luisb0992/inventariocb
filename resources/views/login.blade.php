@@ -24,6 +24,7 @@
 	<body class="fondo_login img-responsive">
 	  <div class="row">
 	  		<div class="col-sm-12">
+	  			@include('partials.flash')
 			  <div class="login-box">
 			    <div class="login-logo">
 			      <center>

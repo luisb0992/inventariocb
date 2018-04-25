@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Perfil;
+use App\Entrevista;
+use App\Venta;
+use App\Grupo;
+use App\Red;
 
 class UserController extends Controller
 {
@@ -75,7 +79,14 @@ class UserController extends Controller
     public function show($id)
     {
       $user = user::findOrFail($id);
-      return view("users.view", ["user" => $user]);
+
+      return view("users.view", [
+      		"user" => $user,
+      		"entrevista" => Entrevista::where('user_id', $id)->count(),
+      		"venta" => Venta::where('user_id', $id)->count(),
+      		"grupo" => Grupo::where('user_id', $id)->count(),
+      		"red" => Red::where('user_id', $id)->count()
+      ]);
     }
 
     /**

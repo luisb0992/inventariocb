@@ -25,15 +25,29 @@
           <span class="clearfix"></span>
         </h2>
     	</div>
-			<div class="col-md-4">
+			<div class="col-md-6 list-group">
 				<h4>Detalles del Usuario</h4>
-        <p><b>Nombre: </b> {{$user->name}} </p>
-				<p><b>Nombre: </b> {{$user->apellido}} </p>
-        <p><b>Email: </b> {{$user->email}} </p>
-        <p><b>Perfil: </b> {{$user->perfil->name}} </p>
-        <p><b>Estatus Actual: </b> {{$user->nameStatus()}} </p>
+        		<p class="list-group-item"><b>Nombre: </b> {{$user->name}} </p>
+				<p class="list-group-item"><b>Apellido: </b> {{$user->apellido}} </p>
+		        <p class="list-group-item"><b>Email: </b> {{$user->email}} </p>
+		        <p class="list-group-item"><b>Perfil: </b> {{$user->perfil->name}} </p>
+		        <p class="list-group-item"><b>Estatus Actual: </b> {{$user->nameStatus()}} </p>
 			</div>
-		
+			<div class="col-md-6 list-group">
+				<h4>Actividad en Littlebru</h4>
+        		<p class="list-group-item"><b>Entrevistas realizadas </b> 
+        			<span class="badge" style="background-color: green;">{{ $entrevista }}</span> 
+        		</p>
+				<p class="list-group-item"><b>Ventas </b> 
+					<span class="badge" style="background-color: green;">{{ $venta }} </span> 
+				</p>
+		        <p class="list-group-item"><b>Grupos </b> 
+		        	<span class="badge" style="background-color: green;"> {{ $red }} </span>
+		        </p>	
+		        <p class="list-group-item"><b>Redes </b> 
+		        	<span class="badge" style="background-color: green;"> {{ $grupo }} </span> 
+		        </p>
+			</div>
 		</div>
 	</section>
 

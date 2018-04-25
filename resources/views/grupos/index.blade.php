@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title','Grupos - '.config('app.name'))
-@section('header','Grupos')
+@section('title','Redes Sociales - '.config('app.name'))
+@section('header','Redes Sociales')
 @section('breadcrumb')
 	<ol class="breadcrumb">
 	  <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-	  <li class="active"> Grupos </li>
+	  <li class="active"> Redes Sociales </li>
 	</ol>
 @endsection
 @section('content')
@@ -16,7 +16,7 @@
 	      	<div class="box-header with-border">
 	        	<span class="pull-left">
 					<a href="{{ route('grupos.create') }}" class="btn btn-flat btn-lg btn-success">
-						<i class="fa fa-plus" aria-hidden="true"></i> Nuevo
+						<i class="fa fa-plus" aria-hidden="true"></i> Nueva
 					</a>
 				</span>
 	      	</div>
@@ -45,7 +45,7 @@
 								<td>{{ $d->clave_email }}</td>
 								<td>{{ $d->observacion }}</td>
 								<td>
-									<!--<a href="{{route('users.edit',[$d->id])}}" class="btn btn-flat btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a>-->
+									<a href="{{route('grupos.edit',[$d->id])}}" class="btn btn-flat btn-warning btn-sm" title="Editar"><i class="fa fa-edit"></i></a>
 								</td>
 							</tr>
 						@endforeach
