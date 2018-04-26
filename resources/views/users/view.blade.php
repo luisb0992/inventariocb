@@ -17,14 +17,14 @@
 
 	<section class="perfil">
 		<div class="row">
-    	<div class="col-md-12">
-    		<h2 class="page-header" style="margin-top:0!important">
-          <i class="fa fa-user" aria-hidden="true"></i>
-          {{ $user->name }}
-          <small class="pull-right">Registrado: {{ $user->created_at }}</small>
-          <span class="clearfix"></span>
-        </h2>
-    	</div>
+	    	<div class="col-md-12">
+	    		<h2 class="page-header" style="margin-top:0!important">
+		          <i class="fa fa-user" aria-hidden="true"></i>
+		          {{ $user->name }}
+		          <small class="pull-right">Registrado: {{ $user->created_at }}</small>
+		          <span class="clearfix"></span>
+		        </h2>
+	    	</div>
 			<div class="col-md-6 list-group">
 				<h4>Detalles del Usuario</h4>
         		<p class="list-group-item"><b>Nombre: </b> {{$user->name}} </p>
@@ -36,20 +36,151 @@
 			<div class="col-md-6 list-group">
 				<h4>Actividad en Littlebru</h4>
         		<p class="list-group-item"><b>Entrevistas realizadas </b> 
-        			<span class="badge" style="background-color: green;">{{ $entrevista }}</span> 
+        			<span class="badge" style="background-color: green;">{{ $entrevista->count() }}</span> 
         		</p>
 				<p class="list-group-item"><b>Ventas </b> 
-					<span class="badge" style="background-color: green;">{{ $venta }} </span> 
+					<span class="badge" style="background-color: green;">{{ $venta->count() }} </span> 
 				</p>
 		        <p class="list-group-item"><b>Grupos </b> 
-		        	<span class="badge" style="background-color: green;"> {{ $red }} </span>
+		        	<span class="badge" style="background-color: green;"> {{ $red->count() }} </span>
 		        </p>	
 		        <p class="list-group-item"><b>Redes </b> 
-		        	<span class="badge" style="background-color: green;"> {{ $grupo }} </span> 
+		        	<span class="badge" style="background-color: green;"> {{ $grupo->count() }} </span> 
 		        </p>
+			</div>
+			<div class="col-sm-12">
+        		<div class="box box-danger box-solid">
+			      	<div class="box-header with-border">
+			        	<span class="text-center">
+			        		<h3>Entrevistas</h3>
+						</span>
+			      	</div>
+		      		<div class="box-body">
+		      			<table class="table data-table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="text-center">Comprador</th>
+									<th class="text-center">Articulo</th>
+									<th class="text-center">Status</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+								@foreach($entrevista as $entre)
+									<tr>
+										<td>{{ $entre->vendedor->name }} {{ $entre->vendedor->apellido }}</td>
+										<td>{{ $entre->articulo->name }}</td>
+										<td class="well">
+											@if($entre->status == 1)
+												<i class="fa fa-check-circle text-success"></i> Vendida
+											@elseif($entre->status == 2)
+												<i class="fa fa-check-circle text-success"></i> Separado
+											@elseif($entre->status == 3)	
+												<i class="fa fa-folder text-warning"></i> Seguimiento
+											@elseif($entre->status == 4)	
+												<i class="fa fa-long-arrow-right text-warning"></i> En espera
+											@endif
+										</td>
+									</tr>
+								@endforeach	
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12">
+        		<div class="box box-primary box-solid">
+			      	<div class="box-header with-border">
+			        	<span class="text-center">
+			        		<h3>Ventas</h3>
+						</span>
+			      	</div>
+		      		<div class="box-body">
+		      			<table class="table data-table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="text-center">Articulo</th>
+									<th class="text-center">Precio</th>
+									<th class="text-center">Status</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+								@foreach($venta as $ven)
+									<tr>
+										<td>{{ $ven->articulo->name }}</td>
+										<td>{{ $ven->precio }} {{ $ven->unidad->name }}</td>
+										<td>{{ $ven->status->name }}</td>
+									</tr>
+								@endforeach	
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12">
+        		<div class="box box-success box-solid">
+			      	<div class="box-header with-border">
+			        	<span class="text-center">
+			        		<h3>Grupos</h3>
+						</span>
+			      	</div>
+		      		<div class="box-body">
+		      			<table class="table data-table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="text-center">Facebook</th>
+									<th class="text-center">Cantidad de personas</th>
+									<th class="text-center">Descripcion</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+								@foreach($red as $r)
+									<tr>
+										<td>
+											<a href="{{ $r->link_f }}" class="btn btn-link">
+												{{ $r->link_f }}
+											</a>	
+										</td>
+										<td>{{ $r->cantidad }}</td>
+										<td>{{ $r->descripcion }}</td>
+									</tr>
+								@endforeach	
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-12">
+        		<div class="box box-warning box-solid">
+			      	<div class="box-header with-border">
+			        	<span class="text-center">
+			        		<h3>Redes Sociales</h3>
+						</span>
+			      	</div>
+		      		<div class="box-body">
+		      			<table class="table data-table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="text-center">Facebook</th>
+									<th class="text-center">E-mail</th>
+									<th class="text-center">Observacion</th>
+								</tr>
+							</thead>
+							<tbody class="text-center">
+								@foreach($grupo as $grup)
+									<tr>
+										<td>{{ $grup->facebook }}</td>
+										<td>{{ $grup->email }}</td>
+										<td>{{ $grup->observacion }}</td>
+									</tr>
+								@endforeach	
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
+
 
 	<div id="delModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="delModalLabel">
     <div class="modal-dialog" role="document">

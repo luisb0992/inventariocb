@@ -39,7 +39,11 @@
 								<tr>
 									<td>{{ $loop->index+1 }}</td>
 									<td>{{ $red->user->name }} {{ $red->user->apellido }}</td>
-									<td>{{ $red->link_f }}</td>
+									<td>
+										<a href="{{ $red->link_f }}" target="blank" class="btn btn-link">
+											<i class="fa fa-hand-o-up"></i> {{ $red->link_f }}
+										</a>
+									</td>
 									<td>{{ $red->fecha }}</td>
 									<td>{{ $red->hora }}</td>
 									<td>{{ $red->cantidad }}</td>

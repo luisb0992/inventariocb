@@ -82,10 +82,10 @@ class UserController extends Controller
 
       return view("users.view", [
       		"user" => $user,
-      		"entrevista" => Entrevista::where('user_id', $id)->count(),
-      		"venta" => Venta::where('user_id', $id)->count(),
-      		"grupo" => Grupo::where('user_id', $id)->count(),
-      		"red" => Red::where('user_id', $id)->count()
+      		"entrevista" => Entrevista::where('user_id', $id)->get(),
+      		"venta" => Venta::where('user_id', $id)->get(),
+      		"grupo" => Grupo::where('user_id', $id)->get(),
+      		"red" => Red::where('user_id', $id)->get()
       ]);
     }
 
