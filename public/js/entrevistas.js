@@ -159,7 +159,7 @@ function cargarEntrevistas(btn_ver_entrevistas){
 
   	$(".btn_save_comentario").click(function(e){
 
-  			e.preventDefault();
+  			// e.preventDefault();
 			var btn = $(".btn_save_comentario");
 			var token = $("#token").val();
 			var ruta = $('#ruta_crear_comentario').attr('href');
