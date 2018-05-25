@@ -7,7 +7,7 @@
 				<div class="">
 					<buttton class="close" type="button" data-dismiss="modal">&times;</buttton>
 					<div class="label-primary text-center padding_1em">
-						<h3><i class="fa fa-info-circle"></i> Datos de la entrevista</h3>
+						<h3><i class="fa fa-info-circle"></i> Datos del prospecto</h3>
 					</div>
 					<div class="modal-body text-left">
 						

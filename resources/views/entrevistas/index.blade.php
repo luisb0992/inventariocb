@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title','Entrevistas - '.config('app.name'))
-@section('header','Entrevistas')
+@section('title','Prospectos - '.config('app.name'))
+@section('header','Prospectos')
 @section('breadcrumb')
 	<ol class="breadcrumb">
 	  <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
@@ -20,7 +20,7 @@
         <span class="info-box-icon bg-red"><i class="fa fa-list-alt"></i></span>
         
         <div class="info-box-content">
-          <span class="info-box-text">Entrevistas Realizadas</span>
+          <span class="info-box-text">Prospectos</span>
           <span class="info-box-number">{{ $entrevistas->count() }}</span>
         </div>
         <!-- /.info-box-content -->
@@ -45,7 +45,7 @@
 						<i class="fa fa-refresh fa-spin fa-3x fa-fw text-success"></i>
 					</div>
 					<div class="col-sm-12 bg-danger">
-						<h3>Mis entrevistas</h3>
+						<h3>Mis Prospectos de ventas</h3>
 					</div>	
 					<table class="table data-table table-bordered table-hover">
 						<thead class="label-danger">
@@ -101,12 +101,10 @@
 										<button type="button" class="btn btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#ver_entrevistas" id="btn_ver_entrevistas" value="{{ $t->id }}" onclick="cargarEntrevistas(this);">
 			                    			<i class="fa fa-eye"></i> Ver y editar
 			                    		</button>
-			                    		@include('entrevistas.modal_ver_entrevistas')
 
 			                    		<button type="button" class="btn btn-success btn-flat btn-sm" data-toggle="modal" data-target="#nuevo_comentario" id="btn_nuevo_comentario" value="{{ $t->id }}" onclick="cargarComentarios(this);">
 			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i> comentario
 			                    		</button>
-			                    		@include('entrevistas.modal_nuevo_comentario')
 
 			                    		@if(\Auth::user()->perfil_id == 1)
 										<a href="{{ url('eliminarEntrevista/'.$t->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar S/N?');"><i class="fa fa-remove"></i> Eliminar</a>
@@ -120,6 +118,8 @@
 			</div>
 		</div>
 	</div>
+@include('entrevistas.modal_ver_entrevistas')
+@include('entrevistas.modal_nuevo_comentario')
 @endsection
 @section('script')
 	<script src="{{ asset('js/entrevistas.js') }}"></script>

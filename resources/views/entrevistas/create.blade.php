@@ -202,6 +202,7 @@
 					</div>
 
 					@if (count($errors) > 0)
+					<div class="col-sm-12">
 			          <div class="alert alert-danger alert-important">
 				          <ul>
 				            @foreach($errors->all() as $error)
@@ -209,6 +210,7 @@
 				            @endforeach
 				          </ul>  
 			          </div>
+			        </div> 
 			        @endif
 					
 					<div class="col-sm-12 text-right">

@@ -57,10 +57,11 @@ class EntrevistasController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request, [
-	        'nombre' => 'required',
+	        'nombre' => 'required|unique:entrevistas',
 	        'apellido' => 'required',
 	        'pais_id' => 'required',
-	        'articulo_id' => 'required'
+	        'articulo_id' => 'required',
+	        'telefono' => 'unique:entrevistas'
 	    ]);
 
     	$entrevista = new Entrevista();
