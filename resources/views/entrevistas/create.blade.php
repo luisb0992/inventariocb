@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title','Entrevistas - '.config('app.name'))
-@section('header','Entrevistas')
+@section('title','Prospecto - '.config('app.name'))
+@section('header','Prospecto')
 @section('breadcrumb')
 	<ol class="breadcrumb">
 	  <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-	  <li><a href="{{route('entrevistas.index')}}" title="Entrevistas"> Entrevistas </a></li>
+	  <li><a href="{{route('entrevistas.index')}}" title="Entrevistas"> Prospecto De Venta</a></li>
 	  <li class="active">Agregar</li>
 	</ol>
 @endsection

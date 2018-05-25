@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>PDF entrevista</title>
+        <title>PDF Pacto de venta</title>
        	<style>
 
 html {

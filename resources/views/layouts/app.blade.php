@@ -120,7 +120,7 @@
               <ul class="treeview-menu">
                 <li><a href="{{ route('users.index') }}"><i class="fa fa-circle-o"></i>Ver usuarios</a></li>
                 <li><a href="{{ route('users.create') }}"><i class="fa fa-circle-o"></i>Agregar usuario</a></li>
-                <li><a href="{{ route('grupos.index') }}"><i class="fa fa-circle-o"></i>Redes Sociales</a></li>
+                <li><a href="{{ route('grupos.index') }}"><i class="fa fa-circle-o"></i>Contraseñas</a></li>
                 <li><a href="{{ route('redes.index') }}"><i class="fa fa-circle-o"></i>Grupos</a></li>
               </ul>
             </li>
@@ -143,12 +143,12 @@
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-list-alt"></i>
-                <span>Entrevistas</span>
+                <span>Prospecto De Ventas</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver entrevistas</a></li>
-                <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li>
+                <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver Prospectos</a></li>
+                <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nuevo Prospecto</a></li>
               </ul>
             </li>  
 
@@ -177,12 +177,12 @@
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-list-alt"></i>
-                  <span>Entrevistas</span>
+                  <span>Prospecto De Ventas</span>
                   <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver entrevistas</a></li>
-                  <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li>
+                  <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver Prospectos</a></li>
+                  <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva Prospecto</a></li>
                 </ul>
               </li>
               <li><a href="{{ url('mostrar') }}"><i class="fa fa-group"></i>Mis Grupos</a></li>
