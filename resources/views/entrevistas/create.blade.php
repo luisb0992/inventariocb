@@ -194,7 +194,28 @@
 								No Definir
 							</button>
 						</div>
+						<hr>
 					</div>
+
+					<div class="col-sm-8">
+						<label for="link">Link de Facebook</label>
+						<input type="text" class="form-control" placeholder="Link..." name="link">
+						<hr>
+					</div>
+
+					<div class="col-sm-4">
+						<label for="status_entre">Estatus</label>
+						<select class="form-control" name="status_entre" required="">
+							<option value="">Seleccione</option>
+							<option value="Registrado">Registrado</option>
+							<option value="Congelado">Congelado</option>
+							<option value="Frio">Frio</option>
+							<option value="Tibio">Tibio</option>
+							<option value="Caliente">Caliente</option>
+							<option value="Esperar Respuestas">Esperar Respuestas</option>
+						</select>
+					</div>
+
 					<div class="col-sm-12">
 						<label for="comentarios">Comentario</label>
 						<textarea name="comentario" id="comentario" placeholder="añadir comentario" class="form-control"></textarea>

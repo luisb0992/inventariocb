@@ -51,7 +51,8 @@ class CreateEntrevistasTable extends Migration
 						$table->string('fecha')->nullable();
 						$table->string('hora')->nullable();
 						$table->integer('status')->unsigned();
-						$table->integer('status_entre')->unsigned();      
+						$table->string('status_entre')->nullable();
+						$table->string('link')->nullable();      
 						$table->timestamps();
 				});
 		}

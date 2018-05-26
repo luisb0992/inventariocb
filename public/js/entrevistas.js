@@ -106,6 +106,13 @@ function cargarEntrevistas(btn_ver_entrevistas){
 			"<li class='list-group-item'><b>Hora pautada </b>"+
 				"<input class='form-control timepicker hora' style='width:100%' name='hora' value='"+res.hora+"'>"+
 			"</li>"+
+			"<li class='list-group-item'><b>Link de Facebook </b>"+
+				"<input class='form-control' style='width:100%' name='link' value='"+res.link+"'>"+
+			"</li>"+
+			"<li class='list-group-item'><em>"+
+				"<a href="+res.link+" class='text-left text-primary' target='_blank'>Ir a: "+res.link+"</a>"+
+				"</em>"+
+			"</li>"+
 		"</ul>"
 		);
 

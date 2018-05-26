@@ -51,13 +51,14 @@
 						<thead class="label-danger">
 							<tr>
 								<th class="text-center">#</th>
-								<th class="text-center">Nombre y Apellido</th>
+								<th class="text-center">Nombre</th>
 								<th class="text-center">Articulo</th>
-								<th class="text-center">Modelo</th>
+								<!--<th class="text-center">Modelo</th>
 								<th class="text-center">Color</th>
-								<th class="text-center">C. Tubo</th>
+								<th class="text-center">C. Tubo</th>-->
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
+								<th class="text-center">Estatus</th>
 								<th class="text-center">Descargar</th>
 								<th class="text-center">Venta</th>
 								<th class="text-center" style="width: 300px">Accion</th>
@@ -69,11 +70,12 @@
 									<td>{{$loop->index+1}}</td>
 									<td>{{$t->nombre}} {{$t->apellido}}</td>
 									<td>{{$t->articulo->name}}</td>
-									<td>{{$t->articulo->modelo->name}}</td>
+									<!--<td>{{$t->articulo->modelo->name}}</td>
 									<td>{{$t->articulo->color->name}}</td>
-									<td>{{$t->articulo->color_tubo}}</td>
+									<td>{{$t->articulo->color_tubo}}</td>-->
 									<td>{{$t->fecha}}</td>
 									<td>@if($t->hora == '') 00:00 @else {{$t->hora}} @endif</td>
+									<td>{{$t->status_entre}}</td>
 									<td>
 										<form action="{{ url('pdf_entrevistas/'.$t->id) }}" method="GET">
 										{{ csrf_field() }}
@@ -88,9 +90,9 @@
 										@elseif($t->venta($t->id) == 2)
 											<i class="fa fa-check-circle text-success"></i> Separado
 										@elseif($t->venta($t->id) == 3)	
-											<i class="fa fa-folder text-warning"></i> Seguimiento
+											<i class="fa fa-folder text-warning"></i> De baja
 										@elseif($t->venta($t->id) == 4)	
-											<i class="fa fa-long-arrow-right text-warning"></i> En espera
+											<i class="fa fa-long-arrow-right text-warning"></i> Devolucion
 										@else
 											<a href="{{ url('vender/'.$t->id) }}" class="btn btn-info btn-sm">
 												<i class="fa fa-shopping-cart"></i> Procesar
