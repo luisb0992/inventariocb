@@ -113,6 +113,9 @@ function cargarEntrevistas(btn_ver_entrevistas){
 				"<a href="+res.link+" class='text-left text-primary' target='_blank'>Ir a: "+res.link+"</a>"+
 				"</em>"+
 			"</li>"+
+			"<li class='list-group-item'><b>Status</b> <em>(Registrado, Congelado, Frio, Tibio, Caliente, Esperar Respuesta)</em>"+
+				"<input class='form-control' style='width:100%' name='status_entre' value='"+res.status_entre+"'>"+
+			"</li>"+
 		"</ul>"
 		);
 
