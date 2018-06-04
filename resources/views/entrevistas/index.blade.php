@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title','Entrevistas - '.config('app.name'))
-@section('header','Entrevistas')
+@section('title','Prospectos - '.config('app.name'))
+@section('header','Prospectos')
 @section('breadcrumb')
 	<ol class="breadcrumb">
 	  <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-	  <li class="active"> Entrevistas </li>
+	  <li class="active"> Prospectos </li>
 	</ol>
 @endsection
 @section('content')
@@ -20,7 +20,7 @@
         <span class="info-box-icon bg-red"><i class="fa fa-list-alt"></i></span>
         
         <div class="info-box-content">
-          <span class="info-box-text">Entrevistas Realizadas</span>
+          <span class="info-box-text">Prospectos</span>
           <span class="info-box-number">{{ $entrevistas->count() }}</span>
         </div>
         <!-- /.info-box-content -->
@@ -45,19 +45,20 @@
 						<i class="fa fa-refresh fa-spin fa-3x fa-fw text-success"></i>
 					</div>
 					<div class="col-sm-12 bg-danger">
-						<h3>Mis entrevistas</h3>
+						<h3>Mis Prospectos de ventas</h3>
 					</div>	
 					<table class="table data-table table-bordered table-hover">
 						<thead class="label-danger">
 							<tr>
 								<th class="text-center">#</th>
-								<th class="text-center">Nombre y Apellido</th>
+								<th class="text-center">Nombre</th>
 								<th class="text-center">Articulo</th>
-								<th class="text-center">Modelo</th>
+								<!--<th class="text-center">Modelo</th>
 								<th class="text-center">Color</th>
-								<th class="text-center">C. Tubo</th>
+								<th class="text-center">C. Tubo</th>-->
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
+								<th class="text-center">Estatus</th>
 								<th class="text-center">Descargar</th>
 								<th class="text-center">Venta</th>
 								<th class="text-center" style="width: 300px">Accion</th>
@@ -69,11 +70,12 @@
 									<td>{{$loop->index+1}}</td>
 									<td>{{$t->nombre}} {{$t->apellido}}</td>
 									<td>{{$t->articulo->name}}</td>
-									<td>{{$t->articulo->modelo->name}}</td>
+									<!--<td>{{$t->articulo->modelo->name}}</td>
 									<td>{{$t->articulo->color->name}}</td>
-									<td>{{$t->articulo->color_tubo}}</td>
+									<td>{{$t->articulo->color_tubo}}</td>-->
 									<td>{{$t->fecha}}</td>
 									<td>@if($t->hora == '') 00:00 @else {{$t->hora}} @endif</td>
+									<td>{{$t->status_entre}}</td>
 									<td>
 										<form action="{{ url('pdf_entrevistas/'.$t->id) }}" method="GET">
 										{{ csrf_field() }}
@@ -118,8 +120,8 @@
 			</div>
 		</div>
 	</div>
-	@include('entrevistas.modal_nuevo_comentario')
-	@include('entrevistas.modal_ver_entrevistas')
+@include('entrevistas.modal_ver_entrevistas')
+@include('entrevistas.modal_nuevo_comentario')
 @endsection
 @section('script')
 	<script src="{{ asset('js/entrevistas.js') }}"></script>

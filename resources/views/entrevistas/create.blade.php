@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('title','Entrevistas - '.config('app.name'))
-@section('header','Entrevistas')
+@section('title','Prospecto - '.config('app.name'))
+@section('header','Prospecto')
 @section('breadcrumb')
 	<ol class="breadcrumb">
 	  <li><a href="{{route('dashboard')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
-	  <li><a href="{{route('entrevistas.index')}}" title="Entrevistas"> Entrevistas </a></li>
+	  <li><a href="{{route('entrevistas.index')}}" title="Entrevistas"> Prospecto De Venta</a></li>
 	  <li class="active">Agregar</li>
 	</ol>
 @endsection
@@ -194,7 +194,28 @@
 								No Definir
 							</button>
 						</div>
+						<hr>
 					</div>
+
+					<div class="col-sm-8">
+						<label for="link">Link de Facebook</label>
+						<input type="text" class="form-control" placeholder="Link..." name="link">
+						<hr>
+					</div>
+
+					<div class="col-sm-4">
+						<label for="status_entre">Estatus</label>
+						<select class="form-control" name="status_entre" required="">
+							<option value="">Seleccione</option>
+							<option value="Registrado">Registrado</option>
+							<option value="Congelado">Congelado</option>
+							<option value="Frio">Frio</option>
+							<option value="Tibio">Tibio</option>
+							<option value="Caliente">Caliente</option>
+							<option value="Esperar Respuestas">Esperar Respuestas</option>
+						</select>
+					</div>
+
 					<div class="col-sm-12">
 						<label for="comentarios">Comentario</label>
 						<textarea name="comentario" id="comentario" placeholder="añadir comentario" class="form-control"></textarea>
@@ -202,6 +223,7 @@
 					</div>
 
 					@if (count($errors) > 0)
+					<div class="col-sm-12">
 			          <div class="alert alert-danger alert-important">
 				          <ul>
 				            @foreach($errors->all() as $error)
@@ -209,6 +231,7 @@
 				            @endforeach
 				          </ul>  
 			          </div>
+			        </div> 
 			        @endif
 					
 					<div class="col-sm-12 text-right">

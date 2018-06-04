@@ -61,7 +61,7 @@
 				<a href="{{ url('entrevistas') }}">   
 					<img src="{{ asset('img/dashboard_2.png') }}" alt="entrevistas" class="img_hover img-responsive text-center col-sm-10">
 				</a>
-				<span class="h3"><i>Entrevistas</i></span>
+				<span class="h3"><i>Prospecto De Venta</i></span>
 			</div>
 			<div class="col-sm-4">
 				<a href="{{ url('ventas') }}">   
@@ -74,7 +74,7 @@
 				<a href="{{ url('entrevistas') }}">   
 					<img src="{{ asset('img/dashboard_2.png') }}" alt="entrevistas" class="img_hover img-responsive text-center col-sm-10">
 				</a>
-				<span class="h3"><i>Entrevistas</i></span>
+				<span class="h3"><i>Prospecto De Venta</i></span>
 			</div>
 		@endif		
   	</div>

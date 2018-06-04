@@ -12,16 +12,11 @@ class StatusTableSeeder extends Seeder
     public function run()
     {
         $status = array(
-  			array(
-  				'name' => 'Separado'),
-  			array(
-  				'name' => 'Vendido'),
-  			array(
-  				'name' => 'De baja'),
-  			array(
-  				'name' => 'Devolucion')
-  		);
-
+  			array('name' => 'Vendida'),
+  			array('name' => 'Separacion'),
+  			array('name' => 'De baja'),
+  			array('name' => 'Devolucion'));
+        
   		\DB::table('status')->insert($status);
     }
 }

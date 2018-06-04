@@ -57,10 +57,11 @@ class EntrevistasController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request, [
-	        'nombre' => 'required',
+	        'nombre' => 'required|unique:entrevistas',
 	        'apellido' => 'required',
 	        'pais_id' => 'required',
-	        'articulo_id' => 'required'
+	        'articulo_id' => 'required',
+	        'telefono' => 'unique:entrevistas'
 	    ]);
 
     	$entrevista = new Entrevista();
@@ -81,6 +82,8 @@ class EntrevistasController extends Controller
     	$entrevista->hora = $request->hora;
     	$entrevista->precio_ref = $request->precio_ref;
     	$entrevista->status = 1;
+    	$entrevista->status_entre = $request->status_entre;
+    	$entrevista->link = $request->link;
 
     	if ($request->tiempo_embarazo != null) {
     		$entrevista->tiempo_embarazo = $request->tiempo_embarazo.' '.$request->t_embarazo;
