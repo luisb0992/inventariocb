@@ -84,13 +84,13 @@
 									</td>
 									<td class="well">
 										@if($t->venta($t->id) == 1)
-											<i class="fa fa-check-circle text-success"></i> Vendida
-										@elseif($t->venta($t->id) == 2)
 											<i class="fa fa-check-circle text-success"></i> Separado
+										@elseif($t->venta($t->id) == 2)
+											<i class="fa fa-check-circle text-success"></i> Vendido
 										@elseif($t->venta($t->id) == 3)	
-											<i class="fa fa-folder text-warning"></i> Seguimiento
+											<i class="fa fa-folder text-warning"></i> De baja
 										@elseif($t->venta($t->id) == 4)	
-											<i class="fa fa-long-arrow-right text-warning"></i> En espera
+											<i class="fa fa-long-arrow-right text-warning"></i> Devolucion
 										@else
 											<a href="{{ url('vender/'.$t->id) }}" class="btn btn-info btn-sm">
 												<i class="fa fa-shopping-cart"></i> Procesar
@@ -101,12 +101,10 @@
 										<button type="button" class="btn btn-primary btn-flat btn-sm" data-toggle="modal" data-target="#ver_entrevistas" id="btn_ver_entrevistas" value="{{ $t->id }}" onclick="cargarEntrevistas(this);">
 			                    			<i class="fa fa-eye"></i> Ver y editar
 			                    		</button>
-			                    		@include('entrevistas.modal_ver_entrevistas')
 
 			                    		<button type="button" class="btn btn-success btn-flat btn-sm" data-toggle="modal" data-target="#nuevo_comentario" id="btn_nuevo_comentario" value="{{ $t->id }}" onclick="cargarComentarios(this);">
 			                    			<i class="fa fa-plus"></i> <i class="fa fa-comments"></i> comentario
 			                    		</button>
-			                    		@include('entrevistas.modal_nuevo_comentario')
 
 			                    		@if(\Auth::user()->perfil_id == 1)
 										<a href="{{ url('eliminarEntrevista/'.$t->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Desea eliminar S/N?');"><i class="fa fa-remove"></i> Eliminar</a>
@@ -120,6 +118,8 @@
 			</div>
 		</div>
 	</div>
+	@include('entrevistas.modal_nuevo_comentario')
+	@include('entrevistas.modal_ver_entrevistas')
 @endsection
 @section('script')
 	<script src="{{ asset('js/entrevistas.js') }}"></script>

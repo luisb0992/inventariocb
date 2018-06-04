@@ -36,12 +36,11 @@ class ComentariosController extends Controller
     public function store(Request $request)
     {
         $comentario = new Comentario();
-        $comentario->entrevista_id = $request->id_entrevista;
+        $comentario->entrevista_id = $request->entrevista_id;
         $comentario->comentario = $request->comentario;
         $comentario->save();
 
         return response()->json($comentario);
-
     }
 
     /**

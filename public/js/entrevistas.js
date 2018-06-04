@@ -174,7 +174,7 @@ function cargarEntrevistas(btn_ver_entrevistas){
 				headers: {'X-CSRF-TOKEN': token},
 				type: 'POST',
 				dataType: 'JSON',
-				data: {comentario: $("#comentario").val(), id_entrevista: $("#id_entre").val()},
+				data: {comentario: $("#comentario").val(), entrevista_id: $("#id_entre").val()},
 			})
 			.done(function(data) {
 				$("#comentario").empty();

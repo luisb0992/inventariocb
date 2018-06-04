@@ -6,7 +6,7 @@
 					<div class="label-primary text-center padding_1em">
 						<h3><i class="fa fa-comment"></i> Nuevo Comentario</h3>
 					</div>
-					<div class="modal-body">
+					<div class="modal-body text-center">
 						<div class="row">
 							<div class="col-sm-12">
 								<span id="reload_coment_data" style="display: none">
@@ -14,7 +14,7 @@
 								</span>
 								<span id="data_coment" style="display:none">
 									<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-									<input type="hidden" id="id_entre">
+									<input type="hidden" id="id_entre" name="entrevista_id">
 									<textarea class="form-control input-lg" name="comentario" id="comentario"></textarea>
 								</span>
 							</div>

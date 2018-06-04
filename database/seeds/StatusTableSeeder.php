@@ -13,13 +13,13 @@ class StatusTableSeeder extends Seeder
     {
         $status = array(
   			array(
-  				'name' => 'Entregado'),
-  			array(
   				'name' => 'Separado'),
   			array(
-  				'name' => 'Seguimiento'),
+  				'name' => 'Vendido'),
   			array(
-  				'name' => 'En espera')
+  				'name' => 'De baja'),
+  			array(
+  				'name' => 'Devolucion')
   		);
 
   		\DB::table('status')->insert($status);
