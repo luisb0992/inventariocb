@@ -35,7 +35,7 @@
 			</div>
 			<div class="col-md-6 list-group">
 				<h4>Actividad en Littlebru</h4>
-        		<p class="list-group-item"><b>Entrevistas realizadas </b> 
+        		<p class="list-group-item"><b>Prospectos de venta </b> 
         			<span class="badge" style="background-color: green;">{{ $entrevista->count() }}</span> 
         		</p>
 				<p class="list-group-item"><b>Ventas </b> 
@@ -52,7 +52,7 @@
         		<div class="box box-danger box-solid">
 			      	<div class="box-header with-border">
 			        	<span class="text-center">
-			        		<h3>Entrevistas</h3>
+			        		<h3>Prospectos de venta</h3>
 						</span>
 			      	</div>
 		      		<div class="box-body">
