@@ -46,6 +46,7 @@
 								<th class="text-center">#</th>
 								<th class="text-center">Nombre y Apellido</th>
 								<th class="text-center">Email</th>
+								<th class="text-center">Clave</th>
 								<th class="text-center">Perfil</th>
 								<th class="text-center">Estatus</th>
 								<th class="text-center">Accion</th>
@@ -57,6 +58,7 @@
 									<td>{{$loop->index+1}}</td>
 									<td>{{$d->name}} {{$d->apellido}}</td>
 									<td>{{$d->email}}</td>
+									<td>@if($d->clave){{$d->clave}}@else <span class="text-primary">clave encriptada</span> @endif</td>
 									<td class="@if($d->perfil_id == 1) label-primary @else label-info @endif">{{ $d->perfil->name }}</td>
 									<td class="	@if($d->status == 1) 
 													label-success 

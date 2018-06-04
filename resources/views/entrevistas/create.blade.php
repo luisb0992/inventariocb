@@ -52,7 +52,7 @@
 							<select name="pais_id" class="form-control" required="">
 								<option value="">Seleccione...</option>
 								@foreach($paises as $pais)
-								<option value="{{ $pais->id }}">{{ $pais->name }}</option>
+								<option value="{{ $pais->id }}" @if($pais->id == 121) selected @endif>{{ $pais->name }}</option>
 								@endforeach
 							</select>
 					</div>
@@ -156,23 +156,27 @@
 						<h4 class="padding_1em label-primary">Articulo de interes y cita</h4>
 					</div>
 
-					<div class="col-sm-3">
-						<label for="">Seleccione un articulo <span class="span_rojo">*</span></label>
+					<div class="col-sm-8">
+						<label for="">Seleccione un articulo <span class="span_rojo">*</span> <em><small>(articulo - color tela - color tubo - modelo)</small></em></label>
 						<select name="articulo_id" class="form-control" required>
 							<option value="">seleccione</option>
 							@foreach($articulos as $articulo)
-							<option value="{{ $articulo->id }}">{{ $articulo->name }} - {{ $articulo->color->name }} - {{ $articulo->modelo->name }}</option>
+							<option value="{{ $articulo->id }}">
+								{{ $articulo->name }} - ({{ $articulo->color->name }}) - (@if($articulo->color_tubo) {{ $articulo->color_tubo }} @else Vacio @endif) - ({{ $articulo->modelo->name }}) 
+							</option>
 							@endforeach
 						</select>
 					</div>
 
-					<div class="col-sm-3">
+					<div class="col-sm-4">
 						<label for="precio referencial">Precio referencial </label>
 						<br>
 						<input type="text" class="form-control" name="precio_ref" placeholder="precio referencial..">
+						<br>
 					</div>
 
-					<div class="col-sm-3">
+					
+					<div class="col-sm-4">
 						<label for="fecha_hora_cita">Fecha de cita </label>
 						<br>
 						<input type="text" class="form-control fecha" name="fecha" placeholder="d/m/a" id="fecha">
@@ -184,7 +188,7 @@
 						</div>
 					</div>
 
-					<div class="col-sm-3">
+					<div class="col-sm-4">
 						<label for="fecha_hora_cita">Hora de cita </label>
 						<br>
 						<input type='text' class='form-control timepicker hora' name='hora' placeholder='h/m :s'>
@@ -194,14 +198,8 @@
 								No Definir
 							</button>
 						</div>
-						<hr>
 					</div>
 
-					<div class="col-sm-8">
-						<label for="link">Link de Facebook</label>
-						<input type="text" class="form-control" placeholder="Link..." name="link">
-						<hr>
-					</div>
 
 					<div class="col-sm-4">
 						<label for="status_entre">Estatus</label>
@@ -214,6 +212,14 @@
 							<option value="Caliente">Caliente</option>
 							<option value="Esperar Respuestas">Esperar Respuestas</option>
 						</select>
+					</div>
+					
+					<div class="col-sm-12"><hr></div>
+					
+					<div class="col-sm-12">
+						<label for="link">Link de Facebook</label>
+						<input type="text" class="form-control" placeholder="Link..." name="link">
+						<hr>
 					</div>
 
 					<div class="col-sm-12">

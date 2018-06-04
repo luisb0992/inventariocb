@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('apellido');
             $table->string('email',190)->unique();
             $table->string('password');
+            $table->string('clave')->nullable();
             $table->integer('perfil_id')->unsigned();
             $table->foreign('perfil_id')->references('id')->on('perfiles');
             $table->integer('status')->unsigned();

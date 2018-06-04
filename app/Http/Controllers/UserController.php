@@ -54,6 +54,7 @@ class UserController extends Controller
 
       $user = new User;
       $user->fill($request->all());
+      $user->clave = $request->password;
       $user->password = bcrypt($request->input('password'));
 
       if($user->save()){
@@ -125,6 +126,7 @@ class UserController extends Controller
       ]);
 
       $user->fill($request->all());
+      $user->password = bcrypt($request->input('clave'));
 
       if($user->save()){
         return redirect("users")->with([

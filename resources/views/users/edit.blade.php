@@ -31,6 +31,7 @@
 						<input id="email" class="form-control" type="mail" name="email" value="{{ old('email')?old('email'):$user->email }}" placeholder="Email">
 					</div>
 
+
 					<div class="form-group {{ $errors->has('perfil_id')?'has-error':'' }}">
 						<label class="control-label" for="perfil_id">Perfil: *</label>
 						<select name="perfil_id" class="form-control" required>
@@ -41,6 +42,11 @@
 						</select>
 					</div>
 
+					<div class="form-group {{ $errors->has('clave')?'has-error':'' }}">
+						<label class="control-label" for="email">Clave: *</label>
+						<input id="email" class="form-control" type="text" name="clave" value="{{ old('clave')?old('clave'):$user->clave }}" placeholder="Actualizar clave...">
+					</div>
+					
 					<!-- <div class="form-group {{ $errors->has('perfil_id')?'has-error':'' }}">
 						<label class="control-label" for="status">Estatus: *</label>
 						<select name="status" class="form-control" required>

@@ -113,8 +113,17 @@ function cargarEntrevistas(btn_ver_entrevistas){
 				"<a href="+res.link+" class='text-left text-primary' target='_blank'>Ir a: "+res.link+"</a>"+
 				"</em>"+
 			"</li>"+
-			"<li class='list-group-item'><b>Status</b> <em>(Registrado, Congelado, Frio, Tibio, Caliente, Esperar Respuesta)</em>"+
-				"<input class='form-control' style='width:100%' name='status_entre' value='"+res.status_entre+"'>"+
+			"<li class='list-group-item'><b>Status Actual: </b>"+
+				"<span>"+res.status_entre+"</span><br><br>"+
+				"<select class='form-control' name='status_entre'>"+
+				"<option>Seleccione...</option>"+
+				"<option value='Registrado'>Registrado</option>"+
+				"<option value='Congelado'>Congelado</option>"+
+				"<option value='Frio'>Frio</option>"+
+				"<option value='Tibio'>Tibio</option>"+
+				"<option value='Caliente'>Caliente</option>"+
+				"<option value='Esperar Respuestas'>Esperar Respuesta</option>"+
+				"</select>"*
 			"</li>"+
 		"</ul>"
 		);
