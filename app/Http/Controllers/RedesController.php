@@ -44,6 +44,10 @@ class RedesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'link_f' =>'required|unique:redes'
+        ]);
+
         $red = new Red();
         $red->fill($request->all());
         $red->user_id = \Auth::user()->id;

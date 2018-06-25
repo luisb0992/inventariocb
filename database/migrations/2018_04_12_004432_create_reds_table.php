@@ -18,6 +18,7 @@ class CreateRedsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('link_f');
             $table->string('fecha');
+            $table->string('hora');
             $table->string('cantidad')->nullable();
             $table->text('descripcion')->nullable();
             $table->timestamps();
