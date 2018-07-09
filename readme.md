@@ -1,2 +1,4 @@
 # inventariocb
-sistema de inventario para cohes de bebe _peru
+sistema de inventario para coches de bebe _peru
+
+Littlebru.com

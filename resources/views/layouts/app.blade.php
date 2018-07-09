@@ -82,13 +82,13 @@
                       DESCRIPCCION
                     </p>
                   </li>
-                  
+
                   <!-- Menu Footer-->
                   <li class="user-footer">
                   	<div class="pull-left">
                   		<a href="{{route('perfil')}}" class="btn btn-flat btn-default"><i class="fa fa-user-circle" aria-hidden="true"></i> Perfil</a>
                   	</div>
-                    
+
                    	<div class="pull-right">
                       <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         {{ csrf_field() }}
@@ -109,7 +109,7 @@
           <!-- Sidebar user panel -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            
+
             @if(\Auth::user()->perfil_id == 1)
             <li class="treeview">
               <a href="#">
@@ -124,8 +124,8 @@
                 <li><a href="{{ route('redes.index') }}"><i class="fa fa-circle-o"></i>Grupos</a></li>
               </ul>
             </li>
-            
-            
+
+
             <!-- articulos -->
             <li class="treeview">
               <a href="#">
@@ -137,7 +137,7 @@
                 <li><a href="{{ url('articulos') }}"><i class="fa fa-circle-o"></i> Ver articulos</a></li>
                 <li><a href="{{ url('articulos/create') }}"><i class="fa fa-circle-o"></i> Nuevo articulo</a></li>
               </ul>
-            </li>     
+            </li>
 
             <!-- entrevistas -->
             <li class="treeview">
@@ -147,10 +147,11 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver Prospectos</a></li>
                 <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nuevo Prospecto</a></li>
+                <li><a href="{{ url('entrevistas') }}"><i class="fa fa-circle-o"></i> Ver Prospectos</a></li>
+                <li><a href="{{ url('entrevistasReporte') }}"><i class="fa fa-circle-o"></i> Reporte</a></li>
               </ul>
-            </li>  
+            </li>
 
             <!-- Ventas -->
             <li class="treeview">
@@ -161,7 +162,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{ url('ventas') }}"><i class="fa fa-circle-o"></i> Ver ventas</a></li>
-                <!-- <li><a href="{{ url('entrevistas/create') }}"><i class="fa fa-circle-o"></i> Nueva entrevista</a></li> -->
+                <li><a href="{{ route('ventasReporte') }}"><i class="fa fa-circle-o"></i> Reporte</a></li>
               </ul>
             </li>
 
@@ -186,8 +187,8 @@
                 </ul>
               </li>
               <li><a href="{{ url('mostrar') }}"><i class="fa fa-group"></i>Mis Grupos</a></li>
-              <li><a href="{{ route('redes.index') }}"><i class="fa fa-soundcloud"></i>Redes Sociales</a></li>  
-            @endif  
+              <li><a href="{{ route('redes.index') }}"><i class="fa fa-soundcloud"></i>Redes Sociales</a></li>
+            @endif
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -260,24 +261,24 @@
 
       // datapicker español
        	$.datepicker.regional['es'] = {
-			 closeText: 'Cerrar',
-			 prevText: '< Ant',
-			 nextText: 'Sig >',
-			 currentText: 'Hoy',
-			 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-			 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
-			 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-			 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-			 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
-			 weekHeader: 'Sm',
-			 dateFormat: 'dd/mm/yy',
-			 firstDay: 1,
-			 isRTL: false,
-			 showMonthAfterYear: false,
-			 yearSuffix: ''
+  			 closeText: 'Cerrar',
+  			 prevText: '< Ant',
+  			 nextText: 'Sig >',
+  			 currentText: 'Hoy',
+  			 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+  			 monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+  			 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+  			 dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+  			 dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+  			 weekHeader: 'Sm',
+  			 dateFormat: 'dd/mm/yy',
+  			 firstDay: 1,
+  			 isRTL: false,
+  			 showMonthAfterYear: false,
+  			 yearSuffix: ''
 			 };
 			 $.datepicker.setDefaults($.datepicker.regional['es']);
-		
+
   		$(function () {
   			$(".fecha").datepicker();
   		});
@@ -295,10 +296,47 @@
   		});
 
       $("#file_input").fileinput({
-        'showUpload':false, 
+        'showUpload':false,
         'previewFileType':'any'
       });
-    
+
+      // desde hasta
+      $( function() {
+        var dateFormat = "dd/mm/yyyy",
+          from = $( "#from" )
+            .datepicker({
+              defaultDate: "+1w",
+              changeMonth: true,
+              numberOfMonths: 1,
+              showButtonPanel: true,
+              showAnim: 'slideDown'
+            })
+            .on( "change", function() {
+              to.datepicker( "option", "minDate", getDate( this ) );
+            }),
+          to = $( "#to" ).datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            showButtonPanel: true,
+            numberOfMonths: 1,
+            showAnim: 'slideDown'
+          })
+          .on( "change", function() {
+            from.datepicker( "option", "maxDate", getDate( this ) );
+          });
+
+        function getDate( element ) {
+          var date;
+          try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+          } catch( error ) {
+            date = null;
+          }
+
+          return date;
+        }
+      } );
+
     </script>
 
     @yield('script')

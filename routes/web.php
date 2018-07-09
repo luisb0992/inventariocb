@@ -23,7 +23,7 @@ Route::post('/logout', 'LoginController@logout')->name('logout');
 Route::group(['middleware' => 'auth'], function() { //middleware auth
   	/* ---- Ruta para llamar al dashboard, modificarla si es necesario ----- */
 	Route::get('dashboard', 'LoginController@index')->name('dashboard');
-	
+
 	/* --- Usuarios ---*/
 	Route::resource('/users','UserController',["middleware" => 'rol_admin']);
 
@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::get('cargarEntrevistas/{id}', 'EntrevistasController@show');
 	Route::get('cargarEntrevistaOne/{id}', 'EntrevistasController@show_id');
 	Route::get('eliminarEntrevista/{id}', 'EntrevistasController@eliminar');
+	Route::get('entrevistasReporte', 'EntrevistasController@entrevistasReporte')->name("entrevistasReporte");
+	Route::post('prospectosExcel', 'EntrevistasController@entrevistasExcel')->name("entrevistasExcel");
 
 	// PDF entrevistas
 	Route::get('pdf_entrevistas/{id}', 'EntrevistasController@pdf');
@@ -61,30 +63,32 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::resource('ventas','VentasController');
 	Route::get('vender/{id}', 'VentasController@venta');
 	Route::post('pdf_venta/{id}', 'VentasController@pdf');
+	Route::get('ReporteVentas', 'VentasController@ventasReporte')->name("ventasReporte");
+	Route::post('ventasExcel', 'VentasController@ventasExcel')->name("ventasExcel");
 
-	// comentarios 
+	// comentarios
 	Route::resource('comentario','ComentariosController');
 	Route::post('guardarComentario', 'ComentariosController@store');
 
-	// inventario 
-	Route::resource('inventario','InventarioController');	
+	// inventario
+	Route::resource('inventario','InventarioController');
 
 	//* --- Perfil --- */
 	Route::get('/perfil', 'UserController@perfil')->name('perfil');
 	Route::patch('/perfil', 'UserController@update_perfil')->name('update_perfil');
-	
+
 	Route::get('users_status/{id}', 'UserController@userStatus');
 	Route::put('update_status/{id}', 'UserController@updateStatusUser');
 
 	Route::get('articulos/img/{filename}',function($filename){
-		
+
 		// ubicacion de la ruta en storage
 		$path = storage_path("app/images/$filename");
-		
+
 		if (!\File::exists($path)){
 			abort(404);
 		}
-		
+
 		$file = \File::get($path);
 		$type = \File::mimeType($path);
 		$response = Response::make($file,200);

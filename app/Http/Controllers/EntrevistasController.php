@@ -10,6 +10,7 @@ use App\Pais;
 use App\Comentario;
 use App\User;
 use App\Venta;
+use Excel;
 
 class EntrevistasController extends Controller
 {
@@ -22,11 +23,11 @@ class EntrevistasController extends Controller
     {
     	if (\Auth::check()) {
     		$user = \Auth::user()->id;
-    		$entrevistas = Entrevista::where('user_id', $user)->where('status', 1)->get();	
+    		$entrevistas = Entrevista::where('user_id', $user)->where('status', 1)->get();
     	}else{
     		return view('login');
     	}
-    	
+
     	//dd($entrevistas);
         return view("entrevistas.index",[
             "entrevistas" => $entrevistas
@@ -131,7 +132,7 @@ class EntrevistasController extends Controller
     public function show($id)
     {
         $entrevista = Entrevista::with(['articulo', 'pais', 'comentarios'])->where('id',$id)->first();
-        
+
         if($entrevista->tiempo_embarazo == null){$entrevista->tiempo_embarazo = '...';};
         if($entrevista->tiempo_nacido == null){$entrevista->tiempo_nacido = '...';};
         if($entrevista->sexo_bebe == null){$entrevista->sexo_bebe = '...';};
@@ -234,5 +235,55 @@ class EntrevistasController extends Controller
 	          'flash_important' => true
 	          ]);
 	      }
+    }
+
+    public function entrevistasReporte(){
+
+    	return view("entrevistas.excel",[
+        "entrevistas" => Entrevista::all()
+      ]);
+    }
+
+    public function entrevistasExcel(Request $request){
+
+      $from = date('Y-m-d 00:00:00',strtotime(str_replace('/', '-', $request->desde)));
+      $to = date('Y-m-d 23:59:59',strtotime(str_replace('/', '-', $request->hasta)));
+      $entre = Entrevista::whereBetween("created_at", [$from, $to])->get();
+
+      if (count($entre) > 0) {
+        Excel::create("Entrevista ".date("d-m-Y H:m a"), function($excel) use($entre){
+
+          $excel->sheet("Reporte", function($sheet) use($entre) {
+            // header
+            $sheet->row(1, [
+              "Nombre Completo", "Articulo", "Fecha", "Hora", "Status"
+            ]);
+
+            $sheet->cell("A1:E1", function($cell) {
+              $cell->setBackground('#0bb061');
+              $cell->setFontWeight('bold');
+            });
+
+            // manejo de data
+            foreach ($entre as $v) {
+              $row = [];
+              $row [0] = $v->nombre.' '.$v->apellido;
+              $row [1] = $v->articulo->name;
+              $row [2] = $v->fecha;
+              $row [3] = $v->hora;
+              $row [4] = $v->status_entre;
+              $sheet->appendRow($row);
+            }
+
+
+          });
+
+        })->export('xls');
+      }else{
+        return redirect()->route("entrevistasReporte")->with([
+          'flash_message' => 'No existen prospectos de venta en las fechas seleccionadas',
+          'flash_class' => 'alert-danger'
+        ]);
+      }
     }
 }
