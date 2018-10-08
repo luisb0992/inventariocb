@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Red;
 use App\User;
 use App\SaveClick;
+use App\Provincia;
 
 class RedesController extends Controller
 {
@@ -24,7 +25,8 @@ class RedesController extends Controller
     	}
     	
         return view('redes.index',[
-        	'redes' => $redes
+            'redes' => $redes,
+        	'prov' => Provincia::all(),
         ]);
     }
 

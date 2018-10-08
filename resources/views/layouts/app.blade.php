@@ -13,8 +13,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/AdminLTE.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/glyphicons.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables/dataTables.bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('plugins/datatables/extensions/Responsive/css/dataTables.responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/Responsive-2.2.2/css/responsive.dataTables.min.css') }}"/>
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
@@ -235,9 +235,9 @@
     <!-- Data table -->
     <script type="text/javascript" src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 
-    <script type="text/javascript" src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
-
-    <script type="text/javascript" src="{{ asset('plugins/datatables/extensions/Responsive/js/dataTables.responsive.js')}}"></script>
+    <!-- Data table -->
+    <script type="text/javascript" src="{{ asset('DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('DataTables/Responsive-2.2.2/js/dataTables.responsive.min.js') }}"></script>
 
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
 

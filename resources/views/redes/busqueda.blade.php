@@ -50,6 +50,7 @@
 								<th class="text-center">Link de Facebook</th>
 								<th class="text-center">Fecha</th>
                 <th class="text-center">Cantidad de Cliks</th>
+                <th class="text-center">Provincia</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
@@ -61,6 +62,7 @@
                 @php $user_id = $r->user->id; @endphp
                 @php $name = $r->user->name; $ape = $r->user->apellido; @endphp
                 @php $link = $r->red->link_f; @endphp
+                @php $prov = $r->red->provincia->provincia; @endphp
                 @php $fecha = $r->fecha; @endphp
                 @php $id = $r->id; @endphp
 							@endforeach
@@ -74,6 +76,7 @@
                   </td>
                   <td>{{ $fecha }}</td>
                   <td>{{ $conteo }}</td>
+                  <td>{{ $prov }}</td>
                   <!-- <td>
                     <form action="{{ route('sv_pdf',[$user_id, $fecha]) }}" method="GET">
 											{{ csrf_field() }}

@@ -31,6 +31,7 @@
 								<th class="text-center">fecha de creacion</th>
 								<th class="text-center">hora de creacion</th>
 								<th class="text-center">Cantidad personas</th>
+								<th class="text-center">Provincia</th>
 								<th class="text-center">descripcion</th>
 								<th class="text-center">Accion</th>
 							</tr>
@@ -49,6 +50,7 @@
 									<td>{{ $red->fecha }}</td>
 									<td>{{ $red->hora }}</td>
 									<td>{{ $red->cantidad }}</td>
+									<td>{{ $red->provincia->provincia }}</td>
 									<td>{{ $red->descripcion }}</td>
 									<td>
 										@if(Auth::user()->perfil_id == 1)

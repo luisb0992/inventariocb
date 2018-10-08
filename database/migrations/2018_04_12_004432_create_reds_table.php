@@ -20,6 +20,8 @@ class CreateRedsTable extends Migration
             $table->string('fecha');
             $table->string('hora');
             $table->string('cantidad')->nullable();
+            $table->integer('provincia_id')->unsigned()->nullable();
+            $table->foreign('provincia_id')->references('id')->on('ubprovincia')->onDelete('cascade');
             $table->text('descripcion')->nullable();
             $table->timestamps();
         });

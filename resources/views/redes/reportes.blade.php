@@ -50,6 +50,7 @@
 								<th class="text-center">Link de Facebook</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Hora</th>
+								<th class="text-center">Provincia</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
@@ -63,6 +64,7 @@
 				                  	</td>
 									<td>{{ $r->fecha }}</td>
 									<td>{{ $r->hora }}</td>
+									<td>{{ $r->red->provincia->provincia }}</td>
 								</tr>
 							@endforeach
 						</tbody>
