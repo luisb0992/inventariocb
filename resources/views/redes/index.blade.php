@@ -32,6 +32,7 @@
 								<th class="text-center">hora de creacion</th>
 								<th class="text-center">Cantidad personas</th>
 								<th class="text-center">descripcion</th>
+								<th class="text-center">Accion</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
@@ -40,14 +41,28 @@
 									<td>{{ $loop->index+1 }}</td>
 									<td>{{ $red->user->name }} {{ $red->user->apellido }}</td>
 									<td>
-										<a href="{{ $red->link_f }}" target="blank" class="btn btn-link">
+										<a href="{{ $red->link_f }}" target="_blank" class="btn btn-link" onclick="Link(this);" data-value="{{ $red->id }}">
 											<i class="fa fa-hand-o-up"></i> {{ $red->link_f }}
 										</a>
+										<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 									</td>
 									<td>{{ $red->fecha }}</td>
 									<td>{{ $red->hora }}</td>
 									<td>{{ $red->cantidad }}</td>
 									<td>{{ $red->descripcion }}</td>
+									<td>
+										@if(Auth::user()->perfil_id == 1)
+										<form class="" action="{{ route('redes.destroy', $red->id) }}" method="POST">
+											{{ method_field( 'DELETE' ) }}
+              								{{ csrf_field() }}
+              								<button type="submit" class="btn btn-danger" onclick="return confirm('Seguro desea eliminar?');">
+              									<i class="fa fa-trash"></i>
+              								</button>
+										</form>
+										@else
+										<span>(ninguna)</span>
+										@endif
+									</td>
 								</tr>
 							@endforeach
 						</tbody>
@@ -56,4 +71,30 @@
 			</div>
 		</div>
 	</div>
+@endsection
+@section("script")
+<script>
+	
+	//link de redes sociales
+    function Link(ele){
+			// alert($(ele).data('value'));
+			 var token = $("#token").val();
+			 var ruta = '{{ route('saveClick') }}';
+			 $.ajax({
+					 url: ruta,
+					 headers: {'X-CSRF-TOKEN': token},
+					 type: 'POST',
+					 dataType: 'JSON',
+					 data: {red_id: $(ele).data('value')},
+			 })
+			 .done(function(data) {
+				 console.log("guardo");
+			 })
+			 .fail(function(data) {
+			 })
+			 .always(function() {
+					 console.log("complete");
+			 });
+    }
+</script>
 @endsection

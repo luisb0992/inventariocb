@@ -31,7 +31,12 @@ Route::group(['middleware' => 'auth'], function() { //middleware auth
 	Route::resource('grupos','GruposController',["middleware" => 'rol_admin']);
 	Route::get('mostrar', 'GruposController@mostrar');
 
+	// redes (q se llama grupos en el layout)
 	Route::resource('redes','RedesController');
+	Route::post('saveClick','RedesController@saveClick')->name('saveClick');
+  	Route::get('reportes','RedesController@reporteClick')->name('reporteClick');
+  	Route::post('reportes/busqueda','RedesController@busquedaClick')->name('busqueda_click');
+  	Route::get('reportesClicks/pdf/{id}/{fecha}','RedesController@pdf')->name('sv_pdf');
 
 	// entrevistas
 	Route::resource('entrevistas','EntrevistasController');
