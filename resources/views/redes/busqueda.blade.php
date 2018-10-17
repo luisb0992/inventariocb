@@ -43,7 +43,7 @@
 		      	<div class="box-header with-border">
 		      	</div>
 	      		<div class="box-body">
-					<table class="table data-table table-bordered table-hover">
+					<table class="table data-table table-bordered table-hover nowrap" style="width: 100%;">
 						<thead>
 							<tr>
 								<th class="text-center">Usuario</th>
